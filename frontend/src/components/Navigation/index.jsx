@@ -4,13 +4,19 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
-
+  // let signupForm = <SignupFormModal
+  //   setShowLoginModal={setShowLoginModal}
+  //   showLoginModal={showLoginModal}
+  //   setShowSignupModal={setShowSignupModal}
+  //   showSignupModal={showSignupModal}
+  //   />
 
   let sessionLinks;
   if (sessionUser) {
@@ -21,13 +27,23 @@ function Navigation() {
     );
   } else {
     sessionLinks = (
-      <LoginFormModal
-        setShowLoginModal={setShowLoginModal}
-        showLoginModal={showLoginModal}
-        setShowSignupModal={setShowSignupModal}
-        showSignupModal={showSignupModal}
-      />
-
+      <>
+        <LoginFormModal
+          setShowLoginModal={setShowLoginModal}
+          showLoginModal={showLoginModal}
+          setShowSignupModal={setShowSignupModal}
+          showSignupModal={showSignupModal}
+          // signupForm={signupForm}
+        />
+        <div className="fake-signup">
+          <SignupFormModal
+            setShowLoginModal={setShowLoginModal}
+            showLoginModal={showLoginModal}
+            setShowSignupModal={setShowSignupModal}
+            showSignupModal={showSignupModal}
+          />
+        </div>
+      </>
     );
   }
 

@@ -5,10 +5,8 @@ import SignupForm from './SignupForm';
 function SignupFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, showSignupModal}) {
 
   const handleClick = () => {
-      // console.log("showLoginModal1", showLoginModal)
-      // setShowLoginModal(false);
-      // console.log("showLoginModal2", showLoginModal)
-      setShowSignupModal(true);
+    setShowLoginModal(false);
+    setShowSignupModal(true);
   }
 
   const handleClose = ()=>{
@@ -18,8 +16,7 @@ function SignupFormModal({setShowLoginModal, showLoginModal, setShowSignupModal,
 
   return (
     <>
-      {/* <a href="#" onclick={() => handleClick()}>Join Vivino</a> */}
-      <button className='signup-button' onClick={handleClick}>Join Vivino</button>
+      <button className='signup-button' onClick={()=>handleClick()}>Join Vinevino</button>
       {showSignupModal && (
         <Modal onClose={handleClose}>
           <SignupForm />

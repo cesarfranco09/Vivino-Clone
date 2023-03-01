@@ -16,9 +16,9 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
           <Modal className='modal' style={{ display: "block" }} onClose={() => setShowLoginModal(false)}>
             <LoginForm />
             <br/>
-            <label>
+            <div>
               <DemoLogin />
-            </label>
+            </div>
             <br/>
             <label className='join-vinevino'>
               Don't have a profile?<br/>
