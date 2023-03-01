@@ -2,21 +2,26 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import SignupForm from './SignupForm';
 
-function SignupFormModal(prop) {
-  const [showSignupModal, setShowSignupModal] = useState(false);
-  const [showModal, setShowModal] = useState(prop.showModal);
+function SignupFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, showSignupModal}) {
 
+  const handleClick = () => {
+      // console.log("showLoginModal1", showLoginModal)
+      // setShowLoginModal(false);
+      // console.log("showLoginModal2", showLoginModal)
+      setShowSignupModal(true);
+  }
 
   const handleClose = ()=>{
-    setShowModal(false);
+    setShowLoginModal(false);
     setShowSignupModal(false);
   }
 
   return (
     <>
-      <button className='signup-button' onClick={() => setShowSignupModal(true)}></button>
+      {/* <a href="#" onclick={() => handleClick()}>Join Vivino</a> */}
+      <button className='signup-button' onClick={handleClick}>Join Vivino</button>
       {showSignupModal && (
-        <Modal onClose= {handleClose}>
+        <Modal onClose={handleClose}>
           <SignupForm />
         </Modal>
       )}

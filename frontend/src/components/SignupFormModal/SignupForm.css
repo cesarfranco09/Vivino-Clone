@@ -8,19 +8,17 @@
 }
 
 .signup-button {
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #ffffff;
-    background-color: #25be93d1;
-    border: none;
-    border-radius: 3px;
-    padding: 20px 20px;
-    cursor: pointer;
-  }
-  
-  .signup-button:hover {
-    background-color: #a91010;
-  }
-  
-  
+  font-size: 16px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  color: red;
+  background-color: white;
+  border: none;
+  border-radius: 3px;
+  /* padding: 20px 20px; */
+  cursor: pointer;
+}
+
+/* .signup-button:hover {
+  background-color: #a91010;
+} */

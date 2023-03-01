@@ -6,15 +6,14 @@ import { Link } from 'react-router-dom';
 import DemoLogin from './DemoLogin';
 
 
-function LoginFormModal() {
-  const [showModal, setShowModal] = useState(false);
+function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, showSignupModal}) {
 
   return (
     <>
-      <button className='login-profile-button' onClick={() => setShowModal(true)}></button>
-      {showModal && (
+      <button className='login-profile-button' onClick={() => setShowLoginModal(true)}></button>
+      {showLoginModal && (
         <>
-          <Modal className='modal' style={{ display: "block" }} onClose={() => setShowModal(false)}>
+          <Modal className='modal' style={{ display: "block" }} onClose={() => setShowLoginModal(false)}>
             <LoginForm />
             <br/>
             <label>
@@ -23,8 +22,12 @@ function LoginFormModal() {
             <br/>
             <label className='join-vinevino'>
               Don't have a profile?<br/>
-              Join Vinevino
-              <SignupFormModal prop={showModal} />
+              <SignupFormModal
+                setShowLoginModal={setShowLoginModal}
+                showLoginModal={showLoginModal}
+                setShowSignupModal={setShowSignupModal}
+                showSignupModal={showSignupModal}
+              />
             </label>
           </Modal>
         </>

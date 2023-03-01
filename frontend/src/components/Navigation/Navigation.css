@@ -1,3 +1,8 @@
+.nav {
+  display: flex;
+  align-items: center;
+}
+
 .profile-dropdown {
   position: absolute;
   width: 120px;
@@ -47,7 +52,7 @@
 }
 
 .home-button {
-  position: absolute;
+  /* position: absolute; */
   background-image: url(../../../assets/img/VinevinoLogo.png);
   background-size: 130px;
   background-repeat: no-repeat;
