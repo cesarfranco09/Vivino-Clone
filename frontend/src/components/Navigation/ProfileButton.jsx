@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
-function ProfileButton({ user }) {
+function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   
@@ -26,6 +27,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    setShowLoginModal(false);
   };
 
   return (
@@ -42,7 +44,9 @@ function ProfileButton({ user }) {
           <li id="profile">Profile</li>
           <li id="profile">Settings</li>
           <li>
-            <button id="log-out-button" onClick={logout}>Log Out</button>
+            <NavLink exact to='/'>
+              <button id="log-out-button" onClick={logout}>Log Out</button>
+            </NavLink>
           </li>
         </ul>
       )}

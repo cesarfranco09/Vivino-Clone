@@ -11,18 +11,16 @@ function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
-  // let signupForm = <SignupFormModal
-  //   setShowLoginModal={setShowLoginModal}
-  //   showLoginModal={showLoginModal}
-  //   setShowSignupModal={setShowSignupModal}
-  //   showSignupModal={showSignupModal}
-  //   />
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <>
-        <ProfileButton user={sessionUser} />
+        <ProfileButton
+          user={sessionUser}
+          setShowLoginModal={setShowLoginModal}
+          showLoginModal={showLoginModal}
+        />
       </>
     );
   } else {
@@ -33,7 +31,6 @@ function Navigation() {
           showLoginModal={showLoginModal}
           setShowSignupModal={setShowSignupModal}
           showSignupModal={showSignupModal}
-          // signupForm={signupForm}
         />
         <div className="fake-signup">
           <SignupFormModal

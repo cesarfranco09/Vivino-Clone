@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { legacy_createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const configureStore = (preloadedState) => {
-  return createStore(rootReducer, preloadedState, enhancer);
+  return legacy_createStore(rootReducer, preloadedState, enhancer);
 };
 
 export default configureStore;

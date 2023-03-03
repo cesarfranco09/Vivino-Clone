@@ -20,15 +20,17 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
               <DemoLogin />
             </div>
             <br/>
-            <label className='join-vinevino'>
-              Don't have a profile?<br/>
-              <SignupFormModal
-                setShowLoginModal={setShowLoginModal}
-                showLoginModal={showLoginModal}
-                setShowSignupModal={setShowSignupModal}
-                showSignupModal={showSignupModal}
-              />
-            </label>
+            <div className='join-vinevino'>
+              <p>Don't have a profile?</p>
+              <p>
+                <SignupFormModal
+                  setShowLoginModal={setShowLoginModal}
+                  showLoginModal={showLoginModal}
+                  setShowSignupModal={setShowSignupModal}
+                  showSignupModal={showSignupModal}
+                />
+              </p>
+            </div>
           </Modal>
         </>
       )}

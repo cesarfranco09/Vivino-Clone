@@ -54,10 +54,10 @@
 .home-button {
   /* position: absolute; */
   background-image: url(../../../assets/img/VinevinoLogo.png);
-  background-size: 130px;
+  background-size: 180px;
   background-repeat: no-repeat;
-  width: 130px;
-  height: 40px;
+  width: 180px;
+  height: 30px;
   top: 20px;
   left: 20px;
 }
