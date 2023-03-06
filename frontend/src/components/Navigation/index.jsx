@@ -5,6 +5,7 @@ import { useState } from 'react';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import WineNavMenu from './WineNavMenu';
 import './Navigation.css';
 
 function Navigation() {
@@ -45,11 +46,16 @@ function Navigation() {
   }
 
   return (
-    <div className="nav">
-      <NavLink exact to="/">
-        <div className="home-button"></div>
-      </NavLink>
-      {sessionLinks}
+    <div className="nav-container">
+      <nav className="nav">
+        <NavLink exact to="/">
+          <div className="home-button"></div>
+        </NavLink>
+        {sessionLinks}
+      </nav>
+      <div>
+        <WineNavMenu />
+      </div>
     </div>
   );
 }

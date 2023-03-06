@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* align-items: stretch; */
+  z-index: 100;
 }
 
 .profile-dropdown li {
@@ -64,4 +64,16 @@
 
 .fake-signup {
   display: none;
+}
+
+.wine-nav-menu {
+  position: relative;
+    display: flex;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 64px;
+    height: 64px;
+    flex-wrap: wrap;
+    background-color: #fff;
 }

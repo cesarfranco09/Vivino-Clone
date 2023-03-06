@@ -7,7 +7,7 @@ import "./sliderItem.css";
 //   Add,
 // } from "@material-ui/icons";
 
-export default function SliderItem({ index }) {
+export default function SliderItem({ index, img_url }) {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
