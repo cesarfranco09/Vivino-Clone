@@ -1,5 +1,5 @@
 
-// Action types
+
 export const RECEIVE_ALL_WINES = 'wines/RECEIVE_ALL_WINES';
 export const RECEIVE_WINE = 'wines/RECEIVE_WINE';
 export const REMOVE_WINE = 'wines/REMOVE_WINE';
@@ -21,23 +21,33 @@ export const removeWine = (wineId) => ({
 });
 
 // Selectors
-export const getAllWines = (state) => Object.values(state.wines);
+export const getAllWines = (state) => (
+  state.wines ? Object.values(state.wines) : []
+)
 
-export const getWineById = (state, id) => state.wines[id];
+export const getWineById = (state, wineId) => (
+  state.wines ? state.wines[wineId] : null
+)
 
-export const getFilteredWines = (state, filter) => {
+export const getFilteredWines = (state, filterColumn, filterValue) => {
   const allWines = getAllWines(state);
-  if (!filter) {
+  if (!filterColumn || !filterValue) {
     return allWines;
   }
-  const filteredWines = allWines.filter((wine) => wine.region === filter);
+  const filteredWines = allWines.filter((wine) => {
+    const wineValue = wine[filterColumn].toLowerCase();
+    const filterValueLower = filterValue.toLowerCase();
+    return wineValue.includes(filterValueLower);
+  });
   return filteredWines;
 };
+
 
 // Thunk functions
 export const fetchWines = () => async (dispatch) => {
   try {
-    const wines = await WineApiUtil.fetchWines();
+    const response = await fetch('/api/wines');
+    const wines = await response.json();
     dispatch(receiveAllWines(wines));
   } catch (error) {
     console.log(error);
@@ -46,7 +56,8 @@ export const fetchWines = () => async (dispatch) => {
 
 export const fetchWine = (id) => async (dispatch) => {
   try {
-    const wine = await WineApiUtil.fetchWine(id);
+    const response = await fetch(`/api/wines/${id}`);
+    const wine = await response.json();
     dispatch(receiveWine(wine));
   } catch (error) {
     console.log(error);
@@ -55,7 +66,14 @@ export const fetchWine = (id) => async (dispatch) => {
 
 export const createWine = (formData) => async (dispatch) => {
   try {
-    const wine = await WineApiUtil.createWine(formData);
+    const response = await fetch('/api/wines', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const wine = await response.json();
     dispatch(receiveWine(wine));
   } catch (error) {
     console.log(error);
@@ -64,7 +82,14 @@ export const createWine = (formData) => async (dispatch) => {
 
 export const updateWine = (formData, id) => async (dispatch) => {
   try {
-    const wine = await WineApiUtil.updateWine(formData, id);
+    const response = await fetch(`/api/wines/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const wine = await response.json();
     dispatch(receiveWine(wine));
   } catch (error) {
     console.log(error);
@@ -73,24 +98,21 @@ export const updateWine = (formData, id) => async (dispatch) => {
 
 export const deleteWine = (id) => async (dispatch) => {
   try {
-    await WineApiUtil.removeWine(id);
+    await fetch(`/api/wines/${id}`, {
+      method: 'DELETE'
+    });
     dispatch(removeWine(id));
   } catch (error) {
     console.log(error);
   }
 };
 
+
 // Reducer
 const winesReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_ALL_WINES:
-      return {
-        ...state,
-        ...action.payload.wines.reduce(
-          (acc, wine) => ({ ...acc, [wine.id]: wine }),
-          {}
-        ),
-      };
+      return action.wines;
     case RECEIVE_WINE:
       return {
         ...state,

@@ -32,13 +32,28 @@ const Home = () => {
           </a>
         </div>
         <div className='controls-text'>
-          {topListSelection === '$' && <p>Best wines under $20 right now</p>}
-          {topListSelection === '$$' && <p>Best wines between $20 and $40 right now</p>}
-          {topListSelection === '$$$' && <p>Best wines between $40 and $80 right now</p>}
+          {topListSelection === '$' &&
+            <>
+              <p>Best wines under $20 right now</p>
+              <Slider />
+            </>
+          }
+          {topListSelection === '$$' &&
+            <>
+              <p>Best wines between $20 and $40 right now</p>
+              <Slider />
+            </>
+          }
+          {topListSelection === '$$$' &&
+            <>
+              <p>Best wines between $40 and $80 right now</p>
+              <Slider />
+            </>
+          }
         </div>
       </div>
 
-      <Slider />
+
 
     </div>
   )

@@ -41,7 +41,14 @@ export const getRatingByUserAndWineId = (state, userId, wineId) => {
 // Thunk functions
 export const createRating = (formData) => async (dispatch) => {
   try {
-    const rating = await RatingApiUtil.createRating(formData);
+    const response = await fetch('/ratings', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const rating = await response.json();
     dispatch(addRating(rating));
   } catch (error) {
     console.log(error);
@@ -50,7 +57,14 @@ export const createRating = (formData) => async (dispatch) => {
 
 export const updateRatingThunk = (formData, wineId, userId) => async (dispatch) => {
   try {
-    const rating = await RatingApiUtil.updateRating(formData, wineId, userId);
+    const response = await fetch(`/ratings/${wineId}-${userId}`, {
+      method: 'PUT',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const rating = await response.json();
     dispatch(updateRating(rating));
   } catch (error) {
     console.log(error);
@@ -59,8 +73,12 @@ export const updateRatingThunk = (formData, wineId, userId) => async (dispatch) 
 
 export const deleteRatingThunk = (wineId, userId) => async (dispatch) => {
   try {
-    await RatingApiUtil.removeRating(wineId, userId);
-    dispatch(deleteRating(wineId, userId));
+    const response = await fetch(`/ratings/${wineId}-${userId}`, {
+      method: 'DELETE'
+    });
+    if (response.ok) {
+      dispatch(deleteRating(wineId, userId));
+    }
   } catch (error) {
     console.log(error);
   }
@@ -68,7 +86,8 @@ export const deleteRatingThunk = (wineId, userId) => async (dispatch) => {
 
 export const getRatingsByWineIdThunk = (wineId) => async (dispatch) => {
   try {
-    const ratings = await RatingApiUtil.fetchRatingsByWineId(wineId);
+    const response = await fetch(`/ratings?wineId=${wineId}`);
+    const ratings = await response.json();
     dispatch(receiveRatings(ratings));
   } catch (error) {
     console.log(error);

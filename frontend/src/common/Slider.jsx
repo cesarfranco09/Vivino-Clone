@@ -1,105 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 import SliderItem from './SliderItem'
 import './slider.css'
-
-// const Slider = () => {
-
-//     const [slideNumber, setSlideNumber] = useState(0)
-
-//     const listRef = useRef();
-
-//     // const handleClick = (direction) => {
-//     //     let distance = listRef.current.getBoundingClientRect().x - 50;
-//     //     if ( direction === 'left' && slideNumber > 0) {
-//     //         setSlideNumber(slideNumber - 1);
-//     //         listRef.current.style.transform= `translate(${230 + distance}px)`
-//     //     } else if ( direction === 'right' && slideNumber < 10 ) {
-//     //         setSlideNumber(slideNumber + 1);
-//     //         listRef.current.style.transform= `translate(${-230 + distance}px)`
-//     //     }
-//     // }
-
-//     // const handleClick = (direction) => {
-//     //   const slideWidth = listRef.current.offsetWidth / 4;
-//     //     let distance = (slideNumber * -slideWidth);
-      
-//     //     if (direction === 'left' && slideNumber > 0) {
-//     //       setSlideNumber(slideNumber - 1);
-//     //       distance += slideWidth;
-//     //       listRef.current.style.transform = `translate(${distance}px)`;
-//     //     } else if (direction === 'right' && slideNumber < 3) {
-//     //       setSlideNumber(slideNumber + 1);
-//     //       distance -= slideWidth;
-//     //       listRef.current.style.transform = `translate(${distance}px)`;
-//     //     }
-//     // };
-      
-
-//     // const handleClick = (direction) => {
-//     //     let distance = listRef.current.getBoundingClientRect().x - 50;
-//     //     let slideWidth = listRef.current.children[0].getBoundingClientRect().width;
-//     //     if (direction === "left" && slideNumber > 0 && (230 + distance) / slideWidth >= 0) {
-//     //       setSlideNumber(slideNumber - 1);
-//     //       listRef.current.style.transform = `translate(${230 + distance}px)`;
-//     //     } else if (direction === "right" && slideNumber < 10) {
-//     //       setSlideNumber(slideNumber + 1);
-//     //       listRef.current.style.transform = `translate(${-230 + distance}px)`;
-//     //     }
-//     //   };
-      
-//     const handleClick = (direction) => {
-//       const slideWidth = listRef.current.offsetWidth / 4 - 5;
-//       let distance = slideNumber * -slideWidth;
-    
-//       if (direction === 'left' && slideNumber > 0) {
-//         setSlideNumber(slideNumber - 1);
-//         distance += slideWidth;
-//         listRef.current.style.transform = `translateX(${distance}px)`;
-//       } else if (direction === 'right' && slideNumber < 3) {
-//         setSlideNumber(slideNumber + 1);
-//         distance -= slideWidth;
-//         listRef.current.style.transform = `translateX(${distance}px)`;
-//       }
-//     };
-    
-
-
-
-//   return (
-//     <div className="list">
-//         {/* <span className="listTitle">slider test</span> */}
-//             <div className="slider-wrapper">
-//                 <SlArrowLeft
-//                     className="sliderArrow left"
-//                     onClick={() => handleClick('left')}
-//                     style={{ display: slideNumber === 0 && 'none'}}
-//                 />
-//                 <div className="slider-container" ref={listRef}>
-//                     <SliderItem index={1}/>
-//                     <SliderItem index={2}/>
-//                     <SliderItem index={3}/>
-//                     <SliderItem index={4}/>
-//                     <SliderItem index={5}/>
-//                     <SliderItem index={6}/>
-//                     <SliderItem index={7}/>
-//                     <SliderItem index={8}/>
-//                     <SliderItem index={9}/>
-//                     <SliderItem index={10}/>
-//                     <SliderItem index={11}/>
-//                     <SliderItem index={12}/>
-//                     <SliderItem index={13}/>
-//                 </div>
-//                 <SlArrowRight
-//                     className="sliderArrow right"
-//                     onClick={() => handleClick('right')}
-//                     style={{ display: slideNumber === 3 && 'none'}}
-//                 />
-//             </div>
-
-//     </div>
-//   )
-// }
 
 
 const Slider = () => {
@@ -109,7 +11,7 @@ const Slider = () => {
   const numberOfItemsToShow = 4;
 
   const handleClick = (direction) => {
-    const slideWidth = listRef.current.offsetWidth / 4;
+    const slideWidth = listRef.current.offsetWidth / numberOfItemsToShow;
     let distance = (slideNumber * -slideWidth);
   
     if (direction === 'left' && slideNumber > 0) {

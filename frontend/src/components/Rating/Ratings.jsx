@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRatingsByWineId } from '../store/ratings';
-import { createRating, updateRating, deleteRating } from '../store/ratings';
+import { getRatingsByWineId } from './ratingsReducer';
+import { createRating, updateRating, deleteRating } from './ratingsReducer';
 import Rating from './Rating';
 
 const Ratings = ({ wineId }) => {

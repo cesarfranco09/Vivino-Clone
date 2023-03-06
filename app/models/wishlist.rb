@@ -9,6 +9,9 @@
 #  updated_at :datetime         not null
 #
 class Wishlist < ApplicationRecord
+  validates :user_id, :wine_id, presence: true
+  validates :user_id, uniqueness: { scope: :wine_id }
+  
   belongs_to :user
   belongs_to :wine
 end

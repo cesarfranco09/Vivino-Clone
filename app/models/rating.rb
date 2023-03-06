@@ -11,6 +11,8 @@
 #  updated_at :datetime         not null
 #
 class Rating < ApplicationRecord
+  validates :rating, :user_id, :wine_id, presence: true
+  
   belongs_to :user
   belongs_to :wine
 end
