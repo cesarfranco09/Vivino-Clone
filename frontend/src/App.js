@@ -9,7 +9,12 @@ function App() {
   return (
     <div className="container">
       <Navigation />
-      <Home />
+      <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+
+      </Switch>
     </div>
   );
 }
