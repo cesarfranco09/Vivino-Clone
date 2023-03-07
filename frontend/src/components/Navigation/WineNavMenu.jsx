@@ -34,9 +34,9 @@ const WineNavMenu = () => {
           </a>
           {showWines && (
             <ul className="dropdown-menu">
-              <li><Link to="/wines?type=Red">Red Wines</Link></li>
-              <li><Link to="/wines?type=White">White Wines</Link></li>
-              <li><Link to="/wines?type=Sparkling">Sparkling Wines</Link></li>
+              <li><Link to="/wines?wine_types=Red">Red Wines</Link></li>
+              <li><Link to="/wines?wine_types=White">White Wines</Link></li>
+              <li><Link to="/wines?wine_types=Sparkling">Sparkling Wines</Link></li>
             </ul>
           )}
         </li>

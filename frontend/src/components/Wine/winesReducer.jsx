@@ -29,26 +29,22 @@ export const getWineById = (state, wineId) => (
   state.wines ? state.wines[wineId] : null
 )
 
-export const getFilteredWines = (state, filterColumn, filterValue) => {
-  const allWines = getAllWines(state);
-  if (!filterColumn || !filterValue) {
-    return allWines;
-  }
-  const filteredWines = allWines.filter((wine) => {
-    const wineValue = wine[filterColumn].toLowerCase();
-    const filterValueLower = filterValue.toLowerCase();
-    return wineValue.includes(filterValueLower);
-  });
-  return filteredWines;
-};
 
 
 // Thunk functions
-export const fetchWines = () => async (dispatch) => {
+export const fetchWines = (filter) => async (dispatch) => {
   try {
-    const response = await fetch('/api/wines');
-    const wines = await response.json();
+    const response = await fetch('/api/wines/wine_by_filter', {
+      method: "POST",
+      body: JSON.stringify({filter}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const res = await response.json();
+    const wines = res["wines"]
     dispatch(receiveAllWines(wines));
+    console.log("wines", wines)
   } catch (error) {
     console.log(error);
   }

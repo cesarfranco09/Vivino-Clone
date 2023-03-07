@@ -33,4 +33,26 @@ ApplicationRecord.transaction do
     end
   
     puts "Done!"
+
+    100.times do
+      Wine.create!(
+        name: 'opus one',
+        wine_type: 'red',
+        grape: 'cabernet',
+        region: 'California',
+        country: 'USA',
+        price: 365.55,
+        year: 2020,
+        image: 'url',
+        winery: 'opus one',
+        bold: 8,
+        tannic: 7,
+        sweet: 8,
+        acidic: 3
+      )
+      
+    end
+
+
+
   end
