@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 import { useEffect } from 'react';
-// import { useParams, useLocation } from "react-router-dom";
 import useQuery from '../../utils/useQuery';
 import { fetchWines } from './winesReducer';
 
@@ -10,15 +9,6 @@ export default function ExploreWine({wines}) {
     const query = useQuery();
     const wine_types = query.get("wine_types");    
     const filter = {"wine_types": [wine_types]}
-    // const wines = wines
-
-    console.log("wines", wines);
-
-
-    // const wines = 
-    //useParams() = { "wineId": 4, key2: value2, key3: value3 }
-  
-    // const wine = useSelector(getWine(wineId))
   
     useEffect(() => {
       dispatch(fetchWines(filter));

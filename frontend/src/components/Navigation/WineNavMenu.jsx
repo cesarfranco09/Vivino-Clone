@@ -6,23 +6,35 @@ const WineNavMenu = () => {
   const [showWines, setShowWines] = useState(false);
   const [showGrapes, setShowGrapes] = useState(false);
   const [showRegions, setShowRegions] = useState(false);
+  const [showPrices, setShowPrices] = useState(false);
+
 
   const handleWinesClick = () => {
     setShowWines(!showWines);
     setShowGrapes(false);
     setShowRegions(false);
+    setShowPrices(false);
   };
 
   const handleGrapesClick = () => {
     setShowGrapes(!showGrapes);
     setShowWines(false);
     setShowRegions(false);
+    setShowPrices(false);
   };
 
   const handleRegionsClick = () => {
     setShowRegions(!showRegions);
     setShowWines(false);
     setShowGrapes(false);
+    setShowPrices(false);
+  };
+
+  const handlePricesClick = () => {
+    setShowPrices(!showPrices);
+    setShowWines(false);
+    setShowGrapes(false);
+    setShowRegions(false);
   };
 
   return (
@@ -47,8 +59,8 @@ const WineNavMenu = () => {
           {showGrapes && (
             <ul className="dropdown-menu">
               <li><Link to="/wines?grape=Cabernet Sauvignon">Cabernet Sauvignon</Link></li>
-              <li><Link to="/wines?grape=Chardonnay">Chardonnay</Link></li>
               <li><Link to="/wines?grape=Pinot Noir">Pinot Noir</Link></li>
+              <li><Link to="/wines?grape=Chardonnay">Chardonnay</Link></li>
             </ul>
           )}
         </li>
@@ -61,6 +73,19 @@ const WineNavMenu = () => {
               <li><Link to="/wines?region=Napa Valley">Napa Valley</Link></li>
               <li><Link to="/wines?region=Bordeaux">Bordeaux</Link></li>
               <li><Link to="/wines?region=Tuscany">Tuscany</Link></li>
+            </ul>
+          )}
+        </li>
+        <li className="prices-dropdown">
+          <a href="#" onClick={handlePricesClick}>
+            Prices <i className="fas fa-chevron-down"></i>
+          </a>
+          {showPrices && (
+            <ul className="dropdown-menu">
+              <li><Link to="/wines?price=under20">Under $20</Link></li>
+              <li><Link to="/wines?price=20to40">$20 to $40</Link></li>
+              <li><Link to="/wines?price=40to80">$40 to $80</Link></li>
+              <li><Link to="/wines?price=over80">Over $80</Link></li>
             </ul>
           )}
         </li>

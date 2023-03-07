@@ -29,8 +29,6 @@ export const getWineById = (state, wineId) => (
   state.wines ? state.wines[wineId] : null
 )
 
-
-
 // Thunk functions
 export const fetchWines = (filter) => async (dispatch) => {
   try {
@@ -50,54 +48,11 @@ export const fetchWines = (filter) => async (dispatch) => {
   }
 };
 
-export const fetchWine = (id) => async (dispatch) => {
+export const fetchWine = (wineId) => async (dispatch) => {
   try {
-    const response = await fetch(`/api/wines/${id}`);
+    const response = await fetch(`/api/wines/${wineId}`);
     const wine = await response.json();
     dispatch(receiveWine(wine));
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const createWine = (formData) => async (dispatch) => {
-  try {
-    const response = await fetch('/api/wines', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const wine = await response.json();
-    dispatch(receiveWine(wine));
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const updateWine = (formData, id) => async (dispatch) => {
-  try {
-    const response = await fetch(`/api/wines/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const wine = await response.json();
-    dispatch(receiveWine(wine));
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const deleteWine = (id) => async (dispatch) => {
-  try {
-    await fetch(`/api/wines/${id}`, {
-      method: 'DELETE'
-    });
-    dispatch(removeWine(id));
   } catch (error) {
     console.log(error);
   }
