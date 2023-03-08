@@ -19,7 +19,7 @@ const WineCard = ({ wineId, isInCart, isInWishlist, userRating }) => {
       <img src={wine.image} alt={wine.name} className="wine-card_image" />
       <div className="wine-card_details">
         <h2 className="wine-card_name">{wine.name}</h2>
-        <p className="wine-card_type">{wine.type}</p>
+        <p className="wine-card_wine_type">{wine.wine_type}</p>
         <p className="wine-card_grape">{wine.grape}</p>
         <p className="wine-card_region">{wine.region}, {wine.country}</p>
         <p className="wine-card_price">${wine.price}</p>

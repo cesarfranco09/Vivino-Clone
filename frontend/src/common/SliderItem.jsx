@@ -18,7 +18,7 @@ export default function SliderItem({ index, img_url }) {
     >
       
       <img
-        src="https://www.sokolin.com/media/catalog/product/cache/93e14f0b1785d03338e9b88bd41f6315/1/9/1976-petrus-Bordeaux-Red--1976-petrus.jpg"
+        src="https://vinevino-seeds.s3.us-west-1.amazonaws.com/red_1.png"
         alt=""
       />
       {isHovered && (

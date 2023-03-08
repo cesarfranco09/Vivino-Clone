@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import useQuery from '../../utils/useQuery';
 import { fetchWines } from './winesReducer';
+import WineCard from './WineCard';
 
 export default function ExploreWine({wines}) {
     const dispatch = useDispatch();
     const query = useQuery();
     const wine_types = query.get("wine_types");    
-    const filter = {"wine_types": [wine_types]}
+    const filter = { "wine_types": [wine_types] }
   
     useEffect(() => {
       dispatch(fetchWines(filter));
@@ -18,9 +19,11 @@ export default function ExploreWine({wines}) {
       <>
         <h1>Explore Page</h1>
         <p>Show Wines</p>
-        <ul>
-
-        </ul>
+        <div className="wine-list">
+            {filteredWines.map(wine => (
+            <WineCard key={wine.id} wine={wine} />
+            ))}
+        </div>
       </>
     )
 }
