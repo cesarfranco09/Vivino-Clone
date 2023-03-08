@@ -57,6 +57,16 @@ export const fetchWine = (wineId) => async (dispatch) => {
   }
 };
 
+export const fetchWineAll = () => async (dispatch) => {
+  try {
+    const response = await fetch(`/api/wines`);
+    const wine = await response.json();
+    dispatch(receiveWine(wine));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 // Reducer
 const winesReducer = (state = {}, action) => {

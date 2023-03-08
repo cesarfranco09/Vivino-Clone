@@ -1,7 +1,14 @@
 .score-wrap {
   display: block;
   margin-top: 10px;
-  width: 75px;
+}
+
+.width {
+  width: 100px;
+
+  span {
+    margin-left: 0;
+  }
 }
 
 .score {

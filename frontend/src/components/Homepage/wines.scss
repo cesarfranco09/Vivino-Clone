@@ -8,7 +8,12 @@
   padding-bottom:20px;
 }
 
+.slider-item:first-child {
+  margin-left: 18px;
+}
+
 .slider-item {
+  cursor:pointer;
   flex-basis: 150px;
   flex-grow: 1;
   border: 1px solid #e1e0e0;

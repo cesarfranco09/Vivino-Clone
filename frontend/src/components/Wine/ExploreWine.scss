@@ -59,6 +59,10 @@
           .rate-score-desc {
             font-size: 13px;
             padding-left: 10px;
+
+            .score-wrap {
+              width: 100px !important;
+            }
           }
 
           button {

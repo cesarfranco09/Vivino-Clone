@@ -20,6 +20,10 @@
     font-size: 14px;
     padding-bottom: 20px;
 
+    div:first-child {
+      min-width: 60px;
+    }
+
     .center-wrap {
       width: 80%;
       position: relative;

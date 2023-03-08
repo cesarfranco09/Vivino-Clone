@@ -1,39 +1,60 @@
 import './wines.scss'
 import {useHistory} from "react-router-dom";
-const Wines = () => {
+import Star from "../../common/Star";
+const Wines = ({wines}) => {
     const history = useHistory();
     const pageMove = function (id) {
         history.push("/wine?id=" + id)
     }
 
+    const leftMove = function () {
+        document.querySelector(".slider-container").scrollBy({
+            left: -1205,
+            behavior: 'smooth'
+        });
+    }
+
+    const rightMove = function () {
+        document.querySelector(".slider-container").scrollBy({
+            left: 1205,
+            behavior: 'smooth'
+        });
+    }
+
     return (
         <div className="slider-container">
-            {[1,2,3,4,5,6,7,8].map((num) => {
+            {wines.map((wine) => {
+                const randomNumber = (Math.random() * 5).toFixed(1);
+                const rating = Math.floor((Math.random() * 10000).toFixed(1));
+                const star = Math.floor((Math.random() * 100));
+
                 return (
-                    <div className="slider-item" onClick={() => pageMove(num)} key={num}>
+                    <div className="slider-item" onClick={() => pageMove(wine.id)} key={wine.id}>
                         <div>
                             <div className="slider-item-img">
-                                <img src="https://vinevino-seeds.s3.us-west-1.amazonaws.com/red_1.png"
+                                <img src={wine.image}
                                 />
                             </div>
                             <div className="slider-item-rating">
-                                <span className="slider-item-rating-score">4.3</span><br/>
-                                <span className="slider-item-rating-star">stars</span><br/>
-                                <span className="slider-item-rating-count">12345 ratings</span><br/><br/>
-                                <span className="slider-item-rating-soldout">Sold out</span>
+                                <span className="slider-item-rating-score">{randomNumber}</span><br/>
+                                <span className="slider-item-rating-star">
+                                    <Star point={star}/>
+                                </span><br/>
+                                <span className="slider-item-rating-count">{rating} ratings</span><br/><br/>
+                                <span className="slider-item-rating-soldout">{wine.price}$</span>
                                 {/*<span className="slider-item-rating-but">buy</span>*/}
                             </div>
                         </div>
                         <div className="wine-info">
-                            <p className="wine-company">company</p>
-                            <p className="wine-name"> product name</p>
-                            <p className="wine-origin">region</p>
+                            <p className="wine-company">{wine.winery}</p>
+                            <p className="wine-name">{wine.name}</p>
+                            <p className="wine-origin">{wine.region}</p>
                         </div>
                     </div>
                 )
             })}
-            <button className="prev-btn">&lt;</button>
-            <button className="next-btn">></button>
+            <button className="prev-btn" onClick={leftMove}>&lt;</button>
+            <button className="next-btn" onClick={rightMove}>></button>
         </div>
     )
 }

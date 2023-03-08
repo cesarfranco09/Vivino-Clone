@@ -1,22 +1,32 @@
-import React from 'react';
-import { useDispatch } from "react-redux";
-import { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
+import {useDispatch} from "react-redux";
 import useQuery from '../../utils/useQuery';
-import { fetchWines } from './winesReducer';
 import "./DetailWine.scss"
 import Star from "../../common/Star";
 import WineTaste from "./WineTaste";
 import WineReview from "./WineReview";
+import axios from "axios";
+import {useLocation} from "react-router-dom";
 
-export default function DetailWine({wines}) {
+export default function DetailWine() {
     const dispatch = useDispatch();
     const query = useQuery();
     const wine_types = query.get("wine_types");    
     const filter = { "wine_types": [wine_types] }
-  
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const [wine, setWine] = useState({});
+
     useEffect(() => {
-      dispatch(fetchWines(filter));
-    }, [dispatch, filter])
+        axios.get("/api/wines/"+ searchParams.get('id')).then(res => {
+            setWine(res.data);
+        })
+    }, [dispatch, null]);
+
+    const randomNumber = (Math.random() * 5).toFixed(1);
+    const rating = Math.floor((Math.random() * 10000).toFixed(1));
+    // const star = Math.floor((Math.random() * 100));
+    // const star = randomNumber * 20;
 
 
     return (
@@ -24,28 +34,27 @@ export default function DetailWine({wines}) {
         <div className={"wine-detail"}>
             <div className={"wine-detail-wrap"}>
                 <div>
-                    <img alt="Caymus Special Selection Cabernet Sauvignon" className="image" onLoad="setImageSize(this)"
-                         src="//images.vivino.com/thumbs/5KyHuUOhTEungzvFPpdQJA_pb_x600.png" height="500" width="114"
+                    <img className="image" onLoad="setImageSize(this)"
+                         src={wine.image} height="500" width="114"
                          role="presentation"/>
                 </div>
                 <div className={"wine-detail-desc"}>
-                    <h3 className={"company-name"}>Caymus</h3>
-                    <h1 className={"wine-name"}>Special Selection Cabernet Sauvignon</h1>
-                    <span className={"wine-manufacturing-year"}>2016</span><br/>
+                    <h3 className={"company-name"}>{wine.winery}</h3>
+                    <h1 className={"wine-name"}>{wine.name}</h1>
+                    <span className={"wine-manufacturing-year"}>{wine.year}</span><br/>
                     <ul>
-                        <li>United States </li>
-                        <li>Napa Valley </li>
-                        <li>Caymus </li>
-                        <li>Red wine </li>
-                        <li>Cabernet Sauvignon </li>
+                        <li>{wine.country} </li>
+                        <li>{wine.grape} </li>
+                        <li>{wine.region} </li>
+                        <li>{wine.wine_type} </li>
                     </ul>
 
                     <div>
-                        <div className={"rate-score"}>4.7</div>
+                        <div className={"rate-score"}>{randomNumber}</div>
                         <div className={"rate-score-desc"}>
-                            <Star/>
+                            <Star point={randomNumber*20} width={true}/>
                             <br/>
-                            2747 ratings
+                            {rating} ratings
                         </div>
                     </div>
 
@@ -57,15 +66,15 @@ export default function DetailWine({wines}) {
                 </div>
                 <div className={"price-box-wrapper"}>
                     <div className={"price-box"}>
-                        <p className={"price-box-value"}>$29.68</p>
+                        <p className={"price-box-value"}>${wine.price}</p>
                         <span className={"price-box-value-desc"}>Average of all users-reported prices</span>
                         <hr className={"price-box-hr"}/><br/>
-                        add to cart
+                        Add item to the cart
                     </div>
                 </div>
             </div>
         </div>
-        <WineTaste/>
+        <WineTaste acidic={wine.acidic} bold={wine.bold} sweet={wine.sweet} tannic={wine.tannic} />
         <WineReview/>
 
     </div>

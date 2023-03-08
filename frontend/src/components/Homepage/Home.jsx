@@ -1,15 +1,22 @@
-import React, {useState} from 'react'
-import Slider from '../../common/Slider';
+import React, {useEffect, useState} from 'react'
 import Wines from './Wines'
 import './home.scss'
-import {useSelector} from "react-redux";
-import {getAllWines, getWineById} from "../Wine/winesReducer";
+import {useDispatch, useSelector} from "react-redux";
+import winesReducer, {fetchWineAll, getAllWines, getWineById, receiveWine} from "../Wine/winesReducer";
+import axios from "axios";
 
 const Home = () => {
-  const [topListSelection, setTopListSelection] = useState('$')
+  const dispatch = useDispatch();
+  const [wines, setWines] = useState([]);
+  const [filterWines, setFilterWines] = useState([]);
+  const [topListSelection, setTopListSelection] = useState('$');
 
-  const wine = useSelector(state => getAllWines(state));
-  console.log("wine", wine)
+  useEffect(() => {
+    axios.get("/api/wines").then(res => {
+      setWines(res.data);
+      setFilterWines(res.data.filter((wine) => wine.price >= 0 && wine.price < 20))
+    })
+  }, [dispatch, null]);
 
   const selectText = (type) => {
     if (type == '$') {
@@ -24,7 +31,17 @@ const Home = () => {
   }
 
   const changePriceOption = function (type) {
+    let searchOption = [0,20];
+    if (type == '$$') {
+      searchOption = [20,40];
+    } else if (type == '$$$') {
+      searchOption = [40,80];
+    } else if (type == '$$$$') {
+      searchOption = [80,100000];
+    }
+    setFilterWines(wines.filter((wine) => wine.price >= searchOption[0] && wine.price < searchOption[1]))
     setTopListSelection(type);
+    document.querySelector(".slider-container").scrollTo({left:0});
   }
 
   return (
@@ -51,7 +68,7 @@ const Home = () => {
         </div>
         <div className='controls-text'>
           <p>{selectText(topListSelection)}</p>
-          <Wines></Wines>
+          <Wines wines={filterWines}></Wines>
           {/*<Slider />*/}
         </div>
       </div>
