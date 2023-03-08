@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWineById } from './winesReducer';
+import { fetchWine } from './winesReducer';
 
 const WineCard = ({ wineId, isInCart, isInWishlist, userRating }) => {
   const dispatch = useDispatch();

@@ -19,11 +19,11 @@ export default function ExploreWine({wines}) {
       <>
         <h1>Explore Page</h1>
         <p>Show Wines</p>
-        <div className="wine-list">
+        {/* <div className="wine-list">
             {filteredWines.map(wine => (
             <WineCard key={wine.id} wine={wine} />
             ))}
-        </div>
+        </div> */}
       </>
     )
 }
