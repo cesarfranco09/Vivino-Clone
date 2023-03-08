@@ -38,7 +38,6 @@ function Root() {
     document.getElementById('root')
   );
 }
-
 if (
   sessionStorage.getItem("currentUser") === null ||
   sessionStorage.getItem("X-CSRF-Token") === null 

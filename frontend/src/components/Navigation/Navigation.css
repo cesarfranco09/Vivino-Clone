@@ -1,6 +1,15 @@
 .nav {
-  display: flex;
-  align-items: center;
+  padding: 15px;
+  width: 1216px;
+  margin: 0 auto;
+  position:relative;
+}
+
+.nav-container {
+  background-color: #fff;
+  box-shadow: 0 1px 4px 0 rgb(30 30 30 / 20%);
+  z-index: 1000;
+  position: relative;
 }
 
 .profile-dropdown {
@@ -37,7 +46,6 @@
 }
 
 .login-profile-button {
-  position: absolute;
   background-image: url(../../../assets/img/profile_icon.png);
   background-size: 30px;
   background-repeat: no-repeat;
@@ -45,10 +53,11 @@
   background-color: white;
   width: 30px;
   height: 30px;
-  top: 20px;
-  right: 50px;
   border-style: none;
   cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 20px;
 }
 
 .home-button {
@@ -66,14 +75,3 @@
   display: none;
 }
 
-.wine-nav-menu {
-  position: relative;
-    display: flex;
-    padding: 16px;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 64px;
-    height: 64px;
-    flex-wrap: wrap;
-    background-color: #fff;
-}

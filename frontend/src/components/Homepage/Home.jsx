@@ -1,15 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import { RiCoinFill } from 'react-icons/ri'
-import { GiTwoCoins } from 'react-icons/gi';
-import { FaCoins } from 'react-icons/fa';
+import React, {useState} from 'react'
 import Slider from '../../common/Slider';
-import './home.css'
+import Wines from './Wines'
+import './home.scss'
+import {useSelector} from "react-redux";
+import {getAllWines, getWineById} from "../Wine/winesReducer";
 
 const Home = () => {
   const [topListSelection, setTopListSelection] = useState('$')
+
+  const wine = useSelector(state => getAllWines(state));
+  console.log("wine", wine)
+
+  const selectText = (type) => {
+    if (type == '$') {
+      return "Best wines under $20 right now"
+    } else if (type == '$$') {
+      return "Best wines between $20 and $40 right now"
+    } else if (type == '$$$') {
+      return "Best wines between $40 and $80 right now"
+    } else if (type == '$$$$') {
+      return "Best wines over $80 right now"
+    }
+  }
+
+  const changePriceOption = function (type) {
+    setTopListSelection(type);
+  }
+
   return (
     <div className="topList">
-
       <div className='header'>
         <div className='headerTitle'>
           Top lists in California
@@ -21,40 +40,21 @@ const Home = () => {
 
       <div className='country-toplist'>
         <div className='toplist-controls'>
-          <a className='toplist-button' onClick={() => setTopListSelection('$')}>
-            <RiCoinFill style={{ padding: '10px' }} />
+          <a className={'toplist-button icon1 ' + (topListSelection == '$'? 'active':'')} onClick={() => changePriceOption('$')}>
           </a>
-          <a className='toplist-button' onClick={() => setTopListSelection('$$')}>
-            <GiTwoCoins style={{ padding: '10px' }} />
+          <a className={'toplist-button icon2 ' + (topListSelection == '$$'? 'active':'')} onClick={() => changePriceOption('$$')}>
           </a>
-          <a className='toplist-button' onClick={() => setTopListSelection('$$$')}>
-            <FaCoins style={{ padding: '10px' }} />
+          <a className={'toplist-button icon3 ' + (topListSelection == '$$$'? 'active':'')} onClick={() => changePriceOption('$$$')}>
+          </a>
+          <a className={'toplist-button icon4 ' + (topListSelection == '$$$$'? 'active':'')} onClick={() => changePriceOption('$$$$')}>
           </a>
         </div>
         <div className='controls-text'>
-          {topListSelection === '$' &&
-            <>
-              <p>Best wines under $20 right now</p>
-              <Slider />
-            </>
-          }
-          {topListSelection === '$$' &&
-            <>
-              <p>Best wines between $20 and $40 right now</p>
-              <Slider />
-            </>
-          }
-          {topListSelection === '$$$' &&
-            <>
-              <p>Best wines between $40 and $80 right now</p>
-              <Slider />
-            </>
-          }
+          <p>{selectText(topListSelection)}</p>
+          <Wines></Wines>
+          {/*<Slider />*/}
         </div>
       </div>
-
-
-
     </div>
   )
 }

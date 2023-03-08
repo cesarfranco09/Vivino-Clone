@@ -1,0 +1,94 @@
+.topList {
+    padding: 50px;
+    width: 1216px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.headerTitle {
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.headerDesc {
+    font-size: 20px;
+}
+
+.country-toplist{
+    display: flex;
+    flex-direction: column;
+}
+
+.toplist-controls {
+    margin-right: 10px;
+    margin-top: 25px;
+
+    a {
+        border: 1px solid #ba1628;
+        background-color: white;
+        margin-right: 10px;
+        border-radius: 20px;
+        width: 58px;
+        height: 26px;
+        display:inline-block;
+        line-height: 28px;
+        cursor: pointer;
+    }
+
+    a:hover {
+        background-color: rgba(0,0,0,0.075);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .icon1 {
+        background-image: url("../../../assets/img/coin1.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 9999;
+    }
+
+    .icon1.active {
+        background-image: url("../../../assets/img/coin1_white.svg");
+        background-color: #ba1628;
+    }
+
+    .icon2 {
+        background-image: url("../../../assets/img/coin2.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .icon2.active {
+        background-image: url("../../../assets/img/coin2_white.svg");
+        background-color: #ba1628;
+    }
+
+    .icon3 {
+        background-image: url("../../../assets/img/coin3.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .icon3.active {
+        background-image: url("../../../assets/img/coin3_white.svg");
+        background-color: #ba1628;
+    }
+
+    .icon4 {
+        background-image: url("../../../assets/img/coin4.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .icon4.active {
+        background-image: url("../../../assets/img/coin4_white.svg");
+        background-color: #ba1628;
+    }
+
+}
+
+.toplist-active {
+    background-color: maroon;
+}

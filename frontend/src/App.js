@@ -2,13 +2,14 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Home from "./components/Homepage/Home"
-import ExploreWine from "./components/Wine/ExploreWine";
+import DetailWine from "./components/Wine/DetailWine";
+import Footer from "./components/Footer"
 import './app.css'
-import TestComponent from "./components/test/TestComponent";
+import ExploreWine from "./components/Wine/ExploerWine";
 
 function App() {
   return (
-    <div className="container">
+    <div>
       <Navigation />
       <Switch>
         <Route exact path='/'>
@@ -17,8 +18,11 @@ function App() {
         <Route exact path='/wines'>
           <ExploreWine/>
         </Route>
-
+        <Route exact path='/wine'>
+          <DetailWine/>
+        </Route>
       </Switch>
+      <Footer/>
     </div>
   );
 }

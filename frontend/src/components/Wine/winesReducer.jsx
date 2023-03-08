@@ -42,7 +42,6 @@ export const fetchWines = (filter) => async (dispatch) => {
     const res = await response.json();
     const wines = res["wines"]
     dispatch(receiveAllWines(wines));
-    console.log("wines", wines)
   } catch (error) {
     console.log(error);
   }

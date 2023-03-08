@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./sliderItem.css";
+import "./sliderItem.scss";
 // import {
 //   PlayArrow,
 //   ThumbUpAltOutlined,
