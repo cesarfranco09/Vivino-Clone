@@ -23,8 +23,8 @@ export default function DetailWine() {
         })
     }, [dispatch, null]);
 
-    const randomNumber = (Math.random() * 5).toFixed(1);
-    const rating = Math.floor((Math.random() * 10000).toFixed(1));
+    const randomNumber = ((Math.random() * 4) + 1).toFixed(1);
+    const rating = Math.floor((Math.random() * 1000).toFixed(1));
     // const star = Math.floor((Math.random() * 100));
     // const star = randomNumber * 20;
 

@@ -15,10 +15,6 @@ export const receiveWine = (wine) => ({
   payload: { wine },
 });
 
-export const removeWine = (wineId) => ({
-  type: REMOVE_WINE,
-  payload: { wineId },
-});
 
 // Selectors
 export const getAllWines = (state) => (
