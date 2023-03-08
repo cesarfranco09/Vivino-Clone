@@ -43,7 +43,7 @@ export default function ExploreWine() {
     return (
         <div className={"content"}>
             <div>
-                <p className={"title"}>Showing 4 wines between ₩2,000 - ₩63,200 rated above 3.8 stars</p>
+                <p className={"title"}>Showing 4 wines between $5-10 rated above 3.8 stars</p>
                 <p>From 1 regional wine style</p>
             </div>
             <div className={"main-content"}>
