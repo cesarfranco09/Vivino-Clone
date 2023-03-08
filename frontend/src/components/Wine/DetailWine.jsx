@@ -75,7 +75,7 @@ export default function DetailWine() {
             </div>
         </div>
         <WineTaste acidic={wine.acidic} bold={wine.bold} sweet={wine.sweet} tannic={wine.tannic} />
-        <WineReview/>
+        <WineReview />
 
     </div>
 
