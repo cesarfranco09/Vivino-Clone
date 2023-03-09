@@ -1,3 +1,5 @@
+import csrfFetch from "../../store/csrf";
+
 const GET_CART_WINES = 'cart/GET_CART_WINES' // fetching all cart wines when you first log in
 const ADD_CART_WINE = 'cart/ADD_CART_WINE'; // add a new wine to cart for first time
 const REMOVE_CART_WINE = 'cart/REMOVE_CART_WINE'; // removes the wine from your cart state
@@ -52,7 +54,7 @@ export const reset = () => {
 //fetchCartWines (runs when a user first logs in to fetch cart wines from the previous session)
 
 export const fetchCartWines = (userId) = async (dispatch) => {
-  const response = await fetch(`/api/cart_wines?user_id=${userId}`);
+  const response = await csrfFetch(`/api/cart_wines?user_id=${userId}`);
 
   if (response.ok) {
     const cartWines = await response.json();
@@ -63,7 +65,7 @@ export const fetchCartWines = (userId) = async (dispatch) => {
 //createCartWine
 
 export const createCartWine = (cartWine) = async (dispatch) => {
-  const response = await fetch('/api/cart_wines', {
+  const response = await csrfFetch('/api/cart_wines', {
     method: "POST",
     headers: { "Content-Type": "application/json"},
     body: JSON.stringify(cartWine)
@@ -78,7 +80,7 @@ export const createCartWine = (cartWine) = async (dispatch) => {
 //updateCartWine
 
 export const updateCartWine = (cartWine) = async (dispatch) => {
-  const response = await fetch(`/api/cart_wines/${cartWine.id}`, {
+  const response = await csrfFetch(`/api/cart_wines/${cartWine.id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(cartWine)
@@ -94,7 +96,7 @@ export const updateCartWine = (cartWine) = async (dispatch) => {
 //removeCartWine
 
 export const removeCartWine = (cartWineId) = async (dispatch) => {
-  const response = await fetch(`/api/cart_wines/${cartWineId}`, {
+  const response = await csrfFetch(`/api/cart_wines/${cartWineId}`, {
     method: "DELETE"
   })
 
