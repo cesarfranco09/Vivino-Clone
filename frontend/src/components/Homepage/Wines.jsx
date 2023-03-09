@@ -24,9 +24,9 @@ const Wines = ({wines}) => {
     return (
         <div className="slider-container">
             {wines.map((wine) => {
-                const randomNumber = (Math.random() * 3 + 2).toFixed(1);
+                const randomNumber = (Math.random() * 5).toFixed(1);
                 const rating = Math.floor((Math.random() * 10000).toFixed(1));
-                // const star = Math.floor((Math.random() * 100));
+                const star = Math.floor((Math.random() * 100));
 
                 return (
                     <div className="slider-item" onClick={() => pageMove(wine.id)} key={wine.id}>
@@ -38,7 +38,7 @@ const Wines = ({wines}) => {
                             <div className="slider-item-rating">
                                 <span className="slider-item-rating-score">{randomNumber}</span><br/>
                                 <span className="slider-item-rating-star">
-                                    <Star point={randomNumber*20}/>
+                                    <Star point={star}/>
                                 </span><br/>
                                 <span className="slider-item-rating-count">{rating} ratings</span><br/><br/>
                                 <span className="slider-item-rating-soldout">{wine.price}$</span>
@@ -59,4 +59,4 @@ const Wines = ({wines}) => {
     )
 }
 
-export default Wines;
+export default Wines

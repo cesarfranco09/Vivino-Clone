@@ -34,6 +34,7 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
           </Modal>
         </>
       )}
+      <div class={"cart"}></div>
     </>
   );
 }

@@ -19,11 +19,13 @@ function App() {
         <Route exact path='/wines'>
           <ExploreWine/>
         </Route>
+        <Route exact path='/cart'>
+          <Cart/>
+        </Route>
         <Route exact path='/wine'>
           <DetailWine/>
         </Route>
       </Switch>
-      {/* <Cart /> */}
       <Footer/>
     </div>
   );

@@ -2,28 +2,22 @@ import React, {useEffect, useState} from 'react'
 import Wines from './Wines'
 import './home.scss'
 import {useDispatch, useSelector} from "react-redux";
-import winesReducer, {fetchWineAll, getAllWines, getWineById, receiveWine} from "../Wine/winesReducer";
-import axios from "axios";
+import {fetchWineAll, getAllWines} from "../../store/winesReducer";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const [wines, setWines] = useState([]);
   const [filterWines, setFilterWines] = useState([]);
   const [topListSelection, setTopListSelection] = useState('$');
 
+  const wines = useSelector(getAllWines)
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    axios.get("/api/wines").then(res => {
-      setWines(res.data);
-      setFilterWines(res.data.filter((wine) => wine.price >= 0 && wine.price < 20))
-    })
-  }, [dispatch, null]);
+    dispatch(fetchWineAll());
+  }, []);
 
-  // const wines = useSelector(getAllWines);
-  // // same as: const posts = useSelector((state) => (state.posts ? Object.values(state.posts) : [])
-
-  // useEffect(()=>{
-  //   dispatch(fetchWineAll());
-  // }, [])
+  useEffect(() => {
+    changePriceOption('$'); // 첫 렌더링 시 '$' 옵션으로 필터링된 와인 목록을 보여줌
+  }, [wines]);
 
   const selectText = (type) => {
     if (type == '$') {
@@ -75,7 +69,9 @@ const Home = () => {
         </div>
         <div className='controls-text'>
           <p>{selectText(topListSelection)}</p>
-          <Wines wines={filterWines}></Wines>
+          {wines && (
+              <Wines wines={filterWines}></Wines>
+          )}
           {/*<Slider />*/}
         </div>
       </div>

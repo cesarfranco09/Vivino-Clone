@@ -7,6 +7,7 @@ import WineTaste from "./WineTaste";
 import WineReview from "./WineReview";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
+import {localStorageCartData, addCart} from "../../utils/localStorageUtils"
 
 export default function DetailWine() {
     const dispatch = useDispatch();
@@ -23,11 +24,14 @@ export default function DetailWine() {
         })
     }, [dispatch, null]);
 
-    const randomNumber = ((Math.random() * 4) + 1).toFixed(1);
-    const rating = Math.floor((Math.random() * 1000).toFixed(1));
-    // const star = Math.floor((Math.random() * 100));
-    // const star = randomNumber * 20;
+    const randomNumber = (Math.random() * 5).toFixed(1);
+    const rating = Math.floor((Math.random() * 10000).toFixed(1));
+    const star = Math.floor((Math.random() * 100));
 
+    const addToCart = function () {
+        addCart(wine);
+        alert("카트에 추가되었습니다");
+    }
 
     return (
     <div>
@@ -52,7 +56,7 @@ export default function DetailWine() {
                     <div>
                         <div className={"rate-score"}>{randomNumber}</div>
                         <div className={"rate-score-desc"}>
-                            <Star point={randomNumber*20} width={true}/>
+                            <Star point={star} width={true}/>
                             <br/>
                             {rating} ratings
                         </div>
@@ -69,13 +73,13 @@ export default function DetailWine() {
                         <p className={"price-box-value"}>${wine.price}</p>
                         <span className={"price-box-value-desc"}>Average of all users-reported prices</span>
                         <hr className={"price-box-hr"}/><br/>
-                        Add item to the cart
+                        <button onClick={addToCart}>Add to Cart</button>
                     </div>
                 </div>
             </div>
         </div>
         <WineTaste acidic={wine.acidic} bold={wine.bold} sweet={wine.sweet} tannic={wine.tannic} />
-        <WineReview />
+        <WineReview/>
 
     </div>
 
