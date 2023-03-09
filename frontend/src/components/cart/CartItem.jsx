@@ -1,25 +1,25 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromCart } from './cartWinesReducer';
+import removeCartWine from './cartWinesReducer'
 
-const CartItem = ({ item }) => {
+const CartWine = ({ wine }) => {
   const dispatch = useDispatch();
 
   const handleRemoveClick = () => {
-    dispatch(removeFromCart(item.wine.id));
+    dispatch(removeCartWine(wine.id));
   };
 
   return (
-    <div className="cart-item">
+    <div className="cart-wine">
       <div>
-        <h3>{item.wine.name}</h3>
-        <p>{item.wine.region}, {item.wine.country}</p>
-        <p>Price: ${item.wine.price.toFixed(2)}</p>
-        <p>Quantity: {item.quantity}</p>
+        <h3>{wine.name}</h3>
+        <p>{wine.region}, {wine.country}</p>
+        <p>Price: ${wine.price.toFixed(2)}</p>
+        <p>Quantity: {wine.quantity}</p>
       </div>
       <button onClick={handleRemoveClick}>Remove</button>
     </div>
   );
 };
 
-export default CartItem;
+export default CartWine;

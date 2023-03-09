@@ -6,6 +6,7 @@ import DetailWine from "./components/Wine/DetailWine";
 import Footer from "./components/Footer"
 import './app.css'
 import ExploreWine from "./components/Wine/ExploerWine";
+import Cart from "./components/cart/Cart";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <DetailWine/>
         </Route>
       </Switch>
+      {/* <Cart /> */}
       <Footer/>
     </div>
   );

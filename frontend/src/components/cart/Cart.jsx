@@ -10,6 +10,7 @@ const Cart = () => {
     wine: wines[cartWine.wineId],
     quantity: cartWine.quantity,
   }));
+  // console.log(wines);
 
   const total = cartItems.reduce((acc, item) => acc + item.wine.price * item.quantity, 0);
 

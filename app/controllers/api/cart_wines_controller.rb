@@ -5,18 +5,18 @@ class Api::CartWinesController < ApplicationController
 
     def index
         @cart_wines = CartWine.all
-        render: index
+        render :index
     end
     
     def show
-        render: show
+        render :show
     end
     
     def create
         @cart_wine = CartWine.new(cart_wine_params)
     
         if @cart_wine.save
-            render: show
+            render :show
         else
             render json: @cart_wine.errors, status: :unprocessable_entity
         end
@@ -24,7 +24,7 @@ class Api::CartWinesController < ApplicationController
     
     def update
         if @cart_wine.update(cart_wine_params)
-            render: show
+            render :show
         else
             render json: @cart_wine.errors, status: :unprocessable_entity
         end

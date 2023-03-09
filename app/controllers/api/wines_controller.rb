@@ -4,12 +4,12 @@ class Api::WinesController < ApplicationController
     def index
         @wines = Wine.all
         # @wines = Wine.where(wine_type: params[:wine_type])
-        render => index
+        render :index
     end
 
     def show
         @wine = Wine.find(params[:id])
-        render => show
+        render :show
     end
 
     def wine_by_filter
