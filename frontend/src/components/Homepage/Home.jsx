@@ -7,23 +7,23 @@ import axios from "axios";
 
 const Home = () => {
   const dispatch = useDispatch();
-  // const [wines, setWines] = useState([]);
+  const [wines, setWines] = useState([]);
   const [filterWines, setFilterWines] = useState([]);
   const [topListSelection, setTopListSelection] = useState('$');
 
-  // useEffect(() => {
-  //   axios.get("/api/wines").then(res => {
-  //     setWines(res.data);
-  //     setFilterWines(res.data.filter((wine) => wine.price >= 0 && wine.price < 20))
-  //   })
-  // }, [dispatch, null]);
+  useEffect(() => {
+    axios.get("/api/wines").then(res => {
+      setWines(res.data);
+      setFilterWines(res.data.filter((wine) => wine.price >= 0 && wine.price < 20))
+    })
+  }, [dispatch, null]);
 
-  const wines = useSelector(getAllWines);
-  // same as: const posts = useSelector((state) => (state.posts ? Object.values(state.posts) : [])
+  // const wines = useSelector(getAllWines);
+  // // same as: const posts = useSelector((state) => (state.posts ? Object.values(state.posts) : [])
 
-  useEffect(()=>{
-    dispatch(fetchWineAll());
-  }, [])
+  // useEffect(()=>{
+  //   dispatch(fetchWineAll());
+  // }, [])
 
   const selectText = (type) => {
     if (type == '$') {
