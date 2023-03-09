@@ -4,7 +4,6 @@
 #
 #  id         :bigint           not null, primary key
 #  name       :string           not null
-#  type       :string           not null
 #  grape      :string           not null
 #  region     :string           not null
 #  country    :string           not null
@@ -18,6 +17,7 @@
 #  acidic     :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  wine_type  :string
 #
 class Wine < ApplicationRecord
     validates :name, :wine_type, :grape, :region, :country, :price, :year, :image, :winery, :bold, :tannic, :sweet, :acidic, presence: true

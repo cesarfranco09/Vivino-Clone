@@ -70,8 +70,8 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
           <li id="name">{user.name}</li>
           <li id="email">{user.email}</li>
           {/*<li id="my-wines">My Wines</li>*/}
-          <li id="profile">Profile</li>
-          {/*<li id="profile">Profile</li>*/}
+          {/*<li id="orders"><a href={"/order"}>Orders</a></li>*/}
+          <li id="profile"><a href={"/profile"}>Profile</a></li>
           {/*<li id="profile">Settings</li>*/}
           <li>
             <hr/>
@@ -84,12 +84,12 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
       <div id="cartBtn" className={"cart"}  onClick={openCart}></div>
       {cartShow && (
           <ul id="cartDiv" className="cart-dropdown">
-            {cartItems.length == 0 ? "" : (
+            {cartItems.length === 0 ? "" : (
                 <div className={"cart-wrap title"}>
                   <div>
                     Name
                   </div>
-                  <div className={"center"}>
+                  <div className={"p-center"}>
                     Count
                   </div>
                   <div>
@@ -97,40 +97,40 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
                   </div>
                 </div>
             )}
-            {cartItems.length == 0 ? (<p>You have no shopping carts</p>) : (
+            {cartItems.length === 0 ? (<p>You have no item in shopping cart</p>) : (
                 cartItems.map((cart)=> (
                   <div className={"cart-wrap"}>
                     <div>
                       {cart.name}
                     </div>
-                    <div className={"center"}>
+                    <div className={"p-center"}>
                       {cart.count}
                     </div>
                     <div>
-                      {cart.price * cart.count}$
+                      ${cart.price * cart.count}
                       <button id="deleteBtn" onClick={()=>deleteCartItem(cart.id)} className={"deleteBtn"}>X</button>
                     </div>
                   </div>
               ))
             )}
-            {cartItems.length == 0 ? "" : (
+            {cartItems.length === 0 ? "" : (
                 <>
                   <hr/>
                   <div className={"cart-wrap title"}>
                     <div>
                     </div>
-                    <div className={"center"}>
+                    <div className={"p-center"}>
                       {cartItems.reduce((acc, curr) => acc + curr.count, 0)}
                     </div>
                     <div>
-                      {cartItems.reduce((acc, curr) => acc + (curr.price*curr.count), 0)}
+                      ${cartItems.reduce((acc, curr) => acc + (curr.price * curr.count), 0)}
                     </div>
                   </div>
+                  <li>
+                    <a href="/cart"><button>Go to cart</button></a>
+                  </li>
                 </>
             )}
-            <li>
-              <a href="/cart"><button>Go Cart</button></a>
-            </li>
           </ul>
       )}
     </>

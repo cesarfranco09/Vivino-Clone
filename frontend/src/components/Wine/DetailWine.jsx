@@ -7,7 +7,7 @@ import WineTaste from "./WineTaste";
 import WineReview from "./WineReview";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
-import {localStorageCartData, addCart} from "../../utils/localStorageUtils"
+import {addCart} from "../../utils/localStorageUtils"
 
 export default function DetailWine() {
     const dispatch = useDispatch();
@@ -17,6 +17,7 @@ export default function DetailWine() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const [wine, setWine] = useState({});
+    const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
         axios.get("/api/wines/"+ searchParams.get('id')).then(res => {
@@ -24,13 +25,19 @@ export default function DetailWine() {
         })
     }, [dispatch, null]);
 
-    const randomNumber = (Math.random() * 5).toFixed(1);
-    const rating = Math.floor((Math.random() * 10000).toFixed(1));
-    const star = Math.floor((Math.random() * 100));
+    useEffect(() => {
+        axios.get("/api/rating").then(res => {
+            setReviews(res.data.filter((review) => review.wine_id === searchParams.get('id')))
+        })
+    }, [wine])
+
+    const randomNumber = (Math.random() * 2 + 3).toFixed(1);
+    const rating = Math.floor((Math.random() * 1000).toFixed(1));
+    const star = randomNumber * 20;
 
     const addToCart = function () {
         addCart(wine);
-        alert("Added to your cart!");
+        alert("Added to cart");
     }
 
     return (
@@ -79,8 +86,9 @@ export default function DetailWine() {
             </div>
         </div>
         <WineTaste acidic={wine.acidic} bold={wine.bold} sweet={wine.sweet} tannic={wine.tannic} />
-        <WineReview/>
-
+        {reviews && (
+            <WineReview wineId={wine.id} reviews={reviews}/>
+        )}
     </div>
 
     )

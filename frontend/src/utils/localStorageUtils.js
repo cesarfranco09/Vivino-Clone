@@ -7,7 +7,7 @@ export function localStorageCartData() {
 
 export function addCart(wine) {
     const cartItem = localStorageCartData()
-    const existItem = cartItem.find(cart => cart.id == wine.id);
+    const existItem = cartItem.find(cart => cart.id === wine.id);
     if (existItem) {
         existItem.count += 1;
     } else {
@@ -19,5 +19,9 @@ export function addCart(wine) {
 
 export function deleteCart(id) {
     let carts = localStorageCartData()
-    localStorage.setItem("vin_cart", JSON.stringify(carts.filter((cart) => cart.id != id)))
+    localStorage.setItem("vin_cart", JSON.stringify(carts.filter((cart) => cart.id !== id)))
+}
+
+export function deleteCartAll() {
+    localStorage.setItem("vin_cart", "")
 }

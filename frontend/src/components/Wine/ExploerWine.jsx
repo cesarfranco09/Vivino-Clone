@@ -1,10 +1,10 @@
 import "./ExploreWine.scss"
 import Star from "../../common/Star";
 import React, {useEffect, useState} from "react";
-import {useHistory, useLocation} from "react-router-dom";
-import axios from "axios";
+import {useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchWineAll, getAllWines} from "../../store/winesReducer";
+import {addCart} from "../../utils/localStorageUtils";
 
 export default function ExploreWine() {
     const location = useLocation();
@@ -29,28 +29,28 @@ export default function ExploreWine() {
 
     useEffect(() => {
         dispatch(fetchWineAll());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         dataFilterInit();
-    }, [wines]);
+    }, [dispatch, wines]);
 
     useEffect(() => {
         dataFilter();
-    }, [wineCondition, grapeCondition, regionCondition]);
+    }, [dispatch, wineCondition, grapeCondition, regionCondition]);
 
     useEffect(() => {
         const minPrice = Math.min(...filterWines.map(obj => obj.price));
         const maxPrice = Math.max(...filterWines.map(obj => obj.price));
         setDisplayPrice([minPrice, maxPrice])
-    }, [filterWines])
+    }, [dispatch, filterWines])
 
     const dataFilterInit = function () {
-        if (type == "wine") {
+        if (type === "wine") {
             setWineCondition([value.toLowerCase()])
-        } else if (type == "grape") {
+        } else if (type === "grape") {
             setGrapeCondition([value.toLowerCase()])
-        } else if (type == "region") {
+        } else if (type === "region") {
             setRegionCondition([value.toLowerCase()])
         }
     }
@@ -96,6 +96,12 @@ export default function ExploreWine() {
         } else {
             setRegionCondition([...regionCondition, value.toLowerCase()])
         }
+    }
+
+    const addToCart = function (wine, e) {
+        addCart(wine);
+        alert("Added to cart");
+        e.preventDefault();
     }
 
     return (
@@ -152,16 +158,16 @@ export default function ExploreWine() {
 
                 <div className={"list"}>
                     { filterWines && filterWines.slice(0,20).map((wine) => {
-                        const randomNumber = (Math.random() * 5).toFixed(1);
-                        const rating = Math.floor((Math.random() * 10000).toFixed(1));
-                        const star = Math.floor((Math.random() * 100));
+                        const randomNumber = (Math.random() * 2 + 3).toFixed(1);
+                        const rating = Math.floor((Math.random() * 1000).toFixed(1));
+                        const star = randomNumber * 20;
 
                         return (
-                            <div className={"item"} onClick={() => pageMove(wine.id)}>
-                                <div className={"img"}>
+                            <div className={"item"}>
+                                <div className={"img"} onClick={() => pageMove(wine.id)}>
                                     <img src={wine.image}/>
                                 </div>
-                                <div className={"desc"}>
+                                <div className={"desc"} onClick={() => pageMove(wine.id)}>
                                     <div className="wine-info">
                                         <p className="wine-company">{wine.winery}</p>
                                         <p className="wine-name">{wine.name}</p>
@@ -182,7 +188,7 @@ export default function ExploreWine() {
                                                 {wine.price}$
                                             </p>
                                         </div>
-                                        <button>Add to Cart</button>
+                                        <button onClick={(event) => addToCart(wine, event)}>Add to Cart</button>
                                     </div>
                                 </div>
                             </div>

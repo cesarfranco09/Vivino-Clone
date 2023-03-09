@@ -24,9 +24,9 @@ const Wines = ({wines}) => {
     return (
         <div className="slider-container">
             {wines.map((wine) => {
-                const randomNumber = (Math.random() * 5).toFixed(1);
-                const rating = Math.floor((Math.random() * 10000).toFixed(1));
-                const star = Math.floor((Math.random() * 100));
+                const randomNumber = (Math.random() * 2 + 3).toFixed(1);
+                const rating = Math.floor((Math.random() * 1000).toFixed(1));
+                const star = randomNumber * 20;
 
                 return (
                     <div className="slider-item" onClick={() => pageMove(wine.id)} key={wine.id}>

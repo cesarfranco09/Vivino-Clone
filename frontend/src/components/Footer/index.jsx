@@ -241,9 +241,9 @@ function Footer() {
                         Check honest reviews of any wine before purchase</div>
                 </div>
             </div>
-            <div className={"company-contact"}>
+            {/* <div className={"company-contact"}>
                 <p>App | About | Contact | Press | Wine News </p>
-            </div>
+            </div> */}
         </div>
     )
 }

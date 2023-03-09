@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Home from "./components/Homepage/Home"
 import DetailWine from "./components/Wine/DetailWine";
@@ -7,6 +7,7 @@ import Footer from "./components/Footer"
 import './app.css'
 import ExploreWine from "./components/Wine/ExploerWine";
 import Cart from "./components/cart/Cart";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
@@ -17,16 +18,19 @@ function App() {
           <Home />
         </Route>
         <Route exact path='/wines'>
-          <ExploreWine/>
+          <ExploreWine />
         </Route>
         <Route exact path='/cart'>
-          <Cart/>
+          <Cart />
         </Route>
         <Route exact path='/wine'>
-          <DetailWine/>
+          <DetailWine />
+        </Route>
+        <Route exact path='/profile'>
+          <Profile />
         </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
