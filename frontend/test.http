@@ -1,8 +1,0 @@
-GET localhost:5500/api/wines
-
-###
-
-GET localhost:5500/api/wines/1200
-
-
-####
