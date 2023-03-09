@@ -1,5 +1,8 @@
 class Api::RatingsController < ApplicationController
 
+    skip_before_action :verify_authenticity_token
+    before_action :require_logged_in
+
     def index
       user_id = params[:user_id] || current_user.index
 
@@ -9,7 +12,7 @@ class Api::RatingsController < ApplicationController
         @ratings = Rating.includes(:user, :wine).where(wine_id: params[:wine_id])
       end
     end
-  
+
     def create
       @rating = Wine.find(params[:wine_id]).ratings.new(rating_params)
       @rating.user_id = current_user.id 
@@ -20,7 +23,7 @@ class Api::RatingsController < ApplicationController
         render json: @rating.errors.full_messages, status: 422
       end
     end
-  
+
     def update
       @rating = Rating.find_by(id: params[:id])
 
@@ -34,7 +37,7 @@ class Api::RatingsController < ApplicationController
         end
       end
     end
-  
+
     def destroy
       rating = Rating.find_by(id: params[:id])
       if rating && (rating.user_id == current_user.id || current_user.id == 1)
@@ -44,11 +47,11 @@ class Api::RatingsController < ApplicationController
         render json: ['You can only delete your own ratings'], status: 403
       end
     end
-  
+
     private
-  
+
     def rating_params
       params.require(:rating).permit(:user_id, :wine_id, :rating, :body)
     end
- 
+
 end

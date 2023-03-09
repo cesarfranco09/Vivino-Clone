@@ -70,7 +70,7 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
           <li id="name">{user.name}</li>
           <li id="email">{user.email}</li>
           {/*<li id="my-wines">My Wines</li>*/}
-          <li id="orders">Orders</li>
+          <li id="profile">Profile</li>
           {/*<li id="profile">Profile</li>*/}
           {/*<li id="profile">Settings</li>*/}
           <li>

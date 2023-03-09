@@ -35,6 +35,7 @@ class Api::CartWinesController < ApplicationController
     end
     
     private
+    
     def set_cart_wine
         @cart_wine = CartWine.find(params[:id])
     end

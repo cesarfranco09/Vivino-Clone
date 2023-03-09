@@ -30,7 +30,7 @@ export default function DetailWine() {
 
     const addToCart = function () {
         addCart(wine);
-        alert("카트에 추가되었습니다");
+        alert("Added to your cart!");
     }
 
     return (
