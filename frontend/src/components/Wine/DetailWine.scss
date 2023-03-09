@@ -1,0 +1,104 @@
+.wine-detail {
+  background-color: #f7f3f0;
+
+  .wine-detail-wrap {
+    display: flex;
+    width: 1216px;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom:40px;
+
+    div {
+      display: inline-block;
+    }
+
+    .wine-detail-desc {
+      text-align: left;
+      width: 720px;
+      max-width: 720px;
+      padding-left: 40px;
+      padding-right: 40px;
+
+      .company-name {
+        font-weight: normal;
+      }
+
+      .wine-name {
+        text-align: left;
+        margin-bottom: 12px;
+      }
+
+      .wine-manufacturing-year {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      ul {
+        padding-top: 40px;
+        text-align: left;
+        color: black;
+
+        li {
+          display: inline-block;
+        }
+
+        li::after {
+          content: "·";
+        }
+        li:last-child::after {
+          content: "";
+        }
+      }
+    }
+
+    .rate-score {
+      font-size: 40px;
+    }
+
+    .rate-score-desc {
+      font-size: 15px;
+      padding-left: 10px;
+    }
+
+    .rate-add-wish {
+      display: block;
+      padding-top: 10px;
+      margin-top: 10px;
+
+      svg {
+        margin-bottom: -8px;
+        margin-right: 5px;
+      }
+    }
+
+    .price-box-wrapper {
+      padding-top: 40px;
+    }
+
+    .price-box {
+      box-shadow: 0px 0px 5px 0px #888888;
+      width: 260px;
+      height: 400px;
+      background-color: white;
+      padding: 20px;
+    }
+
+    .price-box-value {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 40px;
+    }
+
+    .price-box-value-desc {
+      font-size: 12px;
+    }
+
+    .price-box-hr {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border:1px solid #ececec;
+    }
+
+
+  }
+}

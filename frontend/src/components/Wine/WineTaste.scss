@@ -1,0 +1,53 @@
+.wine-taste {
+  .wine-taste-content {
+    width: 1216px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    p {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .graph-bar-wrap {
+    width: 900px;
+  }
+
+  .graph-bar {
+    display: flex;
+    font-size: 14px;
+    padding-bottom: 20px;
+
+    div:first-child {
+      min-width: 60px;
+    }
+
+    .center-wrap {
+      width: 80%;
+      position: relative;
+      margin-right: 15px;
+      margin-left: 15px;
+      margin-top: 6px;
+
+      .center {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 10px;
+        border-radius: 5px;
+        background-color: #f7f3f0;
+      }
+
+      .center-point {
+        position: absolute;
+        width: 10%;
+        height: 10px;
+        border-radius: 5px;
+        background-color: #ba1628;
+      }
+    }
+  }
+
+}
