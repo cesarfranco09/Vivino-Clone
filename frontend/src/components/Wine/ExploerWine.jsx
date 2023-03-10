@@ -185,7 +185,7 @@ export default function ExploreWine() {
 
                                             <br/>
                                             <p className={"rate-score-price"}>
-                                                {wine.price}$
+                                                ${wine.price}
                                             </p>
                                         </div>
                                         <button onClick={(event) => addToCart(wine, event)}>Add to Cart</button>

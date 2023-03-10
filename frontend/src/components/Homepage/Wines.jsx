@@ -43,7 +43,7 @@ const Wines = ({wines}) => {
                                     <Star point={star}/>
                                 </span><br/>
                                 <span className="slider-item-rating-count">{rating} ratings</span><br/><br/>
-                                <span className="slider-item-rating-soldout">{wine.price}$</span>
+                                <span className="slider-item-rating-soldout">${wine.price}</span>
                                 {/*<span className="slider-item-rating-but">buy</span>*/}
                             </div>
                         </div>

@@ -15,7 +15,7 @@ function DemoLogin() {
 
   return (
     <form onSubmit={demoLogin}>
-      <button type="submit">Login with demo account</button>
+      <button type="submit">Log in with demo account</button>
     </form>
   );
 }
