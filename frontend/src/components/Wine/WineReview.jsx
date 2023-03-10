@@ -35,6 +35,9 @@ export default function WineReview({wineId, reviews}) {
                 <p>
                     Community reviews
                 </p>
+                {reviews.length == 0 && (
+                    <span>no review.</span>
+                )}
                 {reviews.map((review) => (
                     <div className={"review-list"}>
                         <div>

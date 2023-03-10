@@ -5,6 +5,10 @@ export function localStorageCartData() {
     return JSON.parse(item);
 }
 
+export function saveCartData(cartItems) {
+    localStorage.setItem("vin_cart", JSON.stringify(cartItems));
+}
+
 export function addCart(wine) {
     const cartItem = localStorageCartData()
     const existItem = cartItem.find(cart => cart.id === wine.id);

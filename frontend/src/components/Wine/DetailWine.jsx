@@ -27,7 +27,7 @@ export default function DetailWine() {
 
     useEffect(() => {
         axios.get("/api/rating").then(res => {
-            setReviews(res.data.filter((review) => review.wine_id === searchParams.get('id')))
+            setReviews(res.data.filter((review) => review.wine_id == searchParams.get('id')))
         })
     }, [wine])
 

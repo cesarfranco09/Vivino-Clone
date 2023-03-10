@@ -37,6 +37,10 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     setShowLoginModal(false);
+
+    setTimeout(() => {
+      window.location.href = "/"
+    },500)
   };
   // const logout = (e) => {
   //   e.preventDefault();
@@ -64,7 +68,6 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
       setCartShow(false);
     }
   });
-
 
   return (
     <>

@@ -9,11 +9,11 @@ class Api::RatingsController < ApplicationController
     else
       @ratings = Rating.includes(:user, :wine).where(wine_id: params[:wine_id])
     end
+    render json: @ratings
   end
 
   def create
-    @rating = Wine.find(params[:wine_id]).ratings.new(rating_params)
-    @rating.user_id = current_user.id 
+    @rating = Rating.new(rating_params)
 
     if @rating.save
       render :show
@@ -46,8 +46,8 @@ class Api::RatingsController < ApplicationController
     end
   end
 
-  def show
-    @rating = Rating.find(params[:id])
+  def show 
+    @rating = Rating.all
     render json: @rating
   end
 

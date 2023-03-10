@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import "./Cart.scss"
-import {deleteCart, deleteCartAll, localStorageCartData} from "../../utils/localStorageUtils";
+import {deleteCart, deleteCartAll, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([])
-
     useEffect(() => {
         setCartItems(localStorageCartData());
     }, []);
@@ -18,6 +17,7 @@ const Cart = () => {
             return wine;
         })
         setCartItems(updateItem);
+        saveCartData(updateItem);
     };
 
     const del = function(cart) {
@@ -31,7 +31,6 @@ const Cart = () => {
     }
 
     const checkOut = function() {
-        // console.log("checkout")
         alert("Purchase completed");
         deleteCartAll();
         window.location.href = "/";
