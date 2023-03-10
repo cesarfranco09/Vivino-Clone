@@ -22,7 +22,7 @@ ApplicationRecord.transaction do
       email: 'troll@wine.com', 
       password: 'password'
     )
-    
+
     User.create!(
       name: 'Demo User', 
       email: 'demo@demo.com', 
@@ -400,7 +400,7 @@ end
   )
 end
 
-200.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: red_grapes.sample,
@@ -418,7 +418,7 @@ end
   )
 end
 
-200.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: white_grapes.sample,
@@ -436,7 +436,7 @@ end
   )
 end
 
-200.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: red_grapes.sample,
@@ -454,7 +454,7 @@ end
   )
 end
 
-200.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: white_grapes.sample,
@@ -477,9 +477,9 @@ puts "Wine Done!"
 
 #  ratings data generator
 
-Rating.destroy_all
+# Rating.destroy_all
 
-500.times do
+100.times do
   Rating.create!(
     rating: Faker::Number.between(from: 3, to: 5),
     body: Faker::Lorem.paragraph(sentence_count: 2),
