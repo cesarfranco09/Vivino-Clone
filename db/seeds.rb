@@ -16,19 +16,19 @@ ApplicationRecord.transaction do
     ApplicationRecord.connection.reset_pk_sequence!('users')
   
     puts "Creating users..."
-    # Create one user with an easy to remember username, email, and password:
-    User.create!(
-      name: 'Demo User', 
-      email: 'demo@demo.com', 
-      password: 'password'
-    )
-
+    
     User.create!(
       name: 'Troll C', 
       email: 'troll@wine.com', 
       password: 'password'
     )
-  
+    
+    User.create!(
+      name: 'Demo User', 
+      email: 'demo@demo.com', 
+      password: 'password'
+    )
+    
     # More users
     20.times do 
       User.create!({
