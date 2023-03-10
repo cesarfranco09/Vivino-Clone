@@ -57,7 +57,7 @@ export default function DetailWine() {
                         <li>{wine.country} </li>
                         <li>{wine.grape} </li>
                         <li>{wine.region} </li>
-                        <li>{wine.wine_type} </li>
+                        {/* <li>{wine.wine_type.charAt(0).toUpperCase() + wine.wine_type.slice(1)} </li> */}
                     </ul>
 
                     <div>

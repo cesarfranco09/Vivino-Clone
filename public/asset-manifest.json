@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b886008f.css",
-    "main.js": "/static/js/main.2fef3b42.js",
+    "main.js": "/static/js/main.6f4465e7.js",
     "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
     "static/media/Lato-BoldItalic.ttf": "/static/media/Lato-BoldItalic.fd32b4dea61508c37b78.ttf",
     "static/media/Lato-Light.ttf": "/static/media/Lato-Light.c7400fcad9e48ca9043f.ttf",
@@ -25,10 +25,10 @@
     "static/media/coin1.svg": "/static/media/coin1.bc572ff2ed618327ffab.svg",
     "static/media/coin1_white.svg": "/static/media/coin1_white.94f2668a2121b81fb6ea.svg",
     "main.b886008f.css.map": "/static/css/main.b886008f.css.map",
-    "main.2fef3b42.js.map": "/static/js/main.2fef3b42.js.map"
+    "main.6f4465e7.js.map": "/static/js/main.6f4465e7.js.map"
   },
   "entrypoints": [
     "static/css/main.b886008f.css",
-    "static/js/main.2fef3b42.js"
+    "static/js/main.6f4465e7.js"
   ]
 }

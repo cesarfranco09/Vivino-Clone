@@ -115,9 +115,10 @@
     }
 
     .button-wrap {
-      width: 85%;
+      // width: 80%;
       display: flex;
       gap: 10px;
+      flex-wrap: wrap; 
 
       button {
         min-width: 80px;

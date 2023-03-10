@@ -38,7 +38,7 @@ ApplicationRecord.transaction do
       }) 
     end
   
-  puts "Done!"
+  puts "User Done!"
     
 end
 
@@ -198,7 +198,7 @@ sparkling_imgs = [
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'red'
+    wine_type: 'Red'
   )
 end
 
@@ -216,7 +216,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'red'
+    wine_type: 'Red'
   )
 end
 
@@ -234,7 +234,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'red'
+    wine_type: 'Red'
   )
 end
 
@@ -252,7 +252,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'white'
+    wine_type: 'White'
   )
 end
 
@@ -270,7 +270,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'white'
+    wine_type: 'White'
   )
 end
 
@@ -288,7 +288,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'white'
+    wine_type: 'White'
   )
 end
 
@@ -306,7 +306,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'rose'
+    wine_type: 'Rose'
   )
 end
 
@@ -324,7 +324,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'rose'
+    wine_type: 'Rose'
   )
 end
 
@@ -342,7 +342,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'rose'
+    wine_type: 'Rose'
   )
 end
 
@@ -360,7 +360,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'sparkling'
+    wine_type: 'Sparkling'
   )
 end
 
@@ -378,7 +378,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'sparkling'
+    wine_type: 'Sparkling'
   )
 end
 
@@ -396,7 +396,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'sparkling'
+    wine_type: 'Sparkling'
   )
 end
 
@@ -414,7 +414,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'red'
+    wine_type: 'Red'
   )
 end
 
@@ -432,7 +432,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'white'
+    wine_type: 'White'
   )
 end
 
@@ -450,7 +450,7 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'rose'
+    wine_type: 'Rose'
   )
 end
 
@@ -468,9 +468,12 @@ end
     tannic: rand(1..10),
     sweet: rand(1..10),
     acidic: rand(1..10),
-    wine_type: 'sparkling'
+    wine_type: 'Sparkling'
   )
 end
+
+puts "Wine Done!"
+
 
 #  ratings data generator
 
@@ -478,9 +481,11 @@ Rating.destroy_all
 
 500.times do
   Rating.create!(
-    rating: Faker::Number.between(from: 1, to: 5),
+    rating: Faker::Number.between(from: 3, to: 5),
     body: Faker::Lorem.paragraph(sentence_count: 2),
-    user_id: Faker::Number.between(from: 2, to: 20), # assuming you have 50 users in your database
-    wine_id: Faker::Number.between(from: 1, to: 360) # assuming you have 100 wines in your database
+    user_id: Faker::Number.between(from: 2, to: 20),
+    wine_id: Faker::Number.between(from: 1, to: 360)
   )
 end
+
+puts "Ratings Done!"

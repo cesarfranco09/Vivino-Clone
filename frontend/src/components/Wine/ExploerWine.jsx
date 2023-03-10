@@ -21,8 +21,8 @@ export default function ExploreWine() {
     const [displayPrice, setDisplayPrice] = useState([0,0])
 
     const wineTypes = ["Red", "White", "Rose", "Sparkling"]
-    const grapeTypes = ["Cabernet Sauvignon", "Pinot Noir", "Chardonnay"]
-    const regionTypes = ["Napa Valley", "Bordeaux", "Tuscany"]
+    const grapeTypes = ['Pinot Noir', 'Cabernet Sauvignon', 'Merlot', 'Malbec', 'Syrah', 'Zinfandel', 'Grenache', 'Sauvignon Blanc', 'Chardonnay', 'Riesling']
+    const regionTypes = ["Napa Valley", "Bordeaux", "Tuscany", 'Mendoza', 'Rioja']
 
     const wines = useSelector(getAllWines)
     const dispatch = useDispatch();
@@ -107,7 +107,7 @@ export default function ExploreWine() {
     return (
         <div className={"content"}>
             <div>
-                <p className={"title"}>wines between {displayPrice[0]}$ - {displayPrice[1]}$ </p>
+                <p className={"title"}>Wines between ${displayPrice[0]} - ${displayPrice[1]} </p>
                 {/*<p>From 1 regional wine style</p>*/}
             </div>
             <div className={"main-content"}>
