@@ -38,6 +38,12 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
     dispatch(sessionActions.logout());
     setShowLoginModal(false);
   };
+  // const logout = (e) => {
+  //   e.preventDefault();
+  //   dispatch(sessionActions.logout());
+  //   setShowLoginModal(false);
+  //   window.location.href = "/";
+  // };
 
   const deleteCartItem = function(id) {
     deleteCart(id);
@@ -70,7 +76,6 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
           <li id="name">{user.name}</li>
           <li id="email">{user.email}</li>
           {/*<li id="my-wines">My Wines</li>*/}
-          {/*<li id="orders"><a href={"/order"}>Orders</a></li>*/}
           <li id="profile"><a href={"/profile"}>Profile</a></li>
           {/*<li id="profile">Settings</li>*/}
           <li>

@@ -40,7 +40,7 @@ const Home = () => {
     } else if (type === '$$$$') {
       searchOption = [80,10000];
     }
-    setFilterWines(wines.filter((wine) => wine.price >= searchOption[0] && wine.price < searchOption[1]))
+    setFilterWines(wines.filter((wine) => wine.price >= searchOption[0] && wine.price < searchOption[1]).slice(0, 16))
     setTopListSelection(type);
     document.querySelector(".slider-container").scrollTo({left:0});
   }

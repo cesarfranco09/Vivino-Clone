@@ -1,6 +1,8 @@
 import './wines.scss'
 import {useHistory} from "react-router-dom";
 import Star from "../../common/Star";
+import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
+
 const Wines = ({wines}) => {
     const history = useHistory();
     const pageMove = function (id) {
@@ -53,8 +55,8 @@ const Wines = ({wines}) => {
                     </div>
                 )
             })}
-            <button className="prev-btn" onClick={leftMove}>&lt;</button>
-            <button className="next-btn" onClick={rightMove}>></button>
+            <button className="prev-btn" onClick={leftMove}><SlArrowLeft /></button>
+            <button className="next-btn" onClick={rightMove}><SlArrowRight /></button>
         </div>
     )
 }
