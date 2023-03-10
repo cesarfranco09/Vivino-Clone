@@ -62,7 +62,7 @@ export default function WineReview({wineId, reviews}) {
                     <div className={"review-write-wrap"}>
                         <p>WRITE REVIEW</p>
                         Rating: <select value={reviewRating} onChange={(event) => setReviewRating(event.target.value)}>
-                        {[0,1,2,3,4,5,6,7,8,9,10].map((num) => (
+                        {[0,1,2,3,4,5].map((num) => (
                             <option value={num}>{num}</option>
                         ))}
                         </select>

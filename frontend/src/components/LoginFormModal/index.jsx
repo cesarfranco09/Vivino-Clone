@@ -71,7 +71,7 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
                         </div>
                     </div>
                 )}
-                {cartItems.length === 0 ? (<p>You have no item in shopping cart</p>) : (
+                {cartItems.length === 0 ? (<p>Your cart is empty</p>) : (
                     cartItems.map((cart)=> (
                         <div className={"cart-wrap"}>
                             <div>

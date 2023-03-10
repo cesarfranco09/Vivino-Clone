@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import {deleteCart, localStorageCartData} from "../../utils/localStorageUtils";
+import "./ProfileButton.scss"
 
 function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
   const dispatch = useDispatch();
@@ -42,12 +43,6 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
       window.location.href = "/"
     },500)
   };
-  // const logout = (e) => {
-  //   e.preventDefault();
-  //   dispatch(sessionActions.logout());
-  //   setShowLoginModal(false);
-  //   window.location.href = "/";
-  // };
 
   const deleteCartItem = function(id) {
     deleteCart(id);
@@ -80,7 +75,6 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
           <li id="email">{user.email}</li>
           {/*<li id="my-wines">My Wines</li>*/}
           <li id="profile"><a href={"/profile"}>Profile</a></li>
-          {/*<li id="profile">Settings</li>*/}
           <li>
             <hr/>
             <NavLink exact to='/'>
@@ -105,7 +99,7 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
                   </div>
                 </div>
             )}
-            {cartItems.length === 0 ? (<p>You have no item in shopping cart</p>) : (
+            {cartItems.length === 0 ? (<p>Your cart is empty</p>) : (
                 cartItems.map((cart)=> (
                   <div className={"cart-wrap"}>
                     <div>

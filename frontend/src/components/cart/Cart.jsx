@@ -21,16 +21,16 @@ const Cart = () => {
     };
 
     const del = function(cart) {
-        if (cartItems.length === 1 ) {
-            alert("At least one item needs to be in cart")
-            return;
-        }
-
         deleteCart(cart.id)
         setCartItems(localStorageCartData());
     }
 
     const checkOut = function() {
+        if (cartItems.length === 0 ) {
+            alert("At least one item needs to be in cart")
+            return;
+        }
+
         alert("Purchase completed");
         deleteCartAll();
         window.location.href = "/";
@@ -47,7 +47,7 @@ const Cart = () => {
             <div className={"total"}>TOTAL</div>
         </div>
       {
-          cartItems.map((cart) => (
+          cartItems.length === 0 ? (<div className={"new-cart-list"}><p>Your cart is empty</p></div>):cartItems.map((cart) => (
               <div className={"new-cart-list"}>
                   <div className={"img"}>
                       <img src={cart.image} alt=""/>
@@ -76,3 +76,4 @@ const Cart = () => {
 };
 
 export default Cart;
+

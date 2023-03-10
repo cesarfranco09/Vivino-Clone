@@ -41,7 +41,7 @@ const WineNavMenu = () => {
               <ul className="dropdown-menu">
                 <li><a href="/wines?type=wine&value=Red">Red Wines</a></li>
                 <li><a href="/wines?type=wine&value=White">White Wines</a></li>
-                <li><a href="/wines?type=wine&value=Rose">Rose Wines</a></li>
+                <li><a href="/wines?type=wine&value=Rose">Rosé Wines</a></li>
                 <li><a href="/wines?type=wine&value=Sparkling">Sparkling Wines</a></li>
               </ul>
             </div>

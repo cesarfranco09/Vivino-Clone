@@ -18,13 +18,19 @@ ApplicationRecord.transaction do
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
     User.create!(
-      name: 'Demo', 
+      name: 'Demo User', 
       email: 'demo@demo.com', 
+      password: 'password'
+    )
+
+    User.create!(
+      name: 'Troll C', 
+      email: 'troll@wine.com', 
       password: 'password'
     )
   
     # More users
-    10.times do 
+    20.times do 
       User.create!({
         name: Faker::Internet.unique.username(specifier: 3),
         email: Faker::Internet.unique.email,
@@ -36,11 +42,15 @@ ApplicationRecord.transaction do
     
 end
 
+
+# wine data generator
+
 Wine.destroy_all
 
-grapes = ['Chardonnay', 'Pinot Noir', 'Cabernet Sauvignon', 'Merlot', 'Malbec', 'Syrah', 'Zinfandel', 'Sangiovese', 'Tempranillo', 'Grenache']
-regions = ['Napa Valley', 'Bordeaux', 'Tuscany', 'Piedmont', 'Rhone Valley', 'Barossa Valley', 'Mendoza', 'Marlborough', 'Mosel', 'Rioja']
-countries = ['France', 'Italy', 'Spain', 'USA', 'Argentina', 'Chile', 'Australia', 'New Zealand', 'Germany', 'Portugal']
+red_grapes = ['Pinot Noir', 'Cabernet Sauvignon', 'Merlot', 'Malbec', 'Syrah', 'Zinfandel', 'Grenache']
+white_grapes = ['Sauvignon Blanc', 'Chardonnay', 'Riesling']
+regions = ['Piedmont', 'Rhone Valley', 'Barossa Valley', 'Mendoza', 'Marlborough', 'Mosel', 'Rioja']
+countries = ['Spain', 'Argentina', 'Chile', 'Australia', 'New Zealand', 'Germany', 'Portugal']
 red_imgs = [
   'https://vinevino-seeds.s3.us-west-1.amazonaws.com/red_1.png',
   'https://vinevino-seeds.s3.us-west-1.amazonaws.com/red_10.png',
@@ -174,10 +184,226 @@ sparkling_imgs = [
   'https://vinevino-seeds.s3.us-west-1.amazonaws.com/spk_9.png'
 ]
 
-300.times do
+30.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
-    grape: grapes.sample,
+    grape: red_grapes.sample,
+    region: 'Napa Valley',
+    country: 'USA',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: red_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'red'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: red_grapes.sample,
+    region: 'Bordeaux',
+    country: 'France',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: red_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'red'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: red_grapes.sample,
+    region: 'Tuscany',
+    country: 'Italy',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: red_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'red'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: white_grapes.sample,
+    region: 'Napa Valley',
+    country: 'USA',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: white_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'white'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: white_grapes.sample,
+    region: 'Bordeaux',
+    country: 'France',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: white_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'white'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: white_grapes.sample,
+    region: 'Tuscany',
+    country: 'Italy',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: white_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'white'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: red_grapes.sample,
+    region: 'Napa Valley',
+    country: 'USA',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: rose_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'rose'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: red_grapes.sample,
+    region: 'Bordeaux',
+    country: 'France',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: rose_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'rose'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: red_grapes.sample,
+    region: 'Tuscany',
+    country: 'Italy',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: rose_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'rose'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: white_grapes.sample,
+    region: 'Napa Valley',
+    country: 'USA',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: sparkling_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'sparkling'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: white_grapes.sample,
+    region: 'Bordeaux',
+    country: 'France',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: sparkling_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'sparkling'
+  )
+end
+
+30.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: white_grapes.sample,
+    region: 'Tuscany',
+    country: 'Italy',
+    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    year: rand(1980..2023),
+    image: sparkling_imgs.sample,
+    winery: Faker::Company.name,
+    bold: rand(1..10),
+    tannic: rand(1..10),
+    sweet: rand(1..10),
+    acidic: rand(1..10),
+    wine_type: 'sparkling'
+  )
+end
+
+200.times do
+  Wine.create!(
+    name: Faker::Commerce.product_name,
+    grape: red_grapes.sample,
     region: regions.sample,
     country: countries.sample,
     price: Faker::Commerce.price(range: 5..500, as_string: false),
@@ -192,10 +418,10 @@ sparkling_imgs = [
   )
 end
 
-300.times do
+200.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
-    grape: grapes.sample,
+    grape: white_grapes.sample,
     region: regions.sample,
     country: countries.sample,
     price: Faker::Commerce.price(range: 5..500, as_string: false),
@@ -210,10 +436,10 @@ end
   )
 end
 
-300.times do
+200.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
-    grape: grapes.sample,
+    grape: red_grapes.sample,
     region: regions.sample,
     country: countries.sample,
     price: Faker::Commerce.price(range: 5..500, as_string: false),
@@ -228,10 +454,10 @@ end
   )
 end
 
-300.times do
+200.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
-    grape: grapes.sample,
+    grape: white_grapes.sample,
     region: regions.sample,
     country: countries.sample,
     price: Faker::Commerce.price(range: 5..500, as_string: false),
@@ -246,5 +472,15 @@ end
   )
 end
 
+#  ratings data generator
 
+Rating.destroy_all
 
+500.times do
+  Rating.create!(
+    rating: Faker::Number.between(from: 1, to: 5),
+    body: Faker::Lorem.paragraph(sentence_count: 2),
+    user_id: Faker::Number.between(from: 2, to: 20), # assuming you have 50 users in your database
+    wine_id: Faker::Number.between(from: 1, to: 360) # assuming you have 100 wines in your database
+  )
+end

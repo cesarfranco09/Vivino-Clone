@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {localStorageCartData} from "../../utils/localStorageUtils";
-import "./Profile"
+import "./Profile.scss"
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchWineAll, getAllWines} from "../../store/winesReducer";

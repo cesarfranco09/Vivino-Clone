@@ -24,7 +24,7 @@ const Rating = ({ rating, onSave, onDelete }) => {
     <div>
       <label>
         Rating:
-        <input type="number" min="0" max="10" value={currentRating} onChange={handleRatingChange} />
+        <input type="number" min="0" max="5" value={currentRating} onChange={handleRatingChange} />
       </label>
       <label>
         Comment:
