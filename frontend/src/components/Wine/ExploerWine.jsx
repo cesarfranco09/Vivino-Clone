@@ -71,7 +71,7 @@ export default function ExploreWine() {
     }
 
     const pageMove = function (id) {
-        window.open("/wine?id=" + id, "")
+        window.open("/wine?wineId=" + id, "")
     }
 
     const wineConditionHandler = function(value) {
