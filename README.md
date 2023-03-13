@@ -1,24 +1,34 @@
-# README
+# Vinevino
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Website
+[live website](https://vinevino.onrender.com)
 
-Things you may want to cover:
+## Background
+Vinevino is an e-commerce website, a clone of Vivino. Vinevino allows users to view different listings of wines filtered by categories, purchase wines by adding wines to the cart, leave ratings and reviews.
 
-* Ruby version
+## Technology
+- **React/Redux** - JS/JSX, CSS/SCSS
+- **Ruby on Rails** - Backend
+- **BCrypt** - User auth package to generate password hash with salt.
+- **PostgreSQL** - Database
+- **AWS** - Image storage and uploads
 
-* System dependencies
+## Features
+### User Authentication - Login/Signup
+User can signup or login into their account. Backend uses BCrypt to authenticate users.
 
-* Configuration
+### Listing & Filtering of Wines
+User can view listings of wines and filter listings by selecting conditions
 
-* Database creation
+### Shopping Cart & Purchase CRUD
+User can add/update/empty shoppping cart
 
-* Database initialization
+### Reviews & Ratings CRUD
+User can rate and write review for wines
 
-* How to run the test suite
+### User Profile
+User can view profile, showing reviews written by the user.
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+<img src="./frontend/assets/img/vinevino.gif" alt="text" width="800"/>
 
-* ...
