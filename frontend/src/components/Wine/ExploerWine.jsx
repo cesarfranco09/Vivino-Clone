@@ -33,17 +33,17 @@ export default function ExploreWine() {
 
     useEffect(() => {
         dataFilterInit();
-    }, [dispatch, wines]);
+    }, [wines]);
 
     useEffect(() => {
         dataFilter();
-    }, [dispatch, wineCondition, grapeCondition, regionCondition]);
+    }, [wineCondition, grapeCondition, regionCondition]);
 
     useEffect(() => {
         const minPrice = Math.min(...filterWines.map(obj => obj.price));
         const maxPrice = Math.max(...filterWines.map(obj => obj.price));
         setDisplayPrice([minPrice, maxPrice])
-    }, [dispatch, filterWines])
+    }, [filterWines])
 
     const dataFilterInit = function () {
         if (type === "wine") {
@@ -165,7 +165,7 @@ export default function ExploreWine() {
                         return (
                             <div className={"item"}>
                                 <div className={"img"} onClick={() => pageMove(wine.id)}>
-                                    <img src={wine.image}/>
+                                    <img src={wine.image} alt=""/>
                                 </div>
                                 <div className={"desc"} onClick={() => pageMove(wine.id)}>
                                     <div className="wine-info">

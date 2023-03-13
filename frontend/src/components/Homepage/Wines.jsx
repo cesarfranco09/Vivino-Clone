@@ -34,7 +34,7 @@ const Wines = ({wines}) => {
                     <div className="slider-item" onClick={() => pageMove(wine.id)} key={wine.id}>
                         <div>
                             <div className="slider-item-img">
-                                <img src={wine.image}
+                                <img src={wine.image} alt=""
                                 />
                             </div>
                             <div className="slider-item-rating">

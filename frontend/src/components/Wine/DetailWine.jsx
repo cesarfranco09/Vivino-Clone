@@ -24,7 +24,7 @@ export default function DetailWine() {
         if (wineId) {
             dispatch(fetchWine(wineId))
         }
-    }, [dispatch])
+    }, [dispatch, wineId])
 
     useEffect(() => {
         if (wineId) {
