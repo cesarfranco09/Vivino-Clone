@@ -6,13 +6,15 @@ export const REMOVE_WINE = 'wines/REMOVE_WINE';
 // Action creators
 export const receiveAllWines = (wines) => ({
   type: RECEIVE_ALL_WINES,
-  wines
+  wine: wines
 });
 
-export const receiveWine = (wine) => ({
-  type: RECEIVE_WINE,
-  wine
-});
+export const receiveWine = (wine) => {
+  return {
+    type: RECEIVE_WINE,
+    wine: wine
+  }
+};
 
 export const removeWine = (wineId) => ({
   type: REMOVE_WINE,
@@ -20,12 +22,13 @@ export const removeWine = (wineId) => ({
 });
 
 // Selectors
-export const getAllWines = (state) => (
-  state.wines ? Object.values(state.wines) : []
-)
+export const getAllWines = (state) => {
+  return state.wines ? Object.values(state.wines) : []
+}
+
 
 export const getWineById = (state, wineId) => (
-  state.wines ? state.wines[wineId] : null
+  state.wine ? state.wine[wineId] : null
 )
 
 // Thunk functions
@@ -71,7 +74,7 @@ const winesReducer = (state = {}, action) => {
   const newState = {...state};
   switch (action.type) {
     case RECEIVE_ALL_WINES:
-      return action.wines;
+      return action.wine;
     case RECEIVE_WINE:
       const wine = action.wine;
       newState[wine.id] = wine

@@ -1,12 +1,12 @@
 import "./WineReview.scss"
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {createRating} from "../../store/ratingReducer";
+import {createRating, getRatingsById} from "../../store/ratingReducer";
 
 export default function WineReview({wineId, reviews}) {
     const sessionUser = useSelector(state => state.session.user);
     const [review, setReview] = useState("");
-    const [reviewRating, setReviewRating] = useState(0);
+    const [reviewRating, setReviewRating] = useState(5);
     const dispatch = useDispatch();
 
     const submit = function () {
@@ -25,8 +25,14 @@ export default function WineReview({wineId, reviews}) {
         }
 
         dispatch(createRating(param));
-        window.location.reload();
+        dispatch(getRatingsById)
+        initFrm()
         alert("Saved")
+    }
+
+    const initFrm = function () {
+        setReviewRating(5);
+        setReview("");
     }
 
     return (

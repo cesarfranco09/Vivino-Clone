@@ -1,34 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {localStorageCartData} from "../../utils/localStorageUtils";
+import React, {useEffect} from 'react';
 import "./Profile.scss"
-import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchWineAll, getAllWines} from "../../store/winesReducer";
+import {fetchRatingAllUserId, getRatingsById} from "../../store/ratingReducer";
 
 const Profile = () => {
-    const [reviews, setReviews] = useState([]);
-    const sessionUser = useSelector(state => state.session.user);
-
-
-    const wines = useSelector(getAllWines)
     const dispatch = useDispatch();
+    const reviews = useSelector(getRatingsById)
 
     useEffect(() => {
-        dispatch(fetchWineAll());
-    }, [dispatch]);
-
-    useEffect(() => {
-        axios.get("/api/rating").then(res => {
-            setReviews(res.data.filter((review) => review.user_id === sessionUser.id).map((review) => {
-                const wine = wines.filter((wine) => wine.id === review.wine_id)[0]
-                return {
-                ...review,
-                    image: wine.image,
-                    wine_name: wine.name
-                }
-            }))
-        })
-    }, [wines])
+        dispatch(fetchRatingAllUserId());
+    }, [dispatch, reviews]);
 
     const pageMove = function(id) {
         window.open("wine?id=" + id);
@@ -43,7 +24,7 @@ const Profile = () => {
                     <div className={"quantity"}>Review</div>
                 </div>
                 {
-                    reviews.map((review) => (
+                    reviews && reviews.map((review) => (
                         <div className={"new-cart-list cursor"} onClick={() => pageMove(review.wine_id)}>
                             <div className={"img"}>
                                 <img src={review.image} alt=""/>
@@ -64,7 +45,7 @@ const Profile = () => {
                                     {review.rating}
                                 </div>
                             </div>
-                            <div>
+                            <div className={"date"}>
                                 {review.created_at.substring(0,10)}
                             </div>
                         </div>
