@@ -30,5 +30,5 @@ User can rate and write review for wines
 User can view profile, showing reviews written by the user.
 
 
-<img src="./frontend/assets/img/vinevino.gif" alt="text" width="800"/>
+<img src="https://vinevino-seeds.s3.us-west-1.amazonaws.com/vinevino.gif" alt="text" width="800"/>
 
