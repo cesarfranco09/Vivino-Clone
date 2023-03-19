@@ -477,15 +477,15 @@ puts "Wine Done!"
 
 #  ratings data generator
 
-Rating.destroy_all
+# Rating.destroy_all
 
-100.times do
-  Rating.create!(
-    rating: Faker::Number.between(from: 3, to: 5),
-    body: Faker::Lorem.paragraph(sentence_count: 2),
-    user_id: Faker::Number.between(from: 2, to: 20),
-    wine_id: Faker::Number.between(from: 1, to: 360)
-  )
-end
+# 100.times do
+#   Rating.create!(
+#     rating: Faker::Number.between(from: 3, to: 5),
+#     body: Faker::Lorem.paragraph(sentence_count: 2),
+#     user_id: Faker::Number.between(from: 2, to: 20),
+#     wine_id: Faker::Number.between(from: 1, to: 360)
+#   )
+# end
 
-puts "Ratings Done!"
+# puts "Ratings Done!"
