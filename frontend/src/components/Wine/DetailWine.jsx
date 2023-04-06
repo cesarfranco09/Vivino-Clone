@@ -38,7 +38,7 @@ export default function DetailWine() {
 
     const addToCart = function () {
         addCart(wine);
-        alert("Added to cart");
+        alert("Added to cart"); // open cart
     }
 
     return (

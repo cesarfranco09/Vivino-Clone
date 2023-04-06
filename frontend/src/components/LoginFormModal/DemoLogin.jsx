@@ -15,7 +15,7 @@ function DemoLogin() {
   const demoLogin2 = (event) => {
     event.preventDefault();
     // Dispatch the login action with the demo user data
-    dispatch(login({ credential: "troll@wine.com", password }));
+    dispatch(login({ credential: "demo2@demo.com", password }));
   };
 
   return (

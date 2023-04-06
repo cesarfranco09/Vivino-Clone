@@ -14,17 +14,16 @@ export default function ExploreWine() {
 
     // const [wines, setWines] = useState([]);
     const [filterWines, setFilterWines] = useState([]);
-
     const [wineCondition, setWineCondition] = useState([]);
     const [grapeCondition, setGrapeCondition] = useState([]);
     const [regionCondition, setRegionCondition] = useState([]);
-    const [displayPrice, setDisplayPrice] = useState([0,0])
+    const [displayPrice, setDisplayPrice] = useState([0,0]);
 
-    const wineTypes = ["Red", "White", "Rose", "Sparkling"]
-    const grapeTypes = ['Pinot Noir', 'Cabernet Sauvignon', 'Merlot', 'Malbec', 'Syrah', 'Zinfandel', 'Grenache', 'Sauvignon Blanc', 'Chardonnay', 'Riesling']
-    const regionTypes = ["Napa Valley", "Bordeaux", "Tuscany", 'Mendoza', 'Rioja']
+    const wineTypes = ["Red", "White", "Rose", "Sparkling"];
+    const grapeTypes = ['Pinot Noir', 'Cabernet Sauvignon', 'Merlot', 'Malbec', 'Syrah', 'Zinfandel', 'Grenache', 'Sauvignon Blanc', 'Chardonnay', 'Riesling'];
+    const regionTypes = ["Napa Valley", "Bordeaux", "Tuscany", 'Mendoza', 'Rioja'];
 
-    const wines = useSelector(getAllWines)
+    const wines = useSelector(getAllWines);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -43,7 +42,7 @@ export default function ExploreWine() {
         const minPrice = Math.min(...filterWines.map(obj => obj.price));
         const maxPrice = Math.max(...filterWines.map(obj => obj.price));
         setDisplayPrice([minPrice, maxPrice])
-    }, [filterWines])
+    }, [filterWines]);
 
     const dataFilterInit = function () {
         if (type === "wine") {
@@ -53,7 +52,7 @@ export default function ExploreWine() {
         } else if (type === "region") {
             setRegionCondition([value.toLowerCase()])
         }
-    }
+    };
 
     const dataFilter = function () {
         setFilterWines(null);
@@ -68,11 +67,11 @@ export default function ExploreWine() {
             filterWine = filterWine.filter((wine) => regionCondition.includes(wine.region.toLowerCase()));
         }
         setFilterWines(filterWine);
-    }
+    };
 
     const pageMove = function (id) {
         window.open("/wine?wineId=" + id, "")
-    }
+    };
 
     const wineConditionHandler = function(value) {
         if (wineCondition.includes(value.toLowerCase())) {
@@ -80,7 +79,7 @@ export default function ExploreWine() {
         } else {
             setWineCondition([...wineCondition, value.toLowerCase()])
         }
-    }
+    };
 
     const grapeConditionHandler = function(value) {
         if (grapeCondition.includes(value.toLowerCase())) {
@@ -88,7 +87,7 @@ export default function ExploreWine() {
         } else {
             setGrapeCondition([...grapeCondition, value.toLowerCase()])
         }
-    }
+    };
 
     const regionConditionHandler = function(value) {
         if (regionCondition.includes(value.toLowerCase())) {
@@ -96,13 +95,13 @@ export default function ExploreWine() {
         } else {
             setRegionCondition([...regionCondition, value.toLowerCase()])
         }
-    }
+    };
 
     const addToCart = function (wine, e) {
         addCart(wine);
-        alert("Added to cart");
+        alert("Added to cart"); //open cart
         e.preventDefault();
-    }
+    };
 
     return (
         <div className={"content"}>
@@ -198,4 +197,4 @@ export default function ExploreWine() {
             </div>
         </div>
     )
-}
+};

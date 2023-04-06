@@ -3,7 +3,7 @@ import {Modal} from '../../context/Modal';
 import LoginForm from './LoginForm';
 import SignupFormModal from '../SignupFormModal';
 import DemoLogin from './DemoLogin';
-import {deleteCart, localStorageCartData} from "../../utils/localStorageUtils";
+import {deleteCart, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
 
 
 function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, showSignupModal}) {
@@ -15,6 +15,19 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
         setCartItems(localStorageCartData());
     }
 
+    const plus = function (cart, value, e) {
+        if (value === -1 && cart.count === 1) return;
+        const updateItem = cartItems.map((wine) => {
+            if(wine.id === cart.id) {
+                return { ...wine, count: wine.count+value}
+            }
+            return wine;
+        })
+        setCartItems(updateItem);
+        saveCartData(updateItem);
+        e.stopPropagation();
+    };
+
     const deleteCartItem = function(id) {
         deleteCart(id);
         setCartItems(localStorageCartData());
@@ -23,8 +36,10 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
     document.addEventListener("click", function(event) {
         const cart = document.getElementById("cartDiv");
         const cartBtn = document.getElementById("cartBtn");
+        // const plusBtns = document.querySelectorAll(".plus-btn");
+        // const minusBtns = document.querySelectorAll(".minus-btn");
 
-        if (event.target !== cart && event.target.parentNode !== cart && event.target !== cartBtn  && !event.target.classList.contains("deleteBtn")) {
+        if (event.target !== cart && event.target.parentNode !== cart && event.target !== cartBtn  && !event.target.classList.contains("deleteBtn") && !event.target.classList.contains("plus-btn") && !event.target.classList.contains("minus-btn")) {
             setCartShow(false);
         }
     });
@@ -78,7 +93,10 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
                                 {cart.name}
                             </div>
                             <div className={"p-center"}>
+                                <button className={"plus-btn"} onClick={()=>plus(cart, -1)}>-</button>
                                 {cart.count}
+                                <button className={"minus-btn"} onClick={()=>plus(cart, 1)}>+</button>
+                                {/* <button className={"minus-btn"} onClick={()=>del(cart)}>X</button> */}
                             </div>
                             <div>
                                 ${cart.price * cart.count}

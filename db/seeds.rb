@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
@@ -16,16 +8,16 @@ ApplicationRecord.transaction do
     ApplicationRecord.connection.reset_pk_sequence!('users')
   
     puts "Creating users..."
-    
-    User.create!(
-      name: 'Troll C', 
-      email: 'troll@wine.com', 
-      password: 'password'
-    )
 
     User.create!(
       name: 'Demo User', 
       email: 'demo@demo.com', 
+      password: 'password'
+    )
+
+    User.create!(
+      name: 'Demo User 2', 
+      email: 'demo2@demo.com', 
       password: 'password'
     )
     
@@ -477,15 +469,15 @@ puts "Wine Done!"
 
 #  ratings data generator
 
-# Rating.destroy_all
+Rating.destroy_all
 
-# 100.times do
-#   Rating.create!(
-#     rating: Faker::Number.between(from: 3, to: 5),
-#     body: Faker::Lorem.paragraph(sentence_count: 2),
-#     user_id: Faker::Number.between(from: 2, to: 20),
-#     wine_id: Faker::Number.between(from: 1, to: 360)
-#   )
-# end
+100.times do
+  Rating.create!(
+    rating: Faker::Number.between(from: 3, to: 5),
+    body: Faker::Lorem.paragraph(sentence_count: 2),
+    user_id: Faker::Number.between(from: 2, to: 20),
+    wine_id: Faker::Number.between(from: 1, to: 360)
+  )
+end
 
-# puts "Ratings Done!"
+puts "Ratings Done!"

@@ -3,14 +3,15 @@ import "./Cart.scss"
 import {deleteCart, deleteCartAll, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
 
 const Cart = () => {
-    const [cartItems, setCartItems] = useState([])
+    const [cartItems, setCartItems] = useState([]);
+
     useEffect(() => {
         setCartItems(localStorageCartData());
     }, []);
 
     const plus = function (cart, value) {
         if (value === -1 && cart.count === 1) return;
-        const updateItem  = cartItems.map((wine) => {
+        const updateItem = cartItems.map((wine) => {
             if(wine.id === cart.id) {
                 return { ...wine, count: wine.count+value}
             }
@@ -31,7 +32,7 @@ const Cart = () => {
             return;
         }
 
-        alert("Purchase completed");
+        alert("Purchase completed"); //new modal
         deleteCartAll();
         window.location.href = "/";
         // order page로 이동??..
