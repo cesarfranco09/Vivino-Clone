@@ -1,38 +1,41 @@
 import React, {useEffect} from 'react';
-import "./Profile.scss"
+import "./Profile.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchRatingAllUserId, getRatingsById} from "../../store/ratingReducer";
+import { useHistory } from 'react-router-dom';
 
 const Profile = () => {
     const dispatch = useDispatch();
-    const reviews = useSelector(getRatingsById)
+    const history = useHistory();
+
+    const reviews = useSelector(getRatingsById);
 
     useEffect(() => {
         dispatch(fetchRatingAllUserId());
     }, [dispatch, reviews]);
 
-    const pageMove = function(id) {
-        window.open("wine?wineId=" + id);
+    const pageMoveWine = function (id) {
+        history.push("/wine?wineId=" + id)
     }
 
     return (
-        <div className={"new-cart"}>
-            <div className={"new-cart-wrap"}>
+        <div className={"my-reviews"}>
+            <div className={"my-reviews-wrap"}>
                 <p class={"title"}>My Reviews</p>
-                <div className={"new-cart-header"}>
+                <div className={"my-reviews-header"}>
                     <div className={"product"}>WINE</div>
-                    <div className={"quantity"}>REVIEW</div>
+                    <div className={"review"}>REVIEW</div>
                 </div>
                 {
                     reviews && reviews.map((review) => (
-                        <div className={"new-cart-list cursor"}>
-                            <div className={"img"} onClick={() => pageMove(review.wine_id)}>
+                        <div className={"my-reviews-list cursor"}>
+                            <div className={"img"} onClick={() => pageMoveWine(review.wine_id)}>
                                 <img src={review.image} alt=""/>
                             </div>
-                            <div className={"product"}>
+                            <div className={"product"} onClick={() => pageMoveWine(review.wine_id)}>
                                 {review.name}
                             </div>
-                            <div className={"quantity"}>
+                            <div className={"review"}>
                                 {review.body}
                             </div>
                             <div style={{width:"80px"}}>

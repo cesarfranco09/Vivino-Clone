@@ -1,7 +1,7 @@
-import './wines.scss'
+import './wines.scss';
 import {useHistory} from "react-router-dom";
 import Star from "../../common/Star";
-import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
+import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 
 const Wines = ({wines}) => {
     const history = useHistory();
