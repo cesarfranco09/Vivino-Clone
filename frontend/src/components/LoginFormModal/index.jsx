@@ -8,30 +8,30 @@ import {deleteCart, localStorageCartData, saveCartData} from "../../utils/localS
 
 function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, showSignupModal}) {
   const [cartShow, setCartShow] = useState(false);
-  const [cartItems, setCartItems] = useState([])
+//   const [cartItems, setCartItems] = useState([])
 
-    const openCart =() => {
-        setCartShow(!cartShow);
-        setCartItems(localStorageCartData());
-    }
+    // const openCart =() => {
+    //     setCartShow(!cartShow);
+    //     setCartItems(localStorageCartData());
+    // }
 
-    const plus = function (cart, value, e) {
-        if (value === -1 && cart.count === 1) return;
-        const updateItem = cartItems.map((wine) => {
-            if(wine.id === cart.id) {
-                return { ...wine, count: wine.count+value}
-            }
-            return wine;
-        })
-        setCartItems(updateItem);
-        saveCartData(updateItem);
-        e.stopPropagation();
-    };
+    // const plus = function (cart, value, e) {
+    //     if (value === -1 && cart.count === 1) return;
+    //     const updateItem = cartItems.map((wine) => {
+    //         if(wine.id === cart.id) {
+    //             return { ...wine, count: wine.count+value}
+    //         }
+    //         return wine;
+    //     })
+    //     setCartItems(updateItem);
+    //     saveCartData(updateItem);
+    //     e.stopPropagation();
+    // };
 
-    const deleteCartItem = function(id) {
-        deleteCart(id);
-        setCartItems(localStorageCartData());
-    }
+    // const deleteCartItem = function(id) {
+    //     deleteCart(id);
+    //     setCartItems(localStorageCartData());
+    // }
 
     document.addEventListener("click", function(event) {
         const cart = document.getElementById("cartDiv");
@@ -70,7 +70,7 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
           </Modal>
         </>
       )}
-        <div id="cartBtn" className={"cart"}  onClick={openCart}></div>
+        {/* <div id="cartBtn" className={"cart"}  onClick={openCart}></div>
         {cartShow && (
             <ul id="cartDiv" className="cart-dropdown">
                 {cartItems.length === 0 ? "" : (
@@ -93,10 +93,9 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
                                 {cart.name}
                             </div>
                             <div className={"p-center"}>
-                                <button className={"plus-btn"} onClick={()=>plus(cart, -1)}>-</button>
+                                <button className={"plusBtn"} onClick={(e)=>plus(cart, -1, e)}>-</button>
                                 {cart.count}
-                                <button className={"minus-btn"} onClick={()=>plus(cart, 1)}>+</button>
-                                {/* <button className={"minus-btn"} onClick={()=>del(cart)}>X</button> */}
+                                <button className={"minusBtn"} onClick={(e)=>plus(cart, 1, e)}>+</button>
                             </div>
                             <div>
                                 ${cart.price * cart.count}
@@ -124,7 +123,7 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
                     </>
                 )}
             </ul>
-        )}
+        )} */}
     </>
   );
 }

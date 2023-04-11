@@ -1,16 +1,17 @@
 import "./ExploreWine.scss"
 import Star from "../../common/Star";
 import React, {useEffect, useState} from "react";
-import {useLocation} from "react-router-dom";
+import {useLocation, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchWineAll, getAllWines} from "../../store/winesReducer";
 import {addCart} from "../../utils/localStorageUtils";
 
 export default function ExploreWine() {
     const location = useLocation();
+    const history = useHistory();
     const searchParams = new URLSearchParams(location.search);
     const type = searchParams.get("type");
-    const value = searchParams.get("value")
+    const value = searchParams.get("value");
 
     // const [wines, setWines] = useState([]);
     const [filterWines, setFilterWines] = useState([]);
@@ -69,9 +70,12 @@ export default function ExploreWine() {
         setFilterWines(filterWine);
     };
 
+    // const pageMove = function (id) {
+    //     window.open("/wine?wineId=" + id, "")
+    // };
     const pageMove = function (id) {
-        window.open("/wine?wineId=" + id, "")
-    };
+        history.push("/wine?wineId=" + id)
+    }
 
     const wineConditionHandler = function(value) {
         if (wineCondition.includes(value.toLowerCase())) {
@@ -158,7 +162,7 @@ export default function ExploreWine() {
                 <div className={"list"}>
                     { filterWines && filterWines.slice(0,20).map((wine) => {
                         const randomNumber = (Math.random() * 2 + 3).toFixed(1);
-                        const rating = Math.floor((Math.random() * 1000).toFixed(1));
+                        const rating = Math.floor((Math.random() * 10).toFixed(1));
                         const star = randomNumber * 20;
 
                         return (

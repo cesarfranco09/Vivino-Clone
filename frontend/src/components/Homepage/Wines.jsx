@@ -5,6 +5,7 @@ import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 
 const Wines = ({wines}) => {
     const history = useHistory();
+    
     const pageMove = function (id) {
         history.push("/wine?wineId=" + id)
     }

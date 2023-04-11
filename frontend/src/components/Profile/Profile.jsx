@@ -28,7 +28,7 @@ const Profile = () => {
                 </div>
                 {
                     reviews && reviews.map((review) => (
-                        <div className={"my-reviews-list cursor"}>
+                        <div className={"my-reviews-list"}>
                             <div className={"img"} onClick={() => pageMoveWine(review.wine_id)}>
                                 <img src={review.image} alt=""/>
                             </div>

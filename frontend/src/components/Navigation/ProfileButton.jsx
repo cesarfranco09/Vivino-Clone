@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
-import {deleteCart, localStorageCartData} from "../../utils/localStorageUtils";
+import {deleteCart, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
 import "./ProfileButton.scss"
 
 function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
@@ -42,6 +42,19 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
     setTimeout(() => {
       window.location.href = "/"
     },500)
+  };
+
+  const plus = function (cart, value, e) {
+    if (value === -1 && cart.count === 1) return e.stopPropagation();
+    const updateItem = cartItems.map((wine) => {
+        if(wine.id === cart.id) {
+            return { ...wine, count: wine.count+value}
+        }
+        return wine;
+    })
+    setCartItems(updateItem);
+    saveCartData(updateItem);
+    e.stopPropagation();
   };
 
   const deleteCartItem = function(id) {
@@ -102,11 +115,14 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
             {cartItems.length === 0 ? (<p>Your cart is empty</p>) : (
                 cartItems.map((cart)=> (
                   <div className={"cart-wrap"}>
-                    <div>
+                    <div className="cart-name">
                       {cart.name}
                     </div>
                     <div className={"p-center"}>
-                      {cart.count}
+                        <button className={"plusBtn"} onClick={(e)=>plus(cart, -1, e)}>-</button>
+                        {cart.count}
+                        <button className={"minusBtn"} onClick={(e)=>plus(cart, 1, e)}>+</button>
+                        {/* <button className={"minus-btn"} onClick={()=>deleteCartItem(cart.id)}>X</button> */}
                     </div>
                     <div>
                       ${cart.price * cart.count}

@@ -117,7 +117,33 @@
   width: 100px
 }
 
+.plusBtn {
+  font-size: 8px;
+  margin-left: 3px;
+}
+
+.minusBtn {
+  font-size: 8px;
+  margin-left: 3px;
+}
+
 .deleteBtn {
   font-size: 8px;
   margin-left: 3px;
+}
+
+.plusBtn,
+.minusBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0 5px;
+  outline: none;
+  padding: 0;
+}
+
+.plusBtn:hover,
+.minusBtn:hover {
+  text-decoration: underline;
 }
