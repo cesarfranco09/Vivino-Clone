@@ -12,7 +12,7 @@ const Profile = () => {
     }, [dispatch, reviews]);
 
     const pageMove = function(id) {
-        window.open("wine?id=" + id);
+        window.open("wine?wineId=" + id);
     }
 
     return (
@@ -20,17 +20,17 @@ const Profile = () => {
             <div className={"new-cart-wrap"}>
                 <p class={"title"}>My Reviews</p>
                 <div className={"new-cart-header"}>
-                    <div className={"product"}>PRODUCT</div>
-                    <div className={"quantity"}>Review</div>
+                    <div className={"product"}>WINE</div>
+                    <div className={"quantity"}>REVIEW</div>
                 </div>
                 {
                     reviews && reviews.map((review) => (
-                        <div className={"new-cart-list cursor"} onClick={() => pageMove(review.wine_id)}>
-                            <div className={"img"}>
+                        <div className={"new-cart-list cursor"}>
+                            <div className={"img"} onClick={() => pageMove(review.wine_id)}>
                                 <img src={review.image} alt=""/>
                             </div>
                             <div className={"product"}>
-                                {review.wine_name}
+                                {review.name}
                             </div>
                             <div className={"quantity"}>
                                 {review.body}

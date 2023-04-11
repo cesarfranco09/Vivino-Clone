@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: :create
     resource :session, only: [:show, :create, :destroy]
-    resource :rating, only: [:show, :create, :destroy]
+    resource :rating
     resources :wines do
       collection do
         post :wine_by_filter, action: 'wine_by_filter' 

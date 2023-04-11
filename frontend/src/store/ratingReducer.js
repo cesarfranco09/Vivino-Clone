@@ -1,9 +1,7 @@
 import csrfFetch from "./csrf";
 
 export const RECEIVE_ALL_RATINGS = 'wines/RECEIVE_ALL_RATING';
-
 export const RECEIVE_ALL_RATINGS_BY_USERID = 'wines/RECEIVE_ALL_RATING_BY_USERID';
-
 export const RECEIVE_RATING = 'wines/RECEIVE_RATING';
 export const REMOVE_RATING = 'wines/REMOVE_RATING';
 
@@ -11,6 +9,7 @@ export const receiveRating = (rating) => ({
   type: RECEIVE_RATING,
   rating: rating
 });
+
 export const receiveRatings = (ratings) => {
   return {
     type: RECEIVE_ALL_RATINGS,
@@ -22,15 +21,15 @@ export const removeRating = (ratingId) => ({
   type: REMOVE_RATING,
   payload: { ratingId },
 });
-// Selectors
 
+// Selectors
 export const getRatingsById = (state) => {
   return state.rating ? Object.values(state.rating) : []
-}
+};
 
 export const getRatingsByWineId = (state) => {
   return state.rating ? Object.values(state.rating) : []
-}
+};
 
 export const fetchRatingAllWineId = (wineId) => async (dispatch) => {
   try {
@@ -52,6 +51,15 @@ export const fetchRatingAllUserId = () => async (dispatch) => {
   }
 };
 
+export const fetchRatingByUserId = (wineId) => async (dispatch) => {
+  try {
+    const response = await fetch(`/api/wines/${wineId}`);
+    const wine = await response.json();
+    dispatch(receiveRating(wine));
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const createRating = (rating) => async (dispatch) => {
   const response = await csrfFetch("/api/rating", {
@@ -64,9 +72,7 @@ export const createRating = (rating) => async (dispatch) => {
     const newRating = await response.json();
     dispatch(receiveRating(newRating))
   }
-}
-
-
+};
 
 export const fetchRatingByWineId = (wineId) => async (dispatch) => {
   try {
@@ -77,17 +83,6 @@ export const fetchRatingByWineId = (wineId) => async (dispatch) => {
     console.log(error);
   }
 };
-
-export const fetchRatingByUserId = (wineId) => async (dispatch) => {
-  try {
-    const response = await fetch(`/api/wines/${wineId}`);
-    const wine = await response.json();
-    dispatch(receiveRating(wine));
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 
 // Reducer
 const winesReducer = (state = {}, action) => {
