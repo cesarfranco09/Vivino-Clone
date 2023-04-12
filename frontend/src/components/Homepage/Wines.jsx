@@ -2,9 +2,24 @@ import './wines.scss';
 import {useHistory} from "react-router-dom";
 import Star from "../../common/Star";
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
+import { useSelector, useDispatch } from 'react-redux';
+import {fetchAllRatings, fetchRatingAllUserId, getRatings} from "../../store/ratingReducer";
+import { useState, useEffect } from 'react';
+import {fetchWine} from "../../store/winesReducer";
+import {getWine} from "../../store/wine";
+
 
 const Wines = ({wines}) => {
     const history = useHistory();
+    const dispatch = useDispatch();
+    const ratings = useSelector(getRatings);
+    const [wineRatings, setWineRatings] = useState([]);
+
+    useEffect(() => {
+        dispatch(fetchAllRatings());
+    }, [dispatch]);
+
+    console.log("ratings", ratings)
     
     const pageMove = function (id) {
         history.push("/wine?wineId=" + id)
@@ -27,9 +42,17 @@ const Wines = ({wines}) => {
     return (
         <div className="slider-container">
             {wines.map((wine) => {
-                const randomNumber = (Math.random() * 2 + 3).toFixed(1);
-                const rating = Math.floor((Math.random() * 1000).toFixed(1));
-                const star = randomNumber * 20;
+
+                // const ratings = wineRatings[wine.id];
+                // const ratings = Ratings(wine.id);
+
+                const avrRating = (ratings) => {
+                    if (!ratings || ratings.length === 0) return;
+                    let sum = 0;
+                    ratings.forEach((rating) => (sum += rating.rating));
+                    const average = sum / ratings.length;
+                    return average.toFixed(1);
+                };
 
                 return (
                     <div className="slider-item" onClick={() => pageMove(wine.id)} key={wine.id}>
@@ -39,11 +62,11 @@ const Wines = ({wines}) => {
                                 />
                             </div>
                             <div className="slider-item-rating">
-                                <span className="slider-item-rating-score">{randomNumber}</span><br/>
+                                <span className="slider-item-rating-score">{avrRating(ratings)}</span><br/>
                                 <span className="slider-item-rating-star">
-                                    <Star point={star}/>
+                                    <Star point={avrRating(ratings)}/>
                                 </span><br/>
-                                <span className="slider-item-rating-count">{rating} ratings</span><br/><br/>
+                                <span className="slider-item-rating-count">{ratings.length === 0 ? 'No ratings yet' : ratings.length + 'ratings'}</span><br/><br/>
                                 <span className="slider-item-rating-soldout">${wine.price}</span>
                                 {/*<span className="slider-item-rating-but">buy</span>*/}
                             </div>

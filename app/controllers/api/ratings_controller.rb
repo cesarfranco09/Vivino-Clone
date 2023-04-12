@@ -2,23 +2,36 @@ class Api::RatingsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    puts current_user
-    user_id = params[:user_id] || current_user.index
-    if (params[:user_id])
-      @ratings = Rating.includes(:user, :wine).where(user_id: params[:user_id])
+    # puts current_user
+    # user_id = params[:user_id] || current_user.index
+    # if (params[:user_id])
+    #   @ratings = Rating.includes(:user, :wine).where(user_id: params[:user_id])
+    # else
+    #   @ratings = Rating.all
+    # end
+    if (params[:wine_id])
+      @ratings = Rating.where(wine_id: params[:wine_id])
+      return render json: @ratings
+    elsif (params[:user_id])
+      @ratings = Rating.joins(:wine).where(user_id: current_user.id)
+        .select('wine_id, image, name, ratings.id, body, rating, ratings.created_at')
+      return render json: @ratings
     else
-      @rating = Rating.find(wine_id: params[:wine_id])
+      @ratings = Rating.all
+      return render json: @ratings
     end
-    render json: @ratings
   end
 
   def show 
-    if (params[:wine_id])
-      @rating = Rating.where(wine_id: params[:wine_id])
-    else 
-      @rating = Rating.joins(:wine).where(user_id: current_user.id)
-        .select('wine_id, image, name, body, rating, ratings.created_at')
-    end
+    # if (params[:wine_id])
+    #   @ratings = Rating.where(wine_id: params[:wine_id])
+    # elsif (params[:id])
+      @rating = Rating.where(id: params[:id])
+    # else 
+    #   @ratings = Rating.joins(:wine).where(user_id: current_user.id)
+    #     .select('wine_id, image, name, ratings.id, body, rating, ratings.created_at')
+    #     # .select('*')
+    # end
 
     render json: @rating
   end

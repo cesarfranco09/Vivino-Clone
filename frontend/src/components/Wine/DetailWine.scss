@@ -3,10 +3,11 @@
 
   .wine-detail-wrap {
     display: flex;
-    width: 1216px;
+    width: 100%;
     margin: 0 auto;
     padding-top: 40px;
     padding-bottom:40px;
+    justify-content: center;
 
     div {
       display: inline-block;
@@ -99,6 +100,9 @@
       border:1px solid #ececec;
     }
 
+    .price-box-wrapper button{
+      cursor: pointer;
+    }
 
   }
 }

@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 const Profile = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-
     const reviews = useSelector(getRatingsById);
 
     useEffect(() => {

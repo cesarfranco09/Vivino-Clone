@@ -13,15 +13,15 @@ const Ratings = ({ wineId }) => {
   }, [dispatch, wineId]);
 
   const handleSaveRating = (rating, body) => {
-    if (ratings) {
-      dispatch(updateRating(ratings.id, rating, body));
+    if (rating) {
+      dispatch(updateRating(rating.id, rating, body));
     } else {
       dispatch(createRating(wineId, rating, body));
     }
   };
 
   const handleDeleteRating = () => {
-    dispatch(deleteRating(ratings.id));
+    dispatch(deleteRating(rating.id));
   };
 
   return (

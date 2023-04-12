@@ -10,12 +10,10 @@ export const receiveRating = (rating) => ({
   rating: rating
 });
 
-export const receiveRatings = (ratings) => {
-  return {
+export const receiveRatings = (ratings) => ({
     type: RECEIVE_ALL_RATINGS,
-    rating: ratings
-  }
-};
+    ratings: ratings
+});
 
 export const removeRating = (ratingId) => ({
   type: REMOVE_RATING,
@@ -31,10 +29,26 @@ export const getRatingsByWineId = (state) => {
   return state.rating ? Object.values(state.rating) : []
 };
 
+export const getRatings = (state) => {
+  return state.rating ? Object.values(state.rating) : []
+};
+
+export const fetchAllRatings = () => async (dispatch) => {
+  try {
+    const response = await fetch(`/api/ratings`);
+    const ratings = await response.json();
+    console.log("fetch_all_rating", ratings);
+    dispatch(receiveRatings(ratings));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export const fetchRatingAllWineId = (wineId) => async (dispatch) => {
   try {
-    const response = await fetch(`/api/rating?wine_id=${wineId}`);
+    const response = await fetch(`/api/ratings?wine_id=${wineId}`);
     const ratings = await response.json();
+    console.log("fetch_rating", ratings);
     dispatch(receiveRatings(ratings));
   } catch (error) {
     console.log(error);
@@ -43,7 +57,7 @@ export const fetchRatingAllWineId = (wineId) => async (dispatch) => {
 
 export const fetchRatingAllUserId = () => async (dispatch) => {
   try {
-    const response = await fetch(`/api/rating`);
+    const response = await fetch(`/api/ratings?user_id=user`);
     const ratings = await response.json();
     dispatch(receiveRatings(ratings));
   } catch (error) {
@@ -51,18 +65,8 @@ export const fetchRatingAllUserId = () => async (dispatch) => {
   }
 };
 
-export const fetchRatingByUserId = (wineId) => async (dispatch) => {
-  try {
-    const response = await fetch(`/api/wines/${wineId}`);
-    const wine = await response.json();
-    dispatch(receiveRating(wine));
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const createRating = (rating) => async (dispatch) => {
-  const response = await csrfFetch("/api/rating", {
+  const response = await csrfFetch("/api/ratings", {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(rating)
@@ -74,22 +78,12 @@ export const createRating = (rating) => async (dispatch) => {
   }
 };
 
-export const fetchRatingByWineId = (wineId) => async (dispatch) => {
-  try {
-    const response = await fetch(`/api/wines/${wineId}`);
-    const wine = await response.json();
-    dispatch(receiveRatings(wine));
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 // Reducer
-const winesReducer = (state = {}, action) => {
+const ratingsReducer = (state = {}, action) => {
   const newState = {...state};
   switch (action.type) {
     case RECEIVE_ALL_RATINGS:
-      return action.rating;
+      return action.ratings;
     case RECEIVE_RATING:
       const rating = action.rating;
       newState[rating.id] = rating
@@ -102,4 +96,4 @@ const winesReducer = (state = {}, action) => {
   }
 };
 
-export default winesReducer;
+export default ratingsReducer;

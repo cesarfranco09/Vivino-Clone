@@ -8,7 +8,7 @@ import {useLocation} from "react-router-dom";
 import {addCart} from "../../utils/localStorageUtils"
 import {fetchWine} from "../../store/winesReducer";
 import {getWine} from "../../store/wine";
-import {fetchRatingAllWineId, getRatingsByWineId} from "../../store/ratingReducer";
+import {fetchRatingAllWineId, getRatings} from "../../store/ratingReducer";
 
 export default function DetailWine() {
     const dispatch = useDispatch();
@@ -17,8 +17,8 @@ export default function DetailWine() {
     const searchParams = new URLSearchParams(location.search);
     const wineId = searchParams.get('wineId');
 
-    let wine = useSelector(getWine(wineId))
-    let ratings = useSelector(getRatingsByWineId)
+    let wine = useSelector(getWine(wineId));
+    let ratings = useSelector(getRatings);
 
     useEffect(() => {
         if (wineId) {
@@ -32,9 +32,16 @@ export default function DetailWine() {
         }
     }, [dispatch, wineId]);
 
-    const randomNumber = (Math.random() * 2 + 3).toFixed(1);
-    const rating = Math.floor((Math.random() * 1000).toFixed(1));
-    const star = randomNumber * 20;
+    const avrRating = (ratings) => {
+        if (ratings.length === 0) return;
+        let sum = 0;
+        ratings.map((rating)=>(sum += rating.rating));
+        const average = sum / ratings.length;
+        return average.toFixed(1);
+    }
+
+    const rating = avrRating(ratings);
+    const star = rating * 20;
 
     const addToCart = function () {
         addCart(wine);
@@ -48,7 +55,7 @@ export default function DetailWine() {
             <div className={"wine-detail"}>
                 <div className={"wine-detail-wrap"}>
                     <div>
-                        <img className="image" onLoad="setImageSize(this)"
+                        <img className="image" 
                              src={wine.image} height="500" width="114"
                              role="presentation"/>
                     </div>
@@ -58,17 +65,17 @@ export default function DetailWine() {
                         <span className={"wine-manufacturing-year"}>{wine.year}</span><br/>
                         <ul>
                             <li>{wine.country} </li>
-                            <li>{wine.grape} </li>
                             <li>{wine.region} </li>
-                            {/* <li>{wine.wine_type.charAt(0).toUpperCase() + wine.wine_type.slice(1)} </li> */}
+                            <li>{wine.wine_type.charAt(0).toUpperCase() + wine.wine_type.slice(1)} </li>
+                            <li>{wine.grape} </li>
                         </ul>
 
                         <div>
-                            <div className={"rate-score"}>{randomNumber}</div>
+                            <div className={"rate-score"}>{rating}</div>
                             <div className={"rate-score-desc"}>
                                 <Star point={star} width={true}/>
                                 <br/>
-                                {rating} ratings
+                                {ratings.length === 0 ? "No ratings yet" : `${ratings.length} ratings`}
                             </div>
                         </div>
 
@@ -81,7 +88,7 @@ export default function DetailWine() {
                     <div className={"price-box-wrapper"}>
                         <div className={"price-box"}>
                             <p className={"price-box-value"}>${wine.price}</p>
-                            <span className={"price-box-value-desc"}>Average of all users-reported prices</span>
+                            <span className={"price-box-value-desc"}>750ml</span>
                             <hr className={"price-box-hr"}/><br/>
                             <button onClick={addToCart}>Add to Cart</button>
                         </div>
