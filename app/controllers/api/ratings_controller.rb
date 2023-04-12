@@ -2,13 +2,6 @@ class Api::RatingsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    # puts current_user
-    # user_id = params[:user_id] || current_user.index
-    # if (params[:user_id])
-    #   @ratings = Rating.includes(:user, :wine).where(user_id: params[:user_id])
-    # else
-    #   @ratings = Rating.all
-    # end
     if (params[:wine_id])
       @ratings = Rating.where(wine_id: params[:wine_id])
       return render json: @ratings
@@ -23,16 +16,7 @@ class Api::RatingsController < ApplicationController
   end
 
   def show 
-    # if (params[:wine_id])
-    #   @ratings = Rating.where(wine_id: params[:wine_id])
-    # elsif (params[:id])
-      @rating = Rating.where(id: params[:id])
-    # else 
-    #   @ratings = Rating.joins(:wine).where(user_id: current_user.id)
-    #     .select('wine_id, image, name, ratings.id, body, rating, ratings.created_at')
-    #     # .select('*')
-    # end
-
+    @rating = Rating.find_by(id: params[:id])
     render json: @rating
   end
 

@@ -17,15 +17,11 @@ export const receiveRatings = (ratings) => ({
 
 export const removeRating = (ratingId) => ({
   type: REMOVE_RATING,
-  payload: { ratingId },
+  payload: { ratingId }
 });
 
 // Selectors
 export const getRatingsById = (state) => {
-  return state.rating ? Object.values(state.rating) : []
-};
-
-export const getRatingsByWineId = (state) => {
   return state.rating ? Object.values(state.rating) : []
 };
 
@@ -66,15 +62,49 @@ export const fetchRatingAllUserId = () => async (dispatch) => {
 };
 
 export const createRating = (rating) => async (dispatch) => {
-  const response = await csrfFetch("/api/ratings", {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(rating)
-  })
+  try {
+    const response = await csrfFetch("/api/ratings", {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(rating)
+    })
+  
+    if (response.ok) {
+      const newRating = await response.json();
+      dispatch(receiveRating(newRating));
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-  if (response.ok) {
-    const newRating = await response.json();
-    dispatch(receiveRating(newRating))
+export const updateRating = (rating) => async (dispatch) => {
+  try {
+    const response = await csrfFetch("/api/ratings", {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(rating)
+    })
+  
+    if (response.ok) {
+      const newRating = await response.json();
+      dispatch(receiveRating(newRating))
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteRating = (ratingId) => async (dispatch) => {
+  try {
+    const response = await csrfFetch(`/ratings/${ratingId}`, {
+      method: 'DELETE'
+    });
+    if (response.ok) {
+      dispatch(removeRating(ratingId));
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
 
