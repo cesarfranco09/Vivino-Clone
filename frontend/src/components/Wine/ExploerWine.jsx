@@ -191,7 +191,7 @@ export default function ExploreWine() {
                                                 ${wine.price}
                                             </p>
                                         </div>
-                                        <button onClick={(event) => addToCart(wine, event)}>Add to Cart</button>
+                                        {/* <button onClick={(event) => addToCart(wine, event)}>Add to Cart</button> */}
                                     </div>
                                 </div>
                             </div>

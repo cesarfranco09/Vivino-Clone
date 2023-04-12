@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import ProfileButton from './ProfileButton';
@@ -14,6 +14,7 @@ function Navigation() {
   const [showSignupModal, setShowSignupModal] = useState(false);
 
   let sessionLinks;
+  
   if (sessionUser) {
     sessionLinks = (
       <>
@@ -48,9 +49,7 @@ function Navigation() {
   return (
     <div className="nav-container">
       <nav className="nav">
-        <NavLink exact to="/">
-          <div className="home-button"></div>
-        </NavLink>
+        <div className="home-button" onClick={()=>{window.location.href = "/"}}></div>
         {sessionLinks}
       </nav>
       <div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
-import {deleteCart, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
+import {deleteCart, deleteCartAll, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
 import "./ProfileButton.scss"
 
 function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
@@ -16,7 +16,7 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
     setCartShow(false);
   };
 
-  const openCart =() => {
+  const openCart = () => {
     setCartShow(!cartShow);
     setShowMenu(false);
     setCartItems(localStorageCartData());
@@ -35,13 +35,15 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
   }, [showMenu, cartShow]);
 
   const logout = (e) => {
+    setShowLoginModal(false);
     e.preventDefault();
     dispatch(sessionActions.logout());
-    setShowLoginModal(false);
+    deleteCartAll();
+    // window.location.href = "/";
 
     setTimeout(() => {
       window.location.href = "/"
-    },500)
+    },100)
   };
 
   const plus = function (cart, value, e) {
@@ -80,14 +82,13 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
   return (
     <>
       <button id="profileBtn" className="login-profile-dropdown-button" onClick={openMenu}>
-        <i className="fa-solid fa-user-circle" />
+        {/* <i className="fa-solid fa-user-circle" /> */}
       </button>
       {showMenu && (
         <ul id="profileDiv" className="profile-dropdown">
           <li id="name">{user.name}</li>
           <li id="email">{user.email}</li>
-          {/*<li id="my-wines">My Wines</li>*/}
-          <li id="profile"><a href={"/profile"}>Profile</a></li>
+          <li id="profile"><a href={"/profile"}>My Wines</a></li>
           <li>
             <hr/>
             <NavLink exact to='/'>
@@ -96,7 +97,7 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
           </li>
         </ul>
       )}
-      <div id="cartBtn" className={"cart"}  onClick={openCart}></div>
+      <div id="cartBtn" className={"cart"} onClick={openCart}></div>
       {cartShow && (
           <ul id="cartDiv" className="cart-dropdown">
             {cartItems.length === 0 ? "" : (
@@ -122,7 +123,6 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
                         <button className={"plusBtn"} onClick={(e)=>plus(cart, -1, e)}>-</button>
                         {cart.count}
                         <button className={"minusBtn"} onClick={(e)=>plus(cart, 1, e)}>+</button>
-                        {/* <button className={"minus-btn"} onClick={()=>deleteCartItem(cart.id)}>X</button> */}
                     </div>
                     <div>
                       ${cart.price * cart.count}

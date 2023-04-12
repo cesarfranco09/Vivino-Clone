@@ -68,7 +68,6 @@ const Wines = ({wines}) => {
                                 </span><br/>
                                 <span className="slider-item-rating-count">{ratings.length === 0 ? 'No ratings yet' : ratings.length + 'ratings'}</span><br/><br/>
                                 <span className="slider-item-rating-soldout">${wine.price}</span>
-                                {/*<span className="slider-item-rating-but">buy</span>*/}
                             </div>
                         </div>
                         <div className="wine-info">

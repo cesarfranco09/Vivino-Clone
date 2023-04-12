@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import "./DetailWine.scss"
 import Star from "../../common/Star";
@@ -9,10 +9,20 @@ import {addCart} from "../../utils/localStorageUtils"
 import {fetchWine} from "../../store/winesReducer";
 import {getWine} from "../../store/wine";
 import {fetchRatingAllWineId, getRatings} from "../../store/ratingReducer";
+import {Modal} from '../../context/Modal';
+import LoginForm from '../LoginFormModal/LoginForm';
+import SignupFormModal from '../SignupFormModal';
+import DemoLogin from '../LoginFormModal/DemoLogin';
+import {deleteCart, deleteCartAll, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
 
 export default function DetailWine() {
+    const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const location = useLocation();
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showSignupModal, setShowSignupModal] = useState(false);
+    const [cartShow, setCartShow] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
 
     const searchParams = new URLSearchParams(location.search);
     const wineId = searchParams.get('wineId');
@@ -43,10 +53,44 @@ export default function DetailWine() {
     const rating = avrRating(ratings);
     const star = rating * 20;
 
+    const openCart = () => {
+        setCartShow(!cartShow);
+        setCartItems(localStorageCartData());
+    }
+
     const addToCart = function () {
         addCart(wine);
-        alert("Added to cart"); // open cart
+        openCart();
+        // alert("Added to cart");
     }
+
+    const plus = function (cart, value, e) {
+        if (value === -1 && cart.count === 1) return e.stopPropagation();
+        const updateItem = cartItems.map((wine) => {
+            if(wine.id === cart.id) {
+                return { ...wine, count: wine.count+value}
+            }
+            return wine;
+        })
+        setCartItems(updateItem);
+        saveCartData(updateItem);
+        e.stopPropagation();
+      };
+    
+      const deleteCartItem = function(id) {
+        deleteCart(id);
+        setCartItems(localStorageCartData());
+      }
+
+    useEffect(() => {
+        if (!cartShow) return;
+        const closeMenu = () => {
+          setCartShow(false);
+        };
+    
+        document.addEventListener('click', closeMenu);
+        return () => document.removeEventListener("click", closeMenu);
+    }, [cartShow]);
 
     return (
     <div>
@@ -90,7 +134,92 @@ export default function DetailWine() {
                             <p className={"price-box-value"}>${wine.price}</p>
                             <span className={"price-box-value-desc"}>750ml</span>
                             <hr className={"price-box-hr"}/><br/>
-                            <button onClick={addToCart}>Add to Cart</button>
+                            {sessionUser ? (
+                                <>
+                                <button onClick={addToCart}>Add to Cart</button>
+                                {cartShow && (
+                                    <ul id="cartDiv" className="cart-dropdown">
+                                      {cartItems.length === 0 ? "" : (
+                                          <div className={"cart-wrap title"}>
+                                            <div>
+                                              Name
+                                            </div>
+                                            <div className={"p-center"}>
+                                              Count
+                                            </div>
+                                            <div>
+                                              Price
+                                            </div>
+                                          </div>
+                                      )}
+                                      {cartItems.length === 0 ? (<p>Your cart is empty</p>) : (
+                                          cartItems.map((cart)=> (
+                                            <div className={"cart-wrap"}>
+                                              <div className="cart-name">
+                                                {cart.name}
+                                              </div>
+                                              <div className={"p-center"}>
+                                                  <button className={"plusBtn"} onClick={(e)=>plus(cart, -1, e)}>-</button>
+                                                  {cart.count}
+                                                  <button className={"minusBtn"} onClick={(e)=>plus(cart, 1, e)}>+</button>
+                                              </div>
+                                              <div>
+                                                ${cart.price * cart.count}
+                                                <button id="deleteBtn" onClick={()=>deleteCartItem(cart.id)} className={"deleteBtn"}>X</button>
+                                              </div>
+                                            </div>
+                                        ))
+                                      )}
+                                      {cartItems.length === 0 ? "" : (
+                                          <>
+                                            <hr/>
+                                            <div className={"cart-wrap title"}>
+                                              <div>
+                                              </div>
+                                              <div className={"p-center"}>
+                                                {cartItems.reduce((acc, curr) => acc + curr.count, 0)}
+                                              </div>
+                                              <div>
+                                                ${cartItems.reduce((acc, curr) => acc + (curr.price * curr.count), 0)}
+                                              </div>
+                                            </div>
+                                            <li>
+                                              <a href="/cart"><button>Go to cart</button></a>
+                                            </li>
+                                          </>
+                                      )}
+                                    </ul>
+                                )}
+                                </>
+                                ) : (
+                                    <>
+                                    <button onClick={()=> setShowLoginModal(true)}>Login to purchase</button>
+                                    {showLoginModal && (
+                                        <>
+                                        <Modal className='modal' style={{ display: "block" }} onClose={() => setShowLoginModal(false)}>
+                                            <LoginForm />
+                                            <br/>
+                                            <div>
+                                            <DemoLogin />
+                                            </div>
+                                            <br/>
+                                            <div className='join-vinevino'>
+                                            <p>Don't have a profile?</p>
+                                            <p>
+                                                <SignupFormModal
+                                                setShowLoginModal={setShowLoginModal}
+                                                showLoginModal={showLoginModal}
+                                                setShowSignupModal={setShowSignupModal}
+                                                showSignupModal={showSignupModal}
+                                                />
+                                            </p>
+                                            </div>
+                                        </Modal>
+                                        </>
+                                    )}
+                                    </>
+                                )
+                            }
                         </div>
                     </div>
                 </div>

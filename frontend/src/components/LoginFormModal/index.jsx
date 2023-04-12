@@ -1,24 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Modal} from '../../context/Modal';
 import LoginForm from './LoginForm';
 import SignupFormModal from '../SignupFormModal';
 import DemoLogin from './DemoLogin';
-import {deleteCart, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
 
 
 function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, showSignupModal}) {
-  const [cartShow, setCartShow] = useState(false);
+  // const [cartShow, setCartShow] = useState(false);
 
-    document.addEventListener("click", function(event) {
-        const cart = document.getElementById("cartDiv");
-        const cartBtn = document.getElementById("cartBtn");
-        // const plusBtns = document.querySelectorAll(".plus-btn");
-        // const minusBtns = document.querySelectorAll(".minus-btn");
+  // document.addEventListener("click", function(event) {
+  //     const cart = document.getElementById("cartDiv");
+  //     const cartBtn = document.getElementById("cartBtn");
 
-        if (event.target !== cart && event.target.parentNode !== cart && event.target !== cartBtn  && !event.target.classList.contains("deleteBtn") && !event.target.classList.contains("plus-btn") && !event.target.classList.contains("minus-btn")) {
-            setCartShow(false);
-        }
-    });
+  //     if (event.target !== cart && event.target.parentNode !== cart && event.target !== cartBtn  && !event.target.classList.contains("deleteBtn") && !event.target.classList.contains("plus-btn") && !event.target.classList.contains("minus-btn")) {
+  //         setCartShow(false);
+  //     }
+  // });
 
   return (
     <>

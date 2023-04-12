@@ -1,7 +1,7 @@
 import "./WineReview.scss"
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {createRating, getRatingsById} from "../../store/ratingReducer";
+import {createRating, getRatings} from "../../store/ratingReducer";
 
 export default function WineReview({wineId, reviews}) {
     const sessionUser = useSelector(state => state.session.user);
@@ -25,9 +25,9 @@ export default function WineReview({wineId, reviews}) {
         }
 
         dispatch(createRating(param));
-        dispatch(getRatingsById)
-        initFrm()
-        alert("Saved")
+        dispatch(getRatings);
+        initFrm();
+        // alert("Saved");
     }
 
     const initFrm = function () {

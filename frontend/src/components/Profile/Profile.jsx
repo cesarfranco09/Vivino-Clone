@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import "./Profile.scss";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchRatingAllUserId, getRatingsById} from "../../store/ratingReducer";
+import {fetchRatingAllUserId, getRatings} from "../../store/ratingReducer";
 import { useHistory } from 'react-router-dom';
 
 const Profile = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const reviews = useSelector(getRatingsById);
+    const reviews = useSelector(getRatings);
 
     useEffect(() => {
         dispatch(fetchRatingAllUserId());

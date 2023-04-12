@@ -21,9 +21,6 @@ export const removeRating = (ratingId) => ({
 });
 
 // Selectors
-export const getRatingsById = (state) => {
-  return state.rating ? Object.values(state.rating) : []
-};
 
 export const getRatings = (state) => {
   return state.rating ? Object.values(state.rating) : []
