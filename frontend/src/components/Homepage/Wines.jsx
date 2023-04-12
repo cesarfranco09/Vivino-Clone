@@ -46,7 +46,7 @@ const Wines = ({wines}) => {
                 // const ratings = wineRatings[wine.id];
                 // const ratings = Ratings(wine.id);
 
-                const avrRating = (ratings) => {
+                const avgRating = (ratings) => {
                     if (!ratings || ratings.length === 0) return;
                     let sum = 0;
                     ratings.forEach((rating) => (sum += rating.rating));
@@ -62,9 +62,9 @@ const Wines = ({wines}) => {
                                 />
                             </div>
                             <div className="slider-item-rating">
-                                <span className="slider-item-rating-score">{avrRating(ratings)}</span><br/>
+                                <span className="slider-item-rating-score">{avgRating(ratings)}</span><br/>
                                 <span className="slider-item-rating-star">
-                                    <Star point={avrRating(ratings)}/>
+                                    <Star point={avgRating(ratings)}/>
                                 </span><br/>
                                 <span className="slider-item-rating-count">{ratings.length === 0 ? 'No ratings yet' : ratings.length + 'ratings'}</span><br/><br/>
                                 <span className="slider-item-rating-soldout">${wine.price}</span>

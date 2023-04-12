@@ -42,7 +42,7 @@ export default function DetailWine() {
         }
     }, [dispatch, wineId]);
 
-    const avrRating = (ratings) => {
+    const avgRating = (ratings) => {
         if (ratings.length === 0) return;
         let sum = 0;
         ratings.map((rating)=>(sum += rating.rating));
@@ -50,7 +50,7 @@ export default function DetailWine() {
         return average.toFixed(1);
     }
 
-    const rating = avrRating(ratings);
+    const rating = avgRating(ratings);
     const star = rating * 20;
 
     const openCart = () => {
