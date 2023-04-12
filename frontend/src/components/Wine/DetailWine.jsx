@@ -13,7 +13,7 @@ import {Modal} from '../../context/Modal';
 import LoginForm from '../LoginFormModal/LoginForm';
 import SignupFormModal from '../SignupFormModal';
 import DemoLogin from '../LoginFormModal/DemoLogin';
-import {deleteCart, deleteCartAll, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
+import {deleteCart, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
 
 export default function DetailWine() {
     const sessionUser = useSelector(state => state.session.user);
@@ -64,23 +64,24 @@ export default function DetailWine() {
         // alert("Added to cart");
     }
 
-    const plus = function (cart, value, e) {
-        if (value === -1 && cart.count === 1) return e.stopPropagation();
-        const updateItem = cartItems.map((wine) => {
-            if(wine.id === cart.id) {
-                return { ...wine, count: wine.count+value}
-            }
-            return wine;
-        })
-        setCartItems(updateItem);
-        saveCartData(updateItem);
-        e.stopPropagation();
-      };
-    
-      const deleteCartItem = function(id) {
-        deleteCart(id);
-        setCartItems(localStorageCartData());
-      }
+    const plus = (cart, value, e) => {
+      if (value === -1 && cart.count === 1) return e.stopPropagation();
+      const updateItem = cartItems.map((wine) => {
+          if(wine.id === cart.id) {
+              return { ...wine, count: wine.count+value}
+          }
+          return wine;
+      })
+      setCartItems(updateItem);
+      saveCartData(updateItem);
+      e.stopPropagation();
+    };
+  
+    const deleteCartItem = (id, e) => {
+      deleteCart(id);
+      setCartItems(localStorageCartData());
+      e.stopPropagation();
+    }
 
     useEffect(() => {
         if (!cartShow) return;
@@ -159,13 +160,13 @@ export default function DetailWine() {
                                                 {cart.name}
                                               </div>
                                               <div className={"p-center"}>
-                                                  <button className={"plusBtn"} onClick={(e)=>plus(cart, -1, e)}>-</button>
-                                                  {cart.count}
-                                                  <button className={"minusBtn"} onClick={(e)=>plus(cart, 1, e)}>+</button>
+                                                <button className={"plusBtn"} onClick={(e)=>plus(cart, -1, e)}>-</button>
+                                                {cart.count}
+                                                <button className={"minusBtn"} onClick={(e)=>plus(cart, 1, e)}>+</button>
                                               </div>
                                               <div>
                                                 ${cart.price * cart.count}
-                                                <button id="deleteBtn" onClick={()=>deleteCartItem(cart.id)} className={"deleteBtn"}>X</button>
+                                                <button id="deleteBtn" onClick={(e)=>deleteCartItem(cart.id, e)} className={"deleteBtn"}>X</button>
                                               </div>
                                             </div>
                                         ))

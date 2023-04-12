@@ -35,15 +35,15 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
   }, [showMenu, cartShow]);
 
   const logout = (e) => {
-    setShowLoginModal(false);
     e.preventDefault();
+    setShowLoginModal(false);
     dispatch(sessionActions.logout());
     deleteCartAll();
     // window.location.href = "/";
 
     setTimeout(() => {
       window.location.href = "/"
-    },100)
+    },50)
   };
 
   const plus = function (cart, value, e) {
