@@ -3,11 +3,8 @@ import {receiveWine} from "./winesReducer";
 export const RECEIVE_WINES = "wines/RECEIVE_WINES";
 
 const receiveWines = (wines) => {
-    // debugger
     return {
         type: RECEIVE_WINES,
-        // payload: posts
-        // posts: posts
         wine: wines
     }
 }
@@ -20,6 +17,7 @@ export const getWines = (state) => (
     state.wines ? Object.values(state.wines) : []
 )
 
+// Thunk
 export const fetchWine = (wineId) => async (dispatch) => {
     const response = await fetch(`/api/wines/${wineId}`);
 

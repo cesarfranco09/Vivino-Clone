@@ -23,14 +23,29 @@ export const removeRating = (ratingId) => ({
 // Selectors
 
 export const getRatings = (state) => {
-  return state.rating ? Object.values(state.rating) : []
+  return state.ratings ? Object.values(state.ratings) : []
 };
+
+export const getRatingById = (ratingId) => (state) =>  (
+  state.ratings ? state.ratings[ratingId] : null
+)
+
+// Thunk
+export const fetchRating = (ratingId) => async (dispatch) => {
+  try {
+    const response = await fetch(`/api/wines/${ratingId}`);
+    const rating = await response.json();
+    dispatch(receiveRating(rating));
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export const fetchAllRatings = () => async (dispatch) => {
   try {
     const response = await fetch(`/api/ratings`);
     const ratings = await response.json();
-    console.log("fetch_all_rating", ratings);
+    // console.log("fetch_all_rating", ratings);
     dispatch(receiveRatings(ratings));
   } catch (error) {
     console.log(error);
@@ -77,7 +92,7 @@ export const createRating = (rating) => async (dispatch) => {
 
 export const updateRating = (rating) => async (dispatch) => {
   try {
-    const response = await csrfFetch("/api/ratings", {
+    const response = await csrfFetch(`/api/ratings/${rating.id}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(rating)

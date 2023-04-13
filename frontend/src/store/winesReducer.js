@@ -26,9 +26,8 @@ export const getAllWines = (state) => {
   return state.wines ? Object.values(state.wines) : []
 }
 
-
 export const getWineById = (state, wineId) => (
-  state.wine ? state.wine[wineId] : null
+  state.wines ? state.wines[wineId] : null
 )
 
 // Thunk functions

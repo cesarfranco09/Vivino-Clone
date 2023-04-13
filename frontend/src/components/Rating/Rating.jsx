@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Rating = ({ rating, onSave, onDelete }) => {
-  const [currentRating, setCurrentRating] = useState(ratings ? ratings.rating : 0);
+  const [currentRating, setCurrentRating] = useState(rating ? rating.rating : 0);
   const [body, setBody] = useState(rating ? rating.body : '');
 
   const handleRatingChange = (e) => {
