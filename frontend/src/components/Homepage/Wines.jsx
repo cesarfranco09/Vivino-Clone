@@ -3,23 +3,23 @@ import {useHistory} from "react-router-dom";
 import Star from "../../common/Star";
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { useSelector, useDispatch } from 'react-redux';
-import {fetchAllRatings, fetchRatingAllUserId, getRatings} from "../../store/ratingsReducer";
+import {fetchAllRatings, getRatings} from "../../store/ratingsReducer";
 import { useState, useEffect } from 'react';
 import {fetchWine} from "../../store/winesReducer";
 import {getWine} from "../../store/wine";
 
 
 const Wines = ({wines}) => {
-    const history = useHistory();
     const dispatch = useDispatch();
-    const ratings = useSelector(getRatings);
+    const history = useHistory();
     const [wineRatings, setWineRatings] = useState({});
+    
+    const ratings = useSelector(getRatings);
 
     useEffect(() => {
         dispatch(fetchAllRatings());
     }, [dispatch]);
-
-    console.log("ratings", ratings)
+    console.log("home_ratings", ratings);
     
     const pageMove = function (id) {
         history.push("/wine?wineId=" + id)

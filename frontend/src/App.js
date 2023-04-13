@@ -5,7 +5,7 @@ import Home from "./components/Homepage/Home"
 import DetailWine from "./components/Wine/DetailWine";
 import Footer from "./components/Footer"
 import './app.css'
-import ExploreWine from "./components/Wine/ExploerWine";
+import ExploreWine from "./components/Wine/ExploreWine";
 import Cart from "./components/cart/Cart";
 import Profile from "./components/Profile/Profile";
 

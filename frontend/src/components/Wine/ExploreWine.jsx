@@ -4,9 +4,11 @@ import React, {useEffect, useState} from "react";
 import {useLocation, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchWineAll, getAllWines} from "../../store/winesReducer";
+import {fetchAllRatings, getRatings} from "../../store/ratingsReducer";
 import {addCart} from "../../utils/localStorageUtils";
 
 export default function ExploreWine() {
+    const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
     const searchParams = new URLSearchParams(location.search);
@@ -24,11 +26,16 @@ export default function ExploreWine() {
     const regionTypes = ["Napa Valley", "Bordeaux", "Tuscany", 'Mendoza', 'Rioja'];
 
     const wines = useSelector(getAllWines);
-    const dispatch = useDispatch();
+    const ratings = useSelector(getRatings);
 
     useEffect(() => {
         dispatch(fetchWineAll());
     }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchAllRatings());
+    }, [dispatch]);
+    console.log("explo_ratings", ratings);
 
     useEffect(() => {
         dataFilterInit();
