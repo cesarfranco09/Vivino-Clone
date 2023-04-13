@@ -13,7 +13,6 @@ export default function ExploreWine() {
     const type = searchParams.get("type");
     const value = searchParams.get("value");
 
-    // const [wines, setWines] = useState([]);
     const [filterWines, setFilterWines] = useState([]);
     const [wineCondition, setWineCondition] = useState([]);
     const [grapeCondition, setGrapeCondition] = useState([]);
@@ -70,9 +69,6 @@ export default function ExploreWine() {
         setFilterWines(filterWine);
     };
 
-    // const pageMove = function (id) {
-    //     window.open("/wine?wineId=" + id, "")
-    // };
     const pageMove = function (id) {
         history.push("/wine?wineId=" + id)
     }
@@ -101,11 +97,11 @@ export default function ExploreWine() {
         }
     };
 
-    const addToCart = function (wine, e) {
-        addCart(wine);
-        alert("Added to cart"); //open cart
-        e.preventDefault();
-    };
+    // const addToCart = function (wine, e) {
+    //     addCart(wine);
+    //     alert("Added to cart"); //open cart
+    //     e.preventDefault();
+    // };
 
     return (
         <div className={"content"}>
@@ -175,7 +171,6 @@ export default function ExploreWine() {
                                         <p className="wine-company">{wine.winery}</p>
                                         <p className="wine-name">{wine.name}</p>
                                         <p className="wine-origin">{wine.country}</p>
-                                        {/*<div className={"discount"}>Among top 2% of all wines in the world</div>*/}
                                     </div>
                                 </div>
                                 <div className={"rate-price"}>
