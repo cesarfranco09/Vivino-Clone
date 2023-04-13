@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import "./Profile.scss";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchRatingAllUserId, getRatings} from "../../store/ratingReducer";
+import {fetchRatingAllUserId, getRatings} from "../../store/ratingsReducer";
 import { useHistory } from 'react-router-dom';
 
 const Profile = () => {

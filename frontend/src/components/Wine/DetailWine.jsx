@@ -8,7 +8,7 @@ import {useLocation} from "react-router-dom";
 import {addCart} from "../../utils/localStorageUtils"
 import {fetchWine} from "../../store/winesReducer";
 import {getWine} from "../../store/wine";
-import {fetchRatingAllWineId, getRatings} from "../../store/ratingReducer";
+import {fetchRatingAllWineId, getRatings} from "../../store/ratingsReducer";
 import {Modal} from '../../context/Modal';
 import LoginForm from '../LoginFormModal/LoginForm';
 import SignupFormModal from '../SignupFormModal';

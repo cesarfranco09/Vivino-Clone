@@ -1,7 +1,7 @@
 import "./WineReview.scss"
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {createRating, getRatings} from "../../store/ratingReducer";
+import {createRating, getRatings} from "../../store/ratingsReducer";
 
 export default function WineReview({wineId, reviews}) {
     const sessionUser = useSelector(state => state.session.user);

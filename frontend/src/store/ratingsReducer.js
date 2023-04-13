@@ -1,9 +1,9 @@
 import csrfFetch from "./csrf";
 
-export const RECEIVE_ALL_RATINGS = 'wines/RECEIVE_ALL_RATING';
-export const RECEIVE_ALL_RATINGS_BY_USERID = 'wines/RECEIVE_ALL_RATING_BY_USERID';
-export const RECEIVE_RATING = 'wines/RECEIVE_RATING';
-export const REMOVE_RATING = 'wines/REMOVE_RATING';
+export const RECEIVE_ALL_RATINGS = 'ratings/RECEIVE_ALL_RATING';
+export const RECEIVE_ALL_RATINGS_BY_USERID = 'ratings/RECEIVE_ALL_RATING_BY_USERID';
+export const RECEIVE_RATING = 'ratings/RECEIVE_RATING';
+export const REMOVE_RATING = 'ratings/REMOVE_RATING';
 
 export const receiveRating = (rating) => ({
   type: RECEIVE_RATING,

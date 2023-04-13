@@ -3,7 +3,7 @@ import {useHistory} from "react-router-dom";
 import Star from "../../common/Star";
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { useSelector, useDispatch } from 'react-redux';
-import {fetchAllRatings, fetchRatingAllUserId, getRatings} from "../../store/ratingReducer";
+import {fetchAllRatings, fetchRatingAllUserId, getRatings} from "../../store/ratingsReducer";
 import { useState, useEffect } from 'react';
 import {fetchWine} from "../../store/winesReducer";
 import {getWine} from "../../store/wine";
@@ -13,7 +13,7 @@ const Wines = ({wines}) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const ratings = useSelector(getRatings);
-    const [wineRatings, setWineRatings] = useState([]);
+    const [wineRatings, setWineRatings] = useState({});
 
     useEffect(() => {
         dispatch(fetchAllRatings());
