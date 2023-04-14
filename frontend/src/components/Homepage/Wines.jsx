@@ -9,7 +9,7 @@ import {fetchWine} from "../../store/winesReducer";
 import {getWine} from "../../store/wine";
 
 
-const Wines = ({wines}) => {
+const Wines = ({wines, slider}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [wineRatings, setWineRatings] = useState({});
@@ -26,21 +26,21 @@ const Wines = ({wines}) => {
     }
 
     const leftMove = function () {
-        document.querySelector(".slider-container").scrollBy({
+        document.querySelector("#" + slider).scrollBy({
             left: -1205,
             behavior: 'smooth'
         });
     }
 
     const rightMove = function () {
-        document.querySelector(".slider-container").scrollBy({
+        document.querySelector("#" + slider).scrollBy({
             left: 1205,
             behavior: 'smooth'
         });
     }
 
     return (
-        <div className="slider-container">
+        <div className="slider-container" id={slider}>
             {wines.map((wine) => {
 
                 // const ratings = wineRatings[wine.id];

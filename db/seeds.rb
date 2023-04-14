@@ -14,12 +14,6 @@ ApplicationRecord.transaction do
       email: 'demo@demo.com', 
       password: 'password'
     )
-
-    User.create!(
-      name: 'Demo User 2', 
-      email: 'demo2@demo.com', 
-      password: 'password'
-    )
     
     # More users
     20.times do 
@@ -176,7 +170,7 @@ sparkling_imgs = [
   'https://vinevino-seeds.s3.us-west-1.amazonaws.com/spk_9.png'
 ]
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: red_grapes.sample,
@@ -194,7 +188,7 @@ sparkling_imgs = [
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: red_grapes.sample,
@@ -212,7 +206,7 @@ end
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: red_grapes.sample,
@@ -230,7 +224,7 @@ end
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: white_grapes.sample,
@@ -248,7 +242,7 @@ end
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: white_grapes.sample,
@@ -266,7 +260,7 @@ end
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: white_grapes.sample,
@@ -284,7 +278,7 @@ end
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: red_grapes.sample,
@@ -302,7 +296,7 @@ end
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: red_grapes.sample,
@@ -320,7 +314,7 @@ end
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: red_grapes.sample,
@@ -338,7 +332,7 @@ end
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: white_grapes.sample,
@@ -356,7 +350,7 @@ end
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: white_grapes.sample,
@@ -374,7 +368,7 @@ end
   )
 end
 
-30.times do
+50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
     grape: white_grapes.sample,
@@ -398,7 +392,7 @@ end
     grape: red_grapes.sample,
     region: regions.sample,
     country: countries.sample,
-    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    price: Faker::Commerce.price(range: 5..120, as_string: false),
     year: rand(1980..2023),
     image: red_imgs.sample,
     winery: Faker::Company.name,
@@ -416,7 +410,7 @@ end
     grape: white_grapes.sample,
     region: regions.sample,
     country: countries.sample,
-    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    price: Faker::Commerce.price(range: 5..120, as_string: false),
     year: rand(1980..2023),
     image: white_imgs.sample,
     winery: Faker::Company.name,
@@ -434,7 +428,7 @@ end
     grape: red_grapes.sample,
     region: regions.sample,
     country: countries.sample,
-    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    price: Faker::Commerce.price(range: 5..120, as_string: false),
     year: rand(1980..2023),
     image: rose_imgs.sample,
     winery: Faker::Company.name,
@@ -452,7 +446,7 @@ end
     grape: white_grapes.sample,
     region: regions.sample,
     country: countries.sample,
-    price: Faker::Commerce.price(range: 5..500, as_string: false),
+    price: Faker::Commerce.price(range: 5..120, as_string: false),
     year: rand(1980..2023),
     image: sparkling_imgs.sample,
     winery: Faker::Company.name,
@@ -475,7 +469,7 @@ Rating.destroy_all
   Rating.create!(
     rating: Faker::Number.between(from: 3, to: 5),
     body: Faker::Lorem.paragraph(sentence_count: 2),
-    user_id: Faker::Number.between(from: 2, to: 20),
+    user_id: Faker::Number.between(from: 1, to: 21),
     wine_id: Faker::Number.between(from: 1, to: 360)
   )
 end

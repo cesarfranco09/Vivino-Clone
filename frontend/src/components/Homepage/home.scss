@@ -87,6 +87,51 @@
         background-color: #ba1628;
     }
 
+    .icon5 {
+        background-image: url("../../../assets/img/coin1.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 9999;
+    }
+
+    .icon5.active {
+        background-image: url("../../../assets/img/coin1_white.svg");
+        background-color: #ba1628;
+    }
+
+    .icon6 {
+        background-image: url("../../../assets/img/coin2.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .icon6.active {
+        background-image: url("../../../assets/img/coin2_white.svg");
+        background-color: #ba1628;
+    }
+
+    .icon7 {
+        background-image: url("../../../assets/img/coin3.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .icon7.active {
+        background-image: url("../../../assets/img/coin3_white.svg");
+        background-color: #ba1628;
+    }
+
+    .icon8 {
+        background-image: url("../../../assets/img/coin4.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .icon8.active {
+        background-image: url("../../../assets/img/coin4_white.svg");
+        background-color: #ba1628;
+    }
+
 }
 
 .toplist-active {
