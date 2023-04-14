@@ -12,9 +12,8 @@ import {getWine} from "../../store/wine";
 const Wines = ({wines, slider}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [wineRatings, setWineRatings] = useState({});
-    
     const ratings = useSelector(getRatings);
+    const [wineRatings, setWineRatings] = useState({});
 
     useEffect(() => {
         dispatch(fetchAllRatings());
@@ -24,8 +23,7 @@ const Wines = ({wines, slider}) => {
     const pageMove = function (id) {
         history.push("/wine?wineId=" + id);
         window.scrollTo(0, 0);
-      }
-      
+    }
 
     const leftMove = function () {
         document.querySelector("#" + slider).scrollBy({
@@ -86,4 +84,4 @@ const Wines = ({wines, slider}) => {
     )
 }
 
-export default Wines
+export default Wines;
