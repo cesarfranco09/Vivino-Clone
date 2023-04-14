@@ -4,15 +4,14 @@ import Star from "../../common/Star";
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { useSelector, useDispatch } from 'react-redux';
 import {fetchAllRatings, getRatings} from "../../store/ratingsReducer";
-import { useState, useEffect } from 'react';
-import {fetchWine} from "../../store/winesReducer";
-import {getWine} from "../../store/wine";
+import { useEffect } from 'react';
 
 
 const Wines = ({wines, slider}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const ratings = useSelector(getRatings);
+    
     const wineRatings = {};
 
     const createRateObject = () => {

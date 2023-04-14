@@ -11,6 +11,7 @@ export default function ExploreWine() {
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
+
     const searchParams = new URLSearchParams(location.search);
     const type = searchParams.get("type");
     const value = searchParams.get("value");
@@ -27,15 +28,11 @@ export default function ExploreWine() {
 
     const wines = useSelector(getAllWines);
     const ratings = useSelector(getRatings);
+    const wineRatings = {};
 
     useEffect(() => {
         dispatch(fetchWineAll());
     }, [dispatch]);
-
-    useEffect(() => {
-        dispatch(fetchAllRatings());
-    }, [dispatch]);
-    console.log("explo_ratings", ratings);
 
     useEffect(() => {
         dataFilterInit();
@@ -74,6 +71,43 @@ export default function ExploreWine() {
             filterWine = filterWine.filter((wine) => regionCondition.includes(wine.region.toLowerCase()));
         }
         setFilterWines(filterWine);
+    };
+
+    const createRateObject = () => {
+        let sum = 0;
+        let count = 0;
+        return {
+          sum, count
+        };
+    };
+    
+    useEffect(() => {
+        dispatch(fetchAllRatings());
+    }, [dispatch]);
+    console.log("explo_ratings", ratings);
+
+    const setRatingsMap = () => {
+        if (!ratings || ratings.length === 0) return;
+        ratings.map((rating) => {
+            if (wineRatings[rating.wine_id]) {
+                wineRatings[rating.wine_id].sum += rating.rating;
+                wineRatings[rating.wine_id].count += 1;
+            } else {
+                wineRatings[rating.wine_id] = createRateObject();
+                wineRatings[rating.wine_id].sum = rating.rating;
+                wineRatings[rating.wine_id].count = 1;
+            }
+        })
+    }
+    setRatingsMap();
+
+    const avgRating = (wineId) => {
+        const wineRating = wineRatings[wineId];
+        if (!wineRating || wineRating.count === 0) {
+          return '';
+        }
+        const average = wineRating.sum / wineRating.count;
+        return average.toFixed(1);
     };
 
     const pageMove = function (id) {
@@ -165,9 +199,8 @@ export default function ExploreWine() {
 
                 <div className={"list"}>
                     { filterWines && filterWines.slice(0,20).map((wine) => {
-                        const randomNumber = (Math.random() * 2 + 3).toFixed(1);
-                        const rating = Math.floor((Math.random() * 10).toFixed(1));
-                        const star = randomNumber * 20;
+
+                        const ratingScore = avgRating(wine.id);
 
                         return (
                             <div className={"item"}>
@@ -183,12 +216,11 @@ export default function ExploreWine() {
                                 </div>
                                 <div className={"rate-price"}>
                                     <div>
-                                        <div className={"rate-score"}>{randomNumber}</div>
+                                        <div className={"rate-score"}>{ratingScore}</div>
                                         <div className={"rate-score-desc"}>
-                                            <Star point={star}/>
+                                            <Star point={ratingScore * 20}/>
                                             <br/>
-                                            {rating} ratings
-
+                                            {!wineRatings[wine.id] ? 'No ratings yet' : wineRatings[wine.id].count + ' ratings'}
                                             <br/>
                                             <p className={"rate-score-price"}>
                                                 ${wine.price}
