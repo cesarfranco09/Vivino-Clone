@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import "./DetailWine.scss"
 import Star from "../../common/Star";
 import WineTaste from "./WineTaste";
-import WineReview from "./WineReview";
+import WineReview from "../Rating/WineReview";
 import {useLocation} from "react-router-dom";
 import {addCart} from "../../utils/localStorageUtils"
 import {fetchWine} from "../../store/winesReducer";
@@ -16,9 +16,10 @@ import DemoLogin from '../LoginFormModal/DemoLogin';
 import {deleteCart, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
 
 export default function DetailWine() {
-    const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
     const location = useLocation();
+
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
     const [cartShow, setCartShow] = useState(false);
@@ -133,7 +134,7 @@ export default function DetailWine() {
                     <div className={"price-box-wrapper"}>
                         <div className={"price-box"}>
                             <p className={"price-box-value"}>${wine.price}</p>
-                            <span className={"price-box-value-desc"}>750ml</span>
+                            <span className={"price-box-value-desc"}>Price per bottle</span>
                             <hr className={"price-box-hr"}/><br/>
                             {sessionUser ? (
                                 <>

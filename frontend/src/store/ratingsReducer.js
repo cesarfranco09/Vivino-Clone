@@ -56,7 +56,7 @@ export const fetchRatingAllWineId = (wineId) => async (dispatch) => {
   try {
     const response = await fetch(`/api/ratings?wine_id=${wineId}`);
     const ratings = await response.json();
-    console.log("fetch_rating", ratings);
+    // console.log("fetch_rating", ratings);
     dispatch(receiveRatings(ratings));
   } catch (error) {
     console.log(error);

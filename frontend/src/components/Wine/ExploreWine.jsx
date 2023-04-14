@@ -84,7 +84,7 @@ export default function ExploreWine() {
     useEffect(() => {
         dispatch(fetchAllRatings());
     }, [dispatch]);
-    console.log("explo_ratings", ratings);
+    // console.log("explo_ratings", ratings);
 
     const setRatingsMap = () => {
         if (!ratings || ratings.length === 0) return;

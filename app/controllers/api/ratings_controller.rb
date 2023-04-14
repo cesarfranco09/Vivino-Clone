@@ -3,7 +3,8 @@ class Api::RatingsController < ApplicationController
 
   def index
     if (params[:wine_id])
-      @ratings = Rating.where(wine_id: params[:wine_id])
+      @ratings = Rating.joins(:user).where(wine_id: params[:wine_id])
+        .select('ratings.id, body, rating, name, ratings.created_at, user_id, wine_id')
       return render json: @ratings
     elsif (params[:user_id])
       @ratings = Rating.joins(:wine).where(user_id: current_user.id)

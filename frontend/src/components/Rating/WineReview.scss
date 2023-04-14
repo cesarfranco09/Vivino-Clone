@@ -18,16 +18,17 @@
     max-width: 800px;
     line-height: 28px;
 
+    .name {
+      color: #570023;
+      margin-right: 10px;
+    }
   }
   .reviewer {
     font-size: 14px;
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 20px;
-    .name {
-      color: #570023;
-      margin-right: 10px;
-    }
+
     .date {
       color: gray;
     }

@@ -1,14 +1,15 @@
-import "./WineReview.scss"
+import "./WineReview.scss";
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {createRating, getRatings} from "../../store/ratingsReducer";
+import UpdateDeleteButtons from "./UpdateDeleteButtons";
 
 export default function WineReview({wineId, reviews}) {
     const sessionUser = useSelector(state => state.session.user);
     const [review, setReview] = useState("");
     const [reviewRating, setReviewRating] = useState(5);
     const dispatch = useDispatch();
-
+    console.log(reviews, "reviews");
     const submit = function () {
         if (review.trim() === "") {
             alert("Please enter a review");
@@ -49,15 +50,19 @@ export default function WineReview({wineId, reviews}) {
                         <div>
                             <div className={"review-list-content"}>
                                 <div className={"star"}>
-                                    <img className="userRating_ratingStar__lICVt"
-                                         src="https://web-common.vivino.com/assets/userRatingStar/userStarsAllStates.svg#svgView(viewBox(0 0 29 28))"
-                                         alt="User rated star FullStar" height="20" width="21" role="presentation"/>
-                                    {review.rating}
+                                    <span>
+                                        <img className="userRating_ratingStar__lICVt"
+                                            src="https://web-common.vivino.com/assets/userRatingStar/userStarsAllStates.svg#svgView(viewBox(0 0 29 28))"
+                                            alt="User rated star FullStar" height="20" width="21" role="presentation"/>
+                                        {review.rating}
+                                    </span>
+                                    <span style={{marginLeft: "20px"}}></span>
+                                    <span className={"name"}>By {review.name}</span>
+                                    {sessionUser?.id === review.user_id ? <UpdateDeleteButtons review={review} /> : <></>}
                                 </div>
                                 {review.body}
                             </div>
                             <div className={"reviewer"}>
-                                {/*<span className={"name"}>ABC</span>*/}
                                 <span className={"date"}>{review.created_at.substring(0,10)}</span>
                             </div>
                         </div>

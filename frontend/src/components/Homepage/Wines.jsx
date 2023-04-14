@@ -11,7 +11,7 @@ const Wines = ({wines, slider}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const ratings = useSelector(getRatings);
-    
+
     const wineRatings = {};
 
     const createRateObject = () => {
@@ -25,7 +25,7 @@ const Wines = ({wines, slider}) => {
     useEffect(() => {
         dispatch(fetchAllRatings());
     }, [dispatch]);
-    console.log("home_ratings", ratings);
+    // console.log("home_ratings", ratings);
 
     const setRatingsMap = () => {
         if (!ratings || ratings.length === 0) return;
