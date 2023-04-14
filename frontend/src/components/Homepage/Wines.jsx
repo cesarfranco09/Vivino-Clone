@@ -13,13 +13,46 @@ const Wines = ({wines, slider}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const ratings = useSelector(getRatings);
-    const [wineRatings, setWineRatings] = useState({});
+    const wineRatings = {};
+
+    const createRateObject = () => {
+        let sum = 0;
+        let count = 0;
+        return {
+          sum, count
+        };
+    };
 
     useEffect(() => {
         dispatch(fetchAllRatings());
     }, [dispatch]);
     console.log("home_ratings", ratings);
-    
+
+    const setRatingsMap = () => {
+        if (!ratings || ratings.length === 0) return;
+        ratings.map((rating) => {
+            if (wineRatings[rating.wine_id]) {
+                wineRatings[rating.wine_id].sum += rating.rating;
+                wineRatings[rating.wine_id].count += 1;
+            } else {
+                wineRatings[rating.wine_id] = createRateObject();
+                wineRatings[rating.wine_id].sum = rating.rating;
+                wineRatings[rating.wine_id].count = 1;
+            }
+        })
+    }
+    setRatingsMap();
+
+    const avgRating = (wineId) => {
+        const wineRating = wineRatings[wineId];
+        if (!wineRating || wineRating.count === 0) {
+          return '';
+        }
+        const average = wineRating.sum / wineRating.count;
+        return average.toFixed(1);
+    };
+      
+
     const pageMove = function (id) {
         history.push("/wine?wineId=" + id);
         window.scrollTo(0, 0);
@@ -43,16 +76,7 @@ const Wines = ({wines, slider}) => {
         <div className="slider-container" id={slider}>
             {wines.map((wine) => {
 
-                // const ratings = wineRatings[wine.id];
-                // const ratings = Ratings(wine.id);
-
-                const avgRating = (ratings) => {
-                    if (!ratings || ratings.length === 0) return;
-                    let sum = 0;
-                    ratings.forEach((rating) => (sum += rating.rating));
-                    const average = sum / ratings.length;
-                    return average.toFixed(1);
-                };
+                const ratingScore = avgRating(wine.id);
 
                 return (
                     <div className="slider-item" onClick={() => pageMove(wine.id)} key={wine.id}>
@@ -62,11 +86,11 @@ const Wines = ({wines, slider}) => {
                                 />
                             </div>
                             <div className="slider-item-rating">
-                                <span className="slider-item-rating-score">{avgRating(ratings)}</span><br/>
+                                <span className="slider-item-rating-score">{ratingScore}</span><br/>
                                 <span className="slider-item-rating-star">
-                                    <Star point={avgRating(ratings)}/>
+                                    <Star point={ratingScore * 20}/>
                                 </span><br/>
-                                <span className="slider-item-rating-count">{ratings.length === 0 ? 'No ratings yet' : ratings.length + 'ratings'}</span><br/><br/>
+                                <span className="slider-item-rating-count">{!wineRatings[wine.id] ? 'No ratings yet' : wineRatings[wine.id].count + ' ratings'}</span><br/><br/>
                                 <span className="slider-item-rating-soldout">${wine.price}</span>
                             </div>
                         </div>
