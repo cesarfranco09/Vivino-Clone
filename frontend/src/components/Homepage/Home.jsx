@@ -7,7 +7,8 @@ import {fetchWineAll, getAllWines} from "../../store/winesReducer";
 const Home = () => {
   const [filterWines1, setFilterWines1] = useState([]);
   const [filterWines2, setFilterWines2] = useState([]);
-  const [topListSelection, setTopListSelection] = useState('$');
+  const [topListSelection1, setTopListSelection1] = useState('$');
+  const [topListSelection2, setTopListSelection2] = useState('$');
 
   const wines = useSelector(getAllWines);
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const Home = () => {
       searchOption = [80,10000];
     }
     setFilterWines1(wines.filter((wine) => wine.price >= searchOption[0] && wine.price < searchOption[1]).slice(0, 16))
-    setTopListSelection(type);
+    setTopListSelection1(type);
     document.querySelector(".slider-container").scrollTo({left:0});
   }
 
@@ -60,7 +61,7 @@ const Home = () => {
       searchOption = [80,10000];
     }
     setFilterWines2(wines.filter((wine) => wine.price >= searchOption[0] && wine.price < searchOption[1]).slice(17, 32))
-    setTopListSelection(type);
+    setTopListSelection2(type);
     document.querySelector(".slider-container").scrollTo({left:0});
   }
 
@@ -78,17 +79,17 @@ const Home = () => {
 
         <div className='country-toplist'>
           <div className='toplist-controls'>
-            <a className={'toplist-button icon1 ' + (topListSelection === '$'? 'active':'')} onClick={() => changePriceOption1('$')}>
+            <a className={'toplist-button icon1 ' + (topListSelection1 === '$'? 'active':'')} onClick={() => changePriceOption1('$')}>
             </a>
-            <a className={'toplist-button icon2 ' + (topListSelection === '$$'? 'active':'')} onClick={() => changePriceOption1('$$')}>
+            <a className={'toplist-button icon2 ' + (topListSelection1 === '$$'? 'active':'')} onClick={() => changePriceOption1('$$')}>
             </a>
-            <a className={'toplist-button icon3 ' + (topListSelection === '$$$'? 'active':'')} onClick={() => changePriceOption1('$$$')}>
+            <a className={'toplist-button icon3 ' + (topListSelection1 === '$$$'? 'active':'')} onClick={() => changePriceOption1('$$$')}>
             </a>
-            <a className={'toplist-button icon4 ' + (topListSelection === '$$$$'? 'active':'')} onClick={() => changePriceOption1('$$$$')}>
+            <a className={'toplist-button icon4 ' + (topListSelection1 === '$$$$'? 'active':'')} onClick={() => changePriceOption1('$$$$')}>
             </a>
           </div>
           <div className='controls-text'>
-            <p>{selectText(topListSelection)}</p>
+            <p>{selectText(topListSelection1)}</p>
             {wines && (
                 <Wines wines={filterWines1} slider = {"slider-container1"}/>
             )}
@@ -108,17 +109,17 @@ const Home = () => {
 
         <div className='country-toplist'>
           <div className='toplist-controls'>
-            <a className={'toplist-button icon5 ' + (topListSelection === '$'? 'active':'')} onClick={() => changePriceOption2('$')}>
+            <a className={'toplist-button icon5 ' + (topListSelection2 === '$'? 'active':'')} onClick={() => changePriceOption2('$')}>
             </a>
-            <a className={'toplist-button icon6 ' + (topListSelection === '$$'? 'active':'')} onClick={() => changePriceOption2('$$')}>
+            <a className={'toplist-button icon6 ' + (topListSelection2 === '$$'? 'active':'')} onClick={() => changePriceOption2('$$')}>
             </a>
-            <a className={'toplist-button icon7 ' + (topListSelection === '$$$'? 'active':'')} onClick={() => changePriceOption2('$$$')}>
+            <a className={'toplist-button icon7 ' + (topListSelection2 === '$$$'? 'active':'')} onClick={() => changePriceOption2('$$$')}>
             </a>
-            <a className={'toplist-button icon8 ' + (topListSelection === '$$$$'? 'active':'')} onClick={() => changePriceOption2('$$$$')}>
+            <a className={'toplist-button icon8 ' + (topListSelection2 === '$$$$'? 'active':'')} onClick={() => changePriceOption2('$$$$')}>
             </a>
           </div>
           <div className='controls-text'>
-            <p>{selectText(topListSelection)}</p>
+            <p>{selectText(topListSelection2)}</p>
             {wines && (
                 <Wines wines={filterWines2} slider = {"slider-container2"}/>
             )}
