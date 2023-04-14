@@ -7,7 +7,7 @@ class Api::RatingsController < ApplicationController
       return render json: @ratings
     elsif (params[:user_id])
       @ratings = Rating.joins(:wine).where(user_id: current_user.id)
-        .select('wine_id, image, name, ratings.id, body, rating, ratings.created_at')
+        .select('wine_id, year, image, name, ratings.id, body, rating, ratings.created_at')
       return render json: @ratings
     else
       @ratings = Rating.all

@@ -32,7 +32,8 @@ const Profile = () => {
                                 <img src={review.image} alt=""/>
                             </div>
                             <div className={"product"} onClick={() => pageMoveWine(review.wine_id)}>
-                                {review.name}
+                                    <p>{review.year}</p>
+                                    <p>{review.name}</p>
                             </div>
                             <div className={"review"}>
                                 {review.body}

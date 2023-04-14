@@ -36,53 +36,55 @@ function SignupForm() {
     return (
       <>
         <div className="signup-modal">
-        <h1>Sign Up</h1>
-          <form onSubmit={handleSubmit}>
-            <ul>
-              {errors.map((error) => <li key={error}>{error}</li>)}
-            </ul>
-            <label>
-              Email<br/>
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </label>
-            <br/>
-            <label>
-              Name<br/>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </label>
-            <br/>
-            <label>
-              Password<br/>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </label>
-            <br/>
-            <label>
-              Confirm Password<br/>
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </label>
-            <br/>
-            <button type="submit">Sign Up</button>
-          </form>
+          <div className="signup-title">Sign Up</div>
+          <div>
+            <form onSubmit={handleSubmit}>
+              <ul>
+                {errors.map((error) => <li key={error}>{error}</li>)}
+              </ul>
+              <label>
+                Email<br/>
+                <input
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </label>
+              <br/>
+              <label>
+                Name<br/>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </label>
+              <br/>
+              <label>
+                Password<br/>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </label>
+              <br/>
+              <label>
+                Confirm Password<br/>
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </label>
+              <br/>
+              <button className="signup-button" type="submit">Sign Up</button>
+            </form>
+          </div>
         </div>
       </>
     );

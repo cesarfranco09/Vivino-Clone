@@ -21,12 +21,9 @@ function DemoLogin() {
   return (
     <>
     <form onSubmit={demoLogin1}>
-      <button type="submit">Log in with demo 1</button>
+      <button type="submit">Login as demo user</button>
     </form>
     <br/>
-    <form onSubmit={demoLogin2}>
-        <button type="submit">Log in with demo 2</button>
-    </form>
     </>
   );
 }

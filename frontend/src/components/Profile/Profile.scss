@@ -45,7 +45,7 @@
     .img {
       padding-left: 20px;
       width: 50px;
-      cursor:pointer;
+      cursor: pointer;
     }
 
     .img img {
@@ -55,7 +55,6 @@
     .product {
       width: 400px;
       font-size: 16px;
-      cursor:pointer;
     }
 
     .l-m-10 {
@@ -121,6 +120,11 @@
       }
     }
   }
+}
 
-
+.product p {
+  margin: 0;
+  padding: 0;
+  height: 30px;
+  cursor: pointer;
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import "./LoginForm.css";
+import DemoLogin from "./DemoLogin";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function LoginForm() {
   return (
     <>
       <div className="login-modal">
-        <h1>Log In</h1>
+        <div className="login-title">Login</div>
         <form onSubmit={handleSubmit}>
           <ul>
             {errors.map(error => <li key={error}>{error}</li>)}
@@ -55,8 +56,12 @@ function LoginForm() {
             />
           </label>
           <br/>
-          <button type="submit">Log In</button>
+          <button className="login-button" type="submit">Login</button>
         </form>
+      </div>
+      <br/>
+      <div className="demo-login">
+        <DemoLogin />
       </div>
     </>
   );
