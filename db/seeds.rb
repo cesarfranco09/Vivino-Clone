@@ -355,204 +355,6 @@ puts "Creating wines..."
   )
 end
 
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: red_grapes.sample,
-#     region: 'Bordeaux',
-#     country: 'France',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: red_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'Red'
-#   )
-# end
-
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: red_grapes.sample,
-#     region: 'Tuscany',
-#     country: 'Italy',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: red_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'Red'
-#   )
-# end
-
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: white_grapes.sample,
-#     region: 'Napa Valley',
-#     country: 'USA',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: white_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'White'
-#   )
-# end
-
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: white_grapes.sample,
-#     region: 'Bordeaux',
-#     country: 'France',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: white_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'White'
-#   )
-# end
-
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: white_grapes.sample,
-#     region: 'Tuscany',
-#     country: 'Italy',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: white_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'White'
-#   )
-# end
-
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: red_grapes.sample,
-#     region: 'Napa Valley',
-#     country: 'USA',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: rose_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'Rose'
-#   )
-# end
-
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: red_grapes.sample,
-#     region: 'Bordeaux',
-#     country: 'France',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: rose_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'Rose'
-#   )
-# end
-
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: red_grapes.sample,
-#     region: 'Tuscany',
-#     country: 'Italy',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: rose_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'Rose'
-#   )
-# end
-
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: white_grapes.sample,
-#     region: 'Napa Valley',
-#     country: 'USA',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: sparkling_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'Sparkling'
-#   )
-# end
-
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: white_grapes.sample,
-#     region: 'Bordeaux',
-#     country: 'France',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: sparkling_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'Sparkling'
-#   )
-# end
-
-# 50.times do
-#   Wine.create!(
-#     name: Faker::Commerce.product_name,
-#     grape: white_grapes.sample,
-#     region: 'Tuscany',
-#     country: 'Italy',
-#     price: Faker::Commerce.price(range: 5..500, as_string: false),
-#     year: rand(1980..2023),
-#     image: sparkling_imgs.sample,
-#     winery: Faker::Company.name,
-#     bold: rand(1..10),
-#     tannic: rand(1..10),
-#     sweet: rand(1..10),
-#     acidic: rand(1..10),
-#     wine_type: 'Sparkling'
-#   )
-# end
-
 50.times do
   Wine.create!(
     name: Faker::Commerce.product_name,
@@ -634,13 +436,18 @@ Rating.destroy_all
 
 puts "Creating ratings..."
 
-5000.times do
-  Rating.create!(
-    rating: Faker::Number.between(from: 3, to: 5),
-    body: Faker::Lorem.paragraph(sentence_count: 2),
-    user_id: Faker::Number.between(from: 1, to: 21),
-    wine_id: Faker::Number.between(from: 1, to: 800)
-  )
-end
-
+# 5000.times do
+#   Rating.create!(
+#     rating: Faker::Number.between(from: 3, to: 5),
+#     body: Faker::Lorem.paragraph(sentence_count: 2),
+#     user_id: Faker::Number.between(from: 1, to: 21),
+#     wine_id: Faker::Number.between(from: 1, to: 800)
+#   )
+# end
+Rating.create!(
+  rating: Faker::Number.between(from: 3, to: 5),
+  body: Faker::Lorem.paragraph(sentence_count: 2),
+  user_id: Faker::Number.between(from: 1, to: 21),
+  wine_id: Faker::Number.between(from: 1, to: 800)
+)
 puts "Ratings Done!"
