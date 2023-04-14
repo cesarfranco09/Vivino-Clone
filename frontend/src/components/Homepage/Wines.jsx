@@ -22,8 +22,10 @@ const Wines = ({wines, slider}) => {
     console.log("home_ratings", ratings);
     
     const pageMove = function (id) {
-        history.push("/wine?wineId=" + id)
-    }
+        history.push("/wine?wineId=" + id);
+        window.scrollTo(0, 0);
+      }
+      
 
     const leftMove = function () {
         document.querySelector("#" + slider).scrollBy({

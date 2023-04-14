@@ -77,7 +77,8 @@ export default function ExploreWine() {
     };
 
     const pageMove = function (id) {
-        history.push("/wine?wineId=" + id)
+        history.push("/wine?wineId=" + id);
+        window.scrollTo(0, 0);
     }
 
     const wineConditionHandler = function(value) {
