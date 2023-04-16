@@ -4,11 +4,11 @@ class Api::RatingsController < ApplicationController
   def index
     if (params[:wine_id])
       @ratings = Rating.joins(:user).where(wine_id: params[:wine_id])
-        .select('ratings.id, body, rating, name, ratings.created_at, user_id, wine_id')
+        .select('ratings.id, body, rating, name, ratings.created_at, user_id, wine_id, ratings.updated_at')
       return render json: @ratings
     elsif (params[:user_id])
       @ratings = Rating.joins(:wine).where(user_id: current_user.id)
-        .select('wine_id, year, image, name, ratings.id, body, rating, ratings.created_at')
+        .select('wine_id, year, image, name, ratings.id, body, rating, ratings.created_at, ratings.updated_at')
       return render json: @ratings
     else
       @ratings = Rating.all
@@ -31,16 +31,11 @@ class Api::RatingsController < ApplicationController
   end
 
   def update
-    @rating = Rating.find_by(id: params[:id])
-
-    unless @rating.user_id == current_user.id || current_user.id == 1
-      render json: ['You can only edit your own ratings'], status: 403
+    @rating = Rating.find(params[:id])
+    if @rating.update(user_id: params[:user_id], wine_id: params[:wine_id], rating: params[:rating], body: params[:body])
+      render json: @rating
     else
-      if @rating.update!(rating_params)
-        render json: @rating
-      else
-        render json: @rating.errors.full_messages, status: 422
-      end
+      render json: { errors: @rating.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -59,5 +54,5 @@ class Api::RatingsController < ApplicationController
   def rating_params
     params.require(:rating).permit(:user_id, :wine_id, :rating, :body)
   end
- 
+
 end

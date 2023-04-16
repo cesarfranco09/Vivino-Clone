@@ -8,9 +8,12 @@ export default function WineReview({wineId, reviews}) {
     const sessionUser = useSelector(state => state.session.user);
     const [review, setReview] = useState("");
     const [reviewRating, setReviewRating] = useState(5);
+    const [reviewName, setReviewName] = useState(sessionUser.name)
     const dispatch = useDispatch();
+
     console.log(reviews, "reviews");
-    const submit = function () {
+
+    const submit = () => {
         if (review.trim() === "") {
             alert("Please enter a review");
             return;
@@ -65,7 +68,7 @@ export default function WineReview({wineId, reviews}) {
                                 </div>
                             </div>
                             <div className={"reviewer"}>
-                                <span className={"date"}>{review.created_at.substring(0,10)}</span>
+                                <span className={"date"}>{review.updated_at ? review.updated_at.substring(0,10) : review.created_at.substring(0,10)}</span>
                             </div>
                         </div>
                     </div>
@@ -74,10 +77,11 @@ export default function WineReview({wineId, reviews}) {
                 <div>
                     <div className={"review-write-wrap"}>
                         <p>WRITE REVIEW</p>
-                        Rating: <select value={reviewRating} onChange={(event) => setReviewRating(event.target.value)}>
-                        {[0,1,2,3,4,5].map((num) => (
-                            <option value={num}>{num}</option>
-                        ))}
+                        Rating:
+                        <select value={reviewRating} onChange={(event) => setReviewRating(event.target.value)}>
+                            {[0,1,2,3,4,5].map((num) => (
+                                <option value={num}>{num}</option>
+                            ))}
                         </select>
                         <button className={"review-submit"} onClick={submit}>SUBMIT</button>
                         <br/>

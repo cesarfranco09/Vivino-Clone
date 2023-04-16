@@ -2,7 +2,7 @@ import './UpdateDeleteButtons.scss'
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { useEffect, useState } from "react";
-import { deleteRating, getRatings } from '../../store/ratingsReducer';
+import { updateRating, deleteRating, getRatings } from '../../store/ratingsReducer';
 // import UpdateCommentForm from "./UpdateCommentForm";
 // import DeleteCommentForm from "./DeleteCommentForm";
 
@@ -12,15 +12,40 @@ function UpdateDeleteButtons ({review}) {
     const sessionUser = useSelector(state => state.session.user);
     const [deleteModalShow, setDeleteModalShow] = useState(false);
     const [updateModalShow, setUpdateShowModal] = useState(false);
+    const [rating, setRating] = useState(review.rating);
+    const [body, setBody] = useState(review.body);
+    const [errors, setErrors] = useState([]);
+
 
     if (!sessionUser) return;
     if (review.user_id !== sessionUser.id) return;
+
+    const handleUpdateSubmit = (e) => {
+        e.preventDefault();
+        const scrollPosition = window.scrollY;
+
+        if (!body) {
+            setErrors(["Please fill out all fields"]);
+        } else {
+            let newParam = {
+                ...review,
+                rating: rating,
+                body: body
+            }
+            dispatch(updateRating(newParam))
+            setUpdateShowModal(false);
+            dispatch(getRatings);
+            window.location.reload();
+            window.scrollTo(0, scrollPosition);
+        }
+    }
 
     const handleDeleteButtonClick = (e) => {
         e.preventDefault();
         dispatch(deleteRating(review.id));
         setDeleteModalShow(false);
         dispatch(getRatings);
+        window.location.reload();
     }
 
     return (
@@ -28,7 +53,19 @@ function UpdateDeleteButtons ({review}) {
             <button className='update-button' onClick={() => setUpdateShowModal(true)}></button>
             {updateModalShow && (
                 <Modal onClose={() => setUpdateShowModal(false)} size="update-delete">
-                    {/* <UpdateCommentForm comment={comment} setUpdateShowModal={setUpdateShowModal} postId={postId}/> */}
+                    <div className="comment-CRUD-form">
+                        <h1 className="comment-form-header">Edit comment</h1>
+                        <form className="comment-CRUD-form" onSubmit={(handleUpdateSubmit)}>
+                            <ul>
+                                {errors.map(error => <li key={error} className="error-messages">{error}</li>)}
+                            </ul>
+                            <label>
+                                <input type="textarea" value={body} onChange={(e) => {setBody(e.target.value)}} ></input>
+                            </label>
+                            <br></br>
+                            <button className="modal-button" >Submit</button>
+                        </form>
+                    </div>
                 </Modal>
             )}
             
