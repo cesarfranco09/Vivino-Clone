@@ -33,7 +33,7 @@ export const getRatingById = (ratingId) => (state) =>  (
 // Thunk
 export const fetchRating = (ratingId) => async (dispatch) => {
   try {
-    const response = await fetch(`/api/wines/${ratingId}`);
+    const response = await fetch(`/api/ratings/${ratingId}`);
     const rating = await response.json();
     dispatch(receiveRating(rating));
   } catch (error) {
@@ -109,7 +109,7 @@ export const updateRating = (rating) => async (dispatch) => {
 
 export const deleteRating = (ratingId) => async (dispatch) => {
   try {
-    const response = await csrfFetch(`/ratings/${ratingId}`, {
+    const response = await csrfFetch(`/api/ratings/${ratingId}`, {
       method: 'DELETE'
     });
     if (response.ok) {

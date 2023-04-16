@@ -58,9 +58,11 @@ export default function WineReview({wineId, reviews}) {
                                     </span>
                                     <span style={{marginLeft: "20px"}}></span>
                                     <span className={"name"}>By {review.name}</span>
-                                    {sessionUser?.id === review.user_id ? <UpdateDeleteButtons review={review} /> : <></>}
                                 </div>
-                                {review.body}
+                                <div className="review-body">
+                                    <span>{review.body}</span>
+                                    <span>{sessionUser?.id === review.user_id ? <UpdateDeleteButtons review={review} /> : <></>}</span>
+                                </div>
                             </div>
                             <div className={"reviewer"}>
                                 <span className={"date"}>{review.created_at.substring(0,10)}</span>

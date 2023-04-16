@@ -10,7 +10,7 @@ function LoginFormModal({setShowLoginModal, showLoginModal, setShowSignupModal, 
       <button className='login-profile-button' onClick={() => setShowLoginModal(true)}></button>
       {showLoginModal && (
         <>
-          <Modal className='modal' style={{ display: "block" }} onClose={() => setShowLoginModal(false)}>
+          <Modal className='modal' style={{ display: "block" }} onClose={() => setShowLoginModal(false)} size="login">
             <LoginForm />
             <br/>
             <div className='join-vinevino'>

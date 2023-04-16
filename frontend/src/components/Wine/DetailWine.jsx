@@ -198,7 +198,7 @@ export default function DetailWine() {
                                     <button onClick={()=> setShowLoginModal(true)}>Login to purchase</button>
                                     {showLoginModal && (
                                         <>
-                                        <Modal className='modal' style={{ display: "block" }} onClose={() => setShowLoginModal(false)}>
+                                        <Modal className='modal' style={{ display: "block" }} onClose={() => setShowLoginModal(false)} size="login">
                                             <LoginForm />
                                             <br/>
                                             <div>

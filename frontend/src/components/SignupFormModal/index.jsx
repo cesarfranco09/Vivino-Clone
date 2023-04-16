@@ -18,7 +18,7 @@ function SignupFormModal({setShowLoginModal, showLoginModal, setShowSignupModal,
     <>
       <button className='signup-button' onClick={()=>handleClick()}>Join Vinevino</button>
       {showSignupModal && (
-        <Modal onClose={handleClose}>
+        <Modal onClose={handleClose} size="login">
           <SignupForm />
         </Modal>
       )}
