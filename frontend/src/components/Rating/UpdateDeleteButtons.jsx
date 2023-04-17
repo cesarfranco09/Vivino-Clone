@@ -34,7 +34,7 @@ function UpdateDeleteButtons ({review}) {
             }
             dispatch(updateRating(newParam))
             setUpdateShowModal(false);
-            dispatch(getRatings);
+            // dispatch(getRatings);
             window.location.reload();
             window.scrollTo(0, scrollPosition);
         }
@@ -44,7 +44,7 @@ function UpdateDeleteButtons ({review}) {
         e.preventDefault();
         dispatch(deleteRating(review.id));
         setDeleteModalShow(false);
-        dispatch(getRatings);
+        // dispatch(getRatings);
         window.location.reload();
     }
 

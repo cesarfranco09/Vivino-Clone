@@ -48,7 +48,7 @@ export default function WineReview({wineId, reviews}) {
                 {reviews.length === 0 && (
                     <span>No reviews.</span>
                 )}
-                {reviews.map((review) => (
+                {reviews && reviews.map((review) => (
                     <div className={"review-list"}>
                         <div>
                             <div className={"review-list-content"}>
