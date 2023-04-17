@@ -31,7 +31,7 @@ export default function WineReview({wineId, reviews}) {
         dispatch(createRating(param));
         dispatch(getRatings);
         initFrm();
-        // alert("Saved");
+        window.location.reload();
     }
 
     const initFrm = function () {
