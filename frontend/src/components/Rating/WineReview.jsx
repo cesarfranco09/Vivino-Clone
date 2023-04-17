@@ -8,7 +8,6 @@ export default function WineReview({wineId, reviews}) {
     const sessionUser = useSelector(state => state.session.user);
     const [review, setReview] = useState("");
     const [reviewRating, setReviewRating] = useState(5);
-    const [reviewName, setReviewName] = useState(sessionUser.name)
     const dispatch = useDispatch();
 
     console.log(reviews, "reviews");
