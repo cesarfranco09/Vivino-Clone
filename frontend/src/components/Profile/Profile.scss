@@ -128,3 +128,32 @@
   height: 30px;
   cursor: pointer;
 }
+
+.my-reviews-list-none {
+  width: 100%;
+  display: flex;
+  background-color: white;
+  padding: 20px 20px 0px;
+  line-height: 80px;
+  font-size: 16px;
+  justify-content: center;
+
+  .product p {
+    width: 400px;
+    padding-bottom: 20px;
+  }
+
+  .l-m-10 {
+    margin-left: 10px;
+  }
+
+  .r-m-10 {
+    margin-right: 10px;
+  }
+
+  .review {
+    flex-grow: 1;
+    max-width: 500px;
+    line-height: 28px;
+  }
+}

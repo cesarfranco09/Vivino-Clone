@@ -3,15 +3,18 @@ import "./Profile.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchRatingAllUserId, getRatings} from "../../store/ratingsReducer";
 import { useHistory } from 'react-router-dom';
+import UpdateDeleteButtons from '../Rating/UpdateDeleteButtons';
 
 const Profile = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const reviews = useSelector(getRatings);
 
-    useEffect(() => {
-        dispatch(fetchRatingAllUserId());
-    }, [dispatch, reviews]);
+    dispatch(fetchRatingAllUserId());
+
+    // useEffect(() => {
+    //     dispatch(fetchRatingAllUserId());
+    // }, [dispatch, reviews]);
 
     const pageMoveWine = function (id) {
         history.push("/wine?wineId=" + id);
@@ -21,13 +24,22 @@ const Profile = () => {
     return (
         <div className={"my-reviews"}>
             <div className={"my-reviews-wrap"}>
-                <p class={"title"}>My Reviews</p>
+                <p class={"title"}>My Wines</p>
                 <div className={"my-reviews-header"}>
                     <div className={"product"}>WINE</div>
                     <div className={"review"}>REVIEW</div>
                 </div>
-                {reviews && reviews.length === 0 && (
-                    <span>No reviews.</span>
+                {(!reviews || reviews.length === 0) && (
+                    <div className={"my-reviews-list-none"}>
+                        <div>
+                        </div>
+                        <div className={"product"}>
+                            <p></p>
+                        </div>
+                        <div className={"review"}>
+                            <p>No reviews</p>
+                        </div>
+                    </div>
                 )}
                 {reviews && reviews.map((review) => (
                     <div className={"my-reviews-list"}>
@@ -35,11 +47,12 @@ const Profile = () => {
                             <img src={review.image} alt=""/>
                         </div>
                         <div className={"product"} onClick={() => pageMoveWine(review.wine_id)}>
-                                <p>{review.year}</p>
-                                <p>{review.name}</p>
+                            <p>{review.year}</p>
+                            <p>{review.name}</p>
                         </div>
                         <div className={"review"}>
-                            {review.body}
+                            <span>{review.body}</span>
+                            <span><UpdateDeleteButtons review={review} /></span>
                         </div>
                         <div style={{width:"80px"}}>
                             <div className="star">

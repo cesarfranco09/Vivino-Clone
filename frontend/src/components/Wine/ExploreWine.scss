@@ -61,6 +61,10 @@
           .rate-score-desc {
             font-size: 13px;
             padding-left: 10px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
 
             .score-wrap {
               width: 100px !important;

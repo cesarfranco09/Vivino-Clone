@@ -16,7 +16,6 @@ function UpdateDeleteButtons ({review}) {
     const [body, setBody] = useState(review.body);
     const [errors, setErrors] = useState([]);
 
-
     if (!sessionUser) return;
     if (review.user_id !== sessionUser.id) return;
 
