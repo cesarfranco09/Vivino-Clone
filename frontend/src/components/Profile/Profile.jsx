@@ -50,7 +50,7 @@ const Profile = () => {
                         </div>
                         <div className={"review"}>
                             <span>{review.body}</span>
-                            <span><UpdateDeleteButtons review={review} /></span>
+                            <span className={"button-icons"}><UpdateDeleteButtons review={review} /></span>
                         </div>
                         <div style={{width:"80px"}}>
                             <div className="star">

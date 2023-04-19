@@ -57,6 +57,10 @@
       font-size: 16px;
     }
 
+    .product:hover {
+      text-decoration-line: underline;
+    }
+
     .l-m-10 {
       margin-left: 10px;
     }
@@ -70,7 +74,6 @@
       max-width: 500px;
       line-height: 28px;
       padding-bottom: 20px;
-      cursor:pointer;
     }
 
     .date {
@@ -157,4 +160,14 @@
     line-height: 28px;
     padding-bottom: 20px;
   }
+}
+
+.review {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button-icons {
+  margin-right: 40px;
 }
