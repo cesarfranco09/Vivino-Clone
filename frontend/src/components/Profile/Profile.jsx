@@ -10,11 +10,9 @@ const Profile = () => {
     const history = useHistory();
     const reviews = useSelector(getRatings);
 
-    dispatch(fetchRatingAllUserId());
-
-    // useEffect(() => {
-    //     dispatch(fetchRatingAllUserId());
-    // }, [dispatch, reviews]);
+    useEffect(() => {
+        dispatch(fetchRatingAllUserId());
+    }, [dispatch, reviews]);
 
     const pageMoveWine = function (id) {
         history.push("/wine?wineId=" + id);

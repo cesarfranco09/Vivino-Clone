@@ -52,8 +52,8 @@ function UpdateDeleteButtons ({review}) {
             <button className='update-button' onClick={() => setUpdateShowModal(true)}></button>
             {updateModalShow && (
                 <Modal onClose={() => setUpdateShowModal(false)} size="update-delete">
-                    <div className="comment-CRUD-form">
-                        <h1 className="comment-form-header">Edit comment</h1>
+                    <div className="review-update-form">
+                        <h1>Edit review</h1>
                         <form className="comment-CRUD-form" onSubmit={(handleUpdateSubmit)}>
                             <ul>
                                 {errors.map(error => <li key={error} className="error-messages">{error}</li>)}
@@ -71,8 +71,8 @@ function UpdateDeleteButtons ({review}) {
             <button className='delete-button' onClick={() => setDeleteModalShow(true)}></button>
             {deleteModalShow && (
                 <Modal onClose={() => setDeleteModalShow(false)} size="update-delete">
-                    <div className="comment-CRUD-form">
-                        <h1 className="comment-form-header">Delete this review?</h1>
+                    <div className="review-delete-form">
+                        <h1>Delete this review?</h1>
                         <div className="options-container">
                             <button className="modal-button" onClick={(handleDeleteButtonClick)}>Delete</button>
                             <br/>
