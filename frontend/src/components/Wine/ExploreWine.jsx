@@ -43,6 +43,7 @@ export default function ExploreWine() {
     }, [wineCondition, grapeCondition, regionCondition]);
 
     useEffect(() => {
+        if (filterWines.length === 0) return setDisplayPrice([0,0]);
         const minPrice = Math.min(...filterWines.map(obj => obj.price));
         const maxPrice = Math.max(...filterWines.map(obj => obj.price));
         setDisplayPrice([minPrice, maxPrice])
@@ -148,7 +149,7 @@ export default function ExploreWine() {
     return (
         <div className={"content"}>
             <div>
-                <p className={"title"}>Wines between ${displayPrice[0]} - ${displayPrice[1]} </p>
+                {/* <p className={"title"}>Wines between ${displayPrice[0]} - ${displayPrice[1]} </p> */}
                 {/*<p>From 1 regional wine style</p>*/}
             </div>
             <div className={"main-content"}>
