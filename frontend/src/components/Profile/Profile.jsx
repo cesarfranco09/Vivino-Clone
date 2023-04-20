@@ -10,6 +10,16 @@ const Profile = () => {
     const history = useHistory();
     const reviews = useSelector(getRatings);
 
+    reviews.sort((a, b) => {
+        if (a.created_at > b.created_at) {
+          return -1;
+        }
+        if (a.created_at < b.created_at) {
+          return 1;
+        }
+        return 0;
+    });
+
     useEffect(() => {
         dispatch(fetchRatingAllUserId());
     }, [dispatch, reviews]);
