@@ -43,7 +43,7 @@ function ProfileButton({ user, setShowLoginModal, showLoginModal }) {
 
     setTimeout(() => {
       window.location.href = "/"
-    },50)
+    },500)
   };
 
   const plus = function (cart, value, e) {
