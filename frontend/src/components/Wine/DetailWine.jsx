@@ -127,9 +127,9 @@ export default function DetailWine() {
 
                         <br/>
 
-                        <a className={"rate-add-wish"}>
+                        {/* <a className={"rate-add-wish"}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" data-acsb-hidden="true" data-acsb-force-hidden="true"><path d="M18.75,21V4.8931A1.8423,1.8423,0,0,0,16.9752,3h-9.95A1.8423,1.8423,0,0,0,5.25,4.8931V21L12,15.6Z" fill="none" stroke="#1e1e1e" stroke-linecap="round" stroke-linejoin="round" fill-rule="evenodd"></path></svg>
-                            add to wishlist</a>
+                            add to wishlist</a> */}
                     </div>
                     <div className={"price-box-wrapper"}>
                         <div className={"price-box"}>
@@ -200,10 +200,6 @@ export default function DetailWine() {
                                         <>
                                         <Modal className='modal' style={{ display: "block" }} onClose={() => setShowLoginModal(false)} size="login">
                                             <LoginForm />
-                                            <br/>
-                                            <div>
-                                            <DemoLogin />
-                                            </div>
                                             <br/>
                                             <div className='join-vinevino'>
                                             <p>Don't have a profile?</p>

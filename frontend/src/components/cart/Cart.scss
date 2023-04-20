@@ -109,6 +109,34 @@
       }
     }
   }
+}
 
+.about-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
+.about-icons {
+  a {
+    background-color: white;
+    margin: 20px 40px 20px 40px;
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    display:inline-block;
+    line-height: 28px;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .linkedin {
+    background-image: url("../../../assets/img/linkedinlogo.png");
+  }
+
+  .github {
+    background-image: url("../../../assets/img/github-mark.png");
+  }
 }

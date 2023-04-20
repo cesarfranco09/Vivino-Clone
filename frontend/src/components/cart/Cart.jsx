@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import "./Cart.scss"
 import {deleteCart, deleteCartAll, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
+import { Modal } from '../../context/Modal';
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
+    const [showAboutLink, setShowAboutLink] = useState(false);
+
 
     useEffect(() => {
         setCartItems(localStorageCartData());
@@ -31,10 +34,10 @@ const Cart = () => {
             alert("At least one item needs to be in cart")
             return;
         }
-
-        alert("Purchase completed"); //new modal
+        // alert("Purchase completed"); //new modal
         deleteCartAll();
-        window.location.href = "/";
+        setShowAboutLink(true);
+        // window.location.href = "/";
         // order page로 이동??..
     }
 
@@ -67,8 +70,24 @@ const Cart = () => {
       }
 
       <div className={"checkout"}>
-          <div className={"total"}>TOTAL ${cartItems.reduce((acc, curr) => acc + (curr.price*curr.count), 0)}</div>
-          <div className={"checkout"}><button onClick={checkOut}>CHECK OUT</button></div>
+        <div className={"total"}>TOTAL ${cartItems.reduce((acc, curr) => acc + (curr.price*curr.count), 0)}</div>
+        <div className={"checkout"}>
+            <button onClick={checkOut}>CHECK OUT</button>
+            {showAboutLink && (
+                <Modal id="about-link-modal" size="about-link" onClose={()=> {setShowAboutLink(false); window.location.href = "/";}}>
+                    <div className="profile-section">
+                        <div className="profile-container">
+                            <h2 className="purchase">Purchase Completed!</h2>
+                            <h3>Thank you for visiting</h3>
+                            <div className="about-icons">
+                                <a className='linkedin' href="https://www.linkedin.com/in/kristin-lee-9a8666265/" target="_blank"></a>
+                                <a className='github' href="https://github.com/totorasora" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                </Modal>
+            )}
+        </div>
       </div>
 
       </div>

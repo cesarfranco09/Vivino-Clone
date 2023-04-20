@@ -40,3 +40,17 @@
   align-items: center;
   border-radius: 10px;
 }
+
+#modal-content-about-link {
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  background-color:white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  text-align: center;
+}
