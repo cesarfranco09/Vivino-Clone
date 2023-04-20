@@ -11,6 +11,7 @@ import {getWine} from "../../store/wine";
 import {fetchRatingAllWineId, getRatings} from "../../store/ratingsReducer";
 import {Modal} from '../../context/Modal';
 import LoginForm from '../LoginFormModal/LoginForm';
+import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import DemoLogin from '../LoginFormModal/DemoLogin';
 import {deleteCart, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
@@ -228,6 +229,14 @@ export default function DetailWine() {
         {(ratings && wine) && (
             <WineReview wineId={wine.id} reviews={ratings}/>
         )}
+        <div className="fake-signup">
+          <SignupFormModal
+            setShowLoginModal={setShowLoginModal}
+            showLoginModal={showLoginModal}
+            setShowSignupModal={setShowSignupModal}
+            showSignupModal={showSignupModal}
+          />
+        </div>
     </div>
     )
 }
