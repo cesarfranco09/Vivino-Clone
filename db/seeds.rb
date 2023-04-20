@@ -436,13 +436,13 @@ Rating.destroy_all
 
 puts "Creating ratings..."
 
-# 5000.times do
-#   Rating.create!(
-#     rating: Faker::Number.between(from: 3, to: 5),
-#     body: Faker::Lorem.paragraph(sentence_count: 2),
-#     user_id: Faker::Number.between(from: 1, to: 21),
-#     wine_id: Faker::Number.between(from: 1, to: 800)
-#   )
-# end
+5000.times do
+  Rating.create!(
+    rating: Faker::Number.between(from: 3, to: 5),
+    body: Faker::Lorem.paragraph(sentence_count: 2),
+    user_id: Faker::Number.between(from: 2, to: 21),
+    wine_id: Faker::Number.between(from: 1, to: 800)
+  )
+end
 
 puts "Ratings Done!"
