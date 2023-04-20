@@ -11,9 +11,7 @@ import {getWine} from "../../store/wine";
 import {fetchRatingAllWineId, getRatings} from "../../store/ratingsReducer";
 import {Modal} from '../../context/Modal';
 import LoginForm from '../LoginFormModal/LoginForm';
-import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import DemoLogin from '../LoginFormModal/DemoLogin';
 import {deleteCart, localStorageCartData, saveCartData} from "../../utils/localStorageUtils";
 
 export default function DetailWine() {
@@ -31,6 +29,16 @@ export default function DetailWine() {
 
     let wine = useSelector(getWine(wineId));
     let ratings = useSelector(getRatings);
+
+    ratings.sort((a, b) => {
+      if (a.created_at > b.created_at) {
+        return -1;
+      }
+      if (a.created_at < b.created_at) {
+        return 1;
+      }
+      return 0;
+    });
 
     useEffect(() => {
         if (wineId) {
