@@ -10,8 +10,6 @@ export default function WineReview({wineId, reviews}) {
     const [reviewRating, setReviewRating] = useState(5);
     const dispatch = useDispatch();
 
-    console.log(reviews, "reviews");
-
     const submit = () => {
         if (review.trim() === "") {
             alert("Please enter a review");

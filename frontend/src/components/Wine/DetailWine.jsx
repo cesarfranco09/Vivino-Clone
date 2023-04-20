@@ -227,7 +227,7 @@ export default function DetailWine() {
         </>
         )}
         {(ratings && wine) && (
-            <WineReview wineId={wine.id} reviews={ratings}/>
+          <WineReview wineId={wine.id} reviews={ratings}/>
         )}
         <div className="fake-signup">
           <SignupFormModal

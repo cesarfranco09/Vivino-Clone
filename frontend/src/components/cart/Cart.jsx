@@ -74,7 +74,7 @@ const Cart = () => {
         <div className={"checkout"}>
             <button onClick={checkOut}>CHECK OUT</button>
             {showAboutLink && (
-                <Modal id="about-link-modal" size="about-link" onClose={()=> {setShowAboutLink(false); window.location.href = "/";}}>
+                <Modal id="about-link-modal" size="about-link" onClose={()=> {setShowAboutLink(false); window.location.href = "/"}}>
                     <div className="profile-section">
                         <div className="profile-container">
                             <h2 className="purchase">Purchase Completed!</h2>
