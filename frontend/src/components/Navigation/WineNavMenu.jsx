@@ -6,7 +6,7 @@ const WineNavMenu = () => {
   const [focusMenu, setFocusMenu] = useState("");
 
   return (
-    <div className="wine-nav-menu">
+    <div className="wine-nav-menu" onMouseLeave={() => setFocusMenu('')}>
       <ul>
         <li className="wines-dropdown">
           <a href="#" onMouseOver={() => setFocusMenu('wine')}>
