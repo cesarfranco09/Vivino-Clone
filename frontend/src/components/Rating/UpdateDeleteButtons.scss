@@ -10,7 +10,6 @@
     padding: 0;
     margin-left: 5px;
     cursor: pointer;
-
 }
 
 .delete-button {
@@ -43,9 +42,20 @@
         font-size: 12px;
         cursor: pointer;
     }
+
     button:hover {
         background: #ba1628;
         color: #fff;
     }
 }
 
+ul {
+    margin: 0px;
+}
+
+.rating-star {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 20px 10px 10px 0px;
+}

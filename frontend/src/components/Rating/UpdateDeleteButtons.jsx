@@ -54,6 +54,16 @@ function UpdateDeleteButtons ({review}) {
                 <Modal onClose={() => setUpdateShowModal(false)} size="update-delete">
                     <div className="review-update-form">
                         <h1>Edit review</h1>
+                        <span className='rating-star'>
+                            <img className="userRating_ratingStar__lICVt"
+                                src="https://web-common.vivino.com/assets/userRatingStar/userStarsAllStates.svg#svgView(viewBox(0 0 29 28))"
+                                alt="User rated star FullStar" height="20" width="21" role="presentation"/>
+                            <select value={rating} onChange={(event) => setRating(event.target.value)}>
+                                {[0,1,2,3,4,5].map((num) => (
+                                    <option value={num}>{num}</option>
+                                ))}
+                            </select>
+                        </span>
                         <form className="comment-CRUD-form" onSubmit={(handleUpdateSubmit)}>
                             <ul>
                                 {errors.map(error => <li key={error} className="error-messages">{error}</li>)}

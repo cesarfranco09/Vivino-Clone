@@ -42,10 +42,10 @@ if (
   sessionStorage.getItem("currentUser") === null ||
   sessionStorage.getItem("X-CSRF-Token") === null 
 ) {
-  console.log('no user')
+  // console.log('no user')
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
-  console.log('logged in user')
+  // console.log('logged in user')
   renderApplication();
 }
 
