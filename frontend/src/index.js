@@ -13,23 +13,23 @@ const store = configureStore();
 
 const renderApplication = () => {
   
-if (process.env.NODE_ENV !== 'production') {
-  window.store = store;
-  window.csrfFetch = csrfFetch;
-  window.sessionActions = sessionActions;
-}
+  if (process.env.NODE_ENV !== 'production') {
+    window.store = store;
+    window.csrfFetch = csrfFetch;
+    window.sessionActions = sessionActions;
+  }
 
-function Root() {
-  return (
-    <ModalProvider>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
-    </ModalProvider>
-  );
-}
+  function Root() {
+    return (
+      <ModalProvider>
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Provider>
+      </ModalProvider>
+    );
+  }
 
   ReactDOM.render(
     <React.StrictMode>
