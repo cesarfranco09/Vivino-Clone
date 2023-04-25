@@ -86,6 +86,9 @@ export default function WineReview({wineId, reviews}) {
                     <div className={"review-write-wrap"}>
                         <p>WRITE REVIEW</p>
                         Rating:
+                        <img className="userRating_ratingStar__lICVt"
+                                src="https://web-common.vivino.com/assets/userRatingStar/userStarsAllStates.svg#svgView(viewBox(0 0 29 28))"
+                                alt="User rated star FullStar" height="20" width="21" role="presentation"/>
                         <select value={reviewRating} onChange={(event) => setReviewRating(event.target.value)}>
                             {[0,1,2,3,4,5].map((num) => (
                                 <option value={num}>{num}</option>
