@@ -1,7 +1,7 @@
 # Vinevino
 
 ## Website
-[live website](https://vinevino.onrender.com)
+[Live website](https://vinevino.onrender.com)
 
 ## Background
 Vinevino is an e-commerce website, a clone of Vivino. Vinevino allows users to view different listings of wines filtered by categories, purchase wines by adding wines to the cart, leave ratings and reviews.
@@ -12,6 +12,12 @@ Vinevino is an e-commerce website, a clone of Vivino. Vinevino allows users to v
 - **BCrypt** - User auth package to generate password hash with salt.
 - **PostgreSQL** - Database
 - **AWS** - Image storage and uploads
+
++ [Feature List](feature-list)
++ [Schema](schema)
++ [Sample State](sample-state)
++ [Frontend routes and components](frontend-routes)
++ [Backend routes](backend-routes)
 
 
 <!-- <img src="https://vinevino-seeds.s3.us-west-1.amazonaws.com/vinevino.gif" alt="text" width="800"/> -->
