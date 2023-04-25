@@ -10,6 +10,17 @@ export default function WineReview({wineId, reviews}) {
     const [reviewRating, setReviewRating] = useState(5);
     const dispatch = useDispatch();
 
+    const showReview = (reviews) => {
+        if (!sessionUser) return false;
+    
+        for (let i = 0; i < reviews.length; i++) {
+            if (reviews[i].user_id === sessionUser.id) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const submit = () => {
         if (review.trim() === "") {
             alert("Please enter a review");
@@ -70,7 +81,7 @@ export default function WineReview({wineId, reviews}) {
                         </div>
                     </div>
                 ))}
-                {sessionUser && (
+                {showReview(reviews) && (
                 <div>
                     <div className={"review-write-wrap"}>
                         <p>WRITE REVIEW</p>
