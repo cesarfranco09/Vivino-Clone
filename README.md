@@ -14,7 +14,7 @@ Vinevino is an e-commerce website, a clone of Vivino. Vinevino allows users to v
 - **AWS** - Image storage and uploads
 
 
-<img src="https://vinevino-seeds.s3.us-west-1.amazonaws.com/vinevino.gif" alt="text" width="800" height="700"/>
+<!-- <img src="https://vinevino-seeds.s3.us-west-1.amazonaws.com/vinevino.gif" alt="text" width="800"/> -->
 
 
 ## Features
