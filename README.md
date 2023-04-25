@@ -1,7 +1,7 @@
 # Vinevino
 
 ## Website
-[Live website](https://vinevino.onrender.com)
++ [Live website](https://vinevino.onrender.com)
 
 ## Background
 Vinevino is an e-commerce website, a clone of Vivino. Vinevino allows users to view different listings of wines filtered by categories, purchase wines by adding wines to the cart, leave ratings and reviews.
@@ -32,7 +32,7 @@ User can rate and write review for wines
 User can view profile, showing reviews written by the user.
 
 
-+ [Schema](https://github.com/totorasora/FullstackProject-Vinevino/wiki/schema)
-+ [Sample State](https://github.com/totorasora/FullstackProject-Vinevino/wiki/sample-state)
-+ [Frontend routes and components](https://github.com/totorasora/FullstackProject-Vinevino/wiki/frontend-routes)
-+ [Backend routes](https://github.com/totorasora/FullstackProject-Vinevino/wiki/backend-routes)
+### [Schema](https://github.com/totorasora/FullstackProject-Vinevino/wiki/schema)
+### [Sample State](https://github.com/totorasora/FullstackProject-Vinevino/wiki/sample-state)
+### [Frontend routes and components](https://github.com/totorasora/FullstackProject-Vinevino/wiki/frontend-routes)
+### [Backend routes](https://github.com/totorasora/FullstackProject-Vinevino/wiki/backend-routes)
