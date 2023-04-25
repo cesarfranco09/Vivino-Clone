@@ -51,7 +51,6 @@ const Wines = ({wines, slider}) => {
         return average.toFixed(1);
     };
       
-
     const pageMove = function (id) {
         history.push("/wine?wineId=" + id);
         window.scrollTo(0, 0);

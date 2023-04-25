@@ -5,7 +5,9 @@
   height: 430px;
   overflow: visible;
   overflow-x: auto;
-  padding-bottom:20px;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 20px;
 }
 
 .slider-item:first-child {
