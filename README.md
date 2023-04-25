@@ -3,8 +3,6 @@
 ## Website
 [live website](https://vinevino.onrender.com)
 
-<img src="https://vinevino-seeds.s3.us-west-1.amazonaws.com/vinevino.gif" alt="text" width="800"/>
-
 ## Background
 Vinevino is an e-commerce website, a clone of Vivino. Vinevino allows users to view different listings of wines filtered by categories, purchase wines by adding wines to the cart, leave ratings and reviews.
 
@@ -14,6 +12,10 @@ Vinevino is an e-commerce website, a clone of Vivino. Vinevino allows users to v
 - **BCrypt** - User auth package to generate password hash with salt.
 - **PostgreSQL** - Database
 - **AWS** - Image storage and uploads
+
+
+<img src="https://vinevino-seeds.s3.us-west-1.amazonaws.com/vinevino.gif" alt="text" width="800"/>
+
 
 ## Features
 ### User Authentication - Login/Signup
@@ -32,9 +34,9 @@ User can rate and write review for wines
 User can view profile, showing reviews written by the user.
 
 
-# Postgres Database Schema
+## Postgres Database Schema
 
-## `users`
+### `users`
 | column name       | data type | details                   |
 |-------------------|-----------|---------------------------|
 | `id`              | bigint    | not null, primary key     |
@@ -53,7 +55,7 @@ User can view profile, showing reviews written by the user.
 + `has_many :wines, through: :wishlist`
   
 
-## `cart_wines`
+### `cart_wines`
 | column name   | data type | details                        |
 |---------------|-----------|--------------------------------|
 | `id`          | bigint    | not null, primary key          |
@@ -67,7 +69,7 @@ User can view profile, showing reviews written by the user.
 + `belongs_to :wine`
 
 
-## `wishlists`
+### `wishlists`
 | column name    | data type | details                        |
 |----------------|-----------|--------------------------------|
 | `id`           | bigint    | not null, primary key          |
@@ -81,7 +83,7 @@ User can view profile, showing reviews written by the user.
 + `belongs_to :wine`
 
   
-## `ratings`
+### `ratings`
 | column name          | data type | details                        |
 |----------------------|-----------|--------------------------------|
 | `id`                 | bigint    | not null, primary key          |
@@ -96,7 +98,7 @@ User can view profile, showing reviews written by the user.
 + `belongs_to :wine`
 
   
-## `wines`
+### `wines`
 | column name       | data type | details                        |
 |-------------------|-----------|--------------------------------|
 | `id`              | bigint    | not null, primary key          |
