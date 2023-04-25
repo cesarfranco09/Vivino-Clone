@@ -1,7 +1,7 @@
 # Vinevino
 
 ## Website
-+ [Live website](https://vinevino.onrender.com)
+### [Live website](https://vinevino.onrender.com)
 
 ## Background
 Vinevino is an e-commerce website, a clone of Vivino. Vinevino allows users to view different listings of wines filtered by categories, purchase wines by adding wines to the cart, leave ratings and reviews.
