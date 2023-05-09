@@ -2,16 +2,19 @@
 
 <!-- <img src="https://kslportfolio.s3.us-west-1.amazonaws.com/Vinevino.gif" alt="text" width="800" loop autoplay/> -->
 <div style="width: 800px;">
-  <img src="https://kslportfolio.s3.us-west-1.amazonaws.com/Vinevino.gif" alt="text" id="gif" style="width: 100%;">
+  <div>
+    <img src="https://kslportfolio.s3.us-west-1.amazonaws.com/Vinevino.gif" alt="text" id="gif" style="width: 100%;">
+  </div>
+  
+  <script>
+    const gif = document.getElementById('gif');
+    gif.addEventListener('ended', () => {
+      gif.play();
+    });
+    gif.play();
+  </script>
 </div>
 
-<script>
-  const gif = document.getElementById('gif');
-  gif.addEventListener('ended', () => {
-    gif.play();
-  });
-  gif.play();
-</script>
 
 
 ## Website
