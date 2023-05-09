@@ -1,6 +1,6 @@
 # Vinevino
 
-<img src="https://kslportfolio.s3.us-west-1.amazonaws.com/Vinevino.gif" alt="text" width="800"/>
+<img src="https://kslportfolio.s3.us-west-1.amazonaws.com/Vinevino.gif" alt="text" width="800" loop autoplay/>
 
 ## Website
 ### [Live website](https://vinevino.onrender.com)
