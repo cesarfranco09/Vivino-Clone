@@ -25,4 +25,5 @@ class Api::SessionsController < ApplicationController
     logout!
     render json: { message: 'success' }
   end
+  
 end
