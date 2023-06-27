@@ -20,11 +20,10 @@ class Api::WinesController < ApplicationController
     end 
 
     # def index
-    
-    #     if (params[:wine_id])
-    #         @ratings = Rating.joins(:user).where(wine_id: params[:wine_id])
+    #     if (params[:wine_type])
+    #         @wines = Wine.where(wine_type: params[:wine_type])
     #         .select('ratings.id, body, rating, name, ratings.created_at, user_id, wine_id, ratings.updated_at')
-    #         return render json: @ratings
+    #         return render json: @wines
     #     elsif (params[:user_id])
     #         @ratings = Rating.joins(:wine).where(user_id: current_user.id)
     #         .select('wine_id, user_id, year, image, name, ratings.id, body, rating, ratings.created_at, ratings.updated_at')
@@ -33,7 +32,6 @@ class Api::WinesController < ApplicationController
     #         @ratings = Rating.all
     #         return render json: @ratings
     #     end
-
     # end
 
 end
