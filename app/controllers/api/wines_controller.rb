@@ -19,4 +19,21 @@ class Api::WinesController < ApplicationController
         render json: { wines: wines }
     end 
 
+    # def index
+    
+    #     if (params[:wine_id])
+    #         @ratings = Rating.joins(:user).where(wine_id: params[:wine_id])
+    #         .select('ratings.id, body, rating, name, ratings.created_at, user_id, wine_id, ratings.updated_at')
+    #         return render json: @ratings
+    #     elsif (params[:user_id])
+    #         @ratings = Rating.joins(:wine).where(user_id: current_user.id)
+    #         .select('wine_id, user_id, year, image, name, ratings.id, body, rating, ratings.created_at, ratings.updated_at')
+    #         return render json: @ratings
+    #     else
+    #         @ratings = Rating.all
+    #         return render json: @ratings
+    #     end
+
+    # end
+
 end
